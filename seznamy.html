@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seznamy v HTML — Interaktivní příklady a vysvětlení</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill active">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Modul 1: Seznamy</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly HTML:</span>
+            <a href="html-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="kostra-text.html" class="module-subnav-link">1. Kostra & Text</a>
+            <a href="seznamy.html" class="module-subnav-link active">2. Seznamy</a>
+            <a href="tabulky.html" class="module-subnav-link">3. Tabulky</a>
+            <a href="formulare.html" class="module-subnav-link">4. Formuláře</a>
+            <a href="semantika.html" class="module-subnav-link">5. Sémantika</a>
+            <a href="media.html" class="module-subnav-link">6. Média</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Modul 1 • Výuka v praxi</div>
+            <h1 class="section-heading">Seznamy (Lists)</h1>
+            <p class="section-desc">
+                Seznamy se v HTML dělí do tří hlavních skupin: <strong>odrážkové</strong> (nečíslované), <strong>číslované</strong> (s pořadím) a <strong>popisné</strong> (pro definice pojmů). Můžeš si přímo v editorech vyzkoušet, co se stane po úpravě kódu.
+            </p>
+        </div>
+
+        <!-- 1.1 Odrážky a čísla -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1.1 Nečíslovaný (&lt;ul&gt;) a číslovaný (&lt;ol&gt;) seznam</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor (můžeš přepisovat)</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><h3>Nákupní seznam do školy:</h3>
+<ul>
+    <li>Kružítko a pravítko</li>
+    <li>Sešity formátu A4</li>
+    <li>Kuličková propiska</li>
+    <li>Grafitová tužka č. 2</li>
+</ul>
+
+<h3>Kroky pro spuštění projektu:</h3>
+<ol>
+    <li>Otevři složku projektu v editoru VS Code.</li>
+    <li>Zkontroluj syntaxi v souboru index.html.</li>
+    <li>Spusť stránku pomocí doplňku Live Server.</li>
+</ol></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Vysvětlení tagů:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;ul&gt;</span> <strong>Unordered List</strong> – odrážkový seznam. Používá se pro položky, u kterých nezáleží na pořadí.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;ol&gt;</span> <strong>Ordered List</strong> – číslovaný seznam. Prohlížeč k položkám automaticky generuje číslování (1, 2, 3...).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;li&gt;</span> <strong>List Item</strong> – samotný řádek/položka seznamu. Může být pouze uvnitř <code>&lt;ul&gt;</code> nebo <code>&lt;ol&gt;</code>.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 1.2 Atributy číslování: type, start, reversed -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1.2 Pokročilé atributy číslování (type, start, reversed)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><!-- Písmena A, B, C... -->
+<h3>Třídní sekce (type="A"):</h3>
+<ol type="A">
+    <li>První patro – Jazykové učebny</li>
+    <li>Druhé patro – Počítačová laboratoř</li>
+    <li>Třetí patro – Přírodovědné kabinety</li>
+</ol>
+
+<!-- Římské číslice s počátkem od 5 -->
+<h3>Pokračování kurzu (type="I" start="5"):</h3>
+<ol type="I" start="5">
+    <li>Pokročilé tabulky</li>
+    <li>Validace formulářů</li>
+</ol>
+
+<!-- Obrácené odpočítávání -->
+<h3>Odpočet do startu (reversed):</h3>
+<ol reversed>
+    <li>Start rakety!</li>
+    <li>Pozor na zážeh motorů</li>
+    <li>Příprava posádky</li>
+</ol></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Vysvětlení parametrů:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">type="1|a|A|i|I"</span> Určuje formát: čísla (1), malá písmena (a), velká písmena (A), malé římské (i), velké římské (I).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">start="5"</span> Nastavuje počáteční číslo (i když máš písmena, hodnota je vždy celé číslo např. 5 = E).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">reversed</span> Boolean atribut, který obrátí pořadí číslování sestupně (např. 3, 2, 1).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 1.3 Vnořené seznamy -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1.3 Vnořené víceúrovňové seznamy</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><h3>Struktura předmětů a témat:</h3>
+<ul>
+    <li>Informatika a výpočetní technika
+        <!-- Vnořený číslovaný seznam -->
+        <ol>
+            <li>Kódování webu
+                <ul>
+                    <li>HTML značky</li>
+                    <li>Kaskádové styly (CSS)</li>
+                </ul>
+            </li>
+            <li>Algoritmizace a Python</li>
+        </ol>
+    </li>
+    <li>Matematika
+        <ul>
+            <li>Lineární rovnice</li>
+            <li>Goniometrické funkce</li>
+        </ul>
+    </li>
+</ul></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Klíč k vnořování bez chyb:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <strong>Častá školní chyba:</strong> Vnořený seznam se nesmí vložit mezi dvě <code>&lt;li&gt;</code>, ale vždy <strong>přímo dovnitř konkrétního &lt;li&gt;</strong> před jeho uzavírací značku <code>&lt;/li&gt;</code>!
+                    </li>
+                    <li class="explanation-item">
+                        Prohlížeč automaticky mění styl odrážek (plný kroužek &rarr; prázdný kroužek &rarr; čtvereček).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 1.4 Popisný seznam -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1.4 Popisný / definiční seznam (&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><h3>Webový vývojářský slovníček:</h3>
+<dl>
+    <dt>Frontend</dt>
+    <dd>Část webu, kterou uživatel vidí a s níž přímo interaguje v prohlížeči (HTML, CSS, JS).</dd>
+
+    <dt>Backend</dt>
+    <dd>Část webu běžící na serveru, která zpracovává data, přihlašování a komunikuje s databází.</dd>
+
+    <dt>Responzivní design</dt>
+    <dd>Způsob návrhu webu, díky němuž stránka vypadá skvěle jak na telefonu, tak na velkém monitoru.</dd>
+</dl></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Vysvětlení struktury &lt;dl&gt;:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;dl&gt;</span> <strong>Description List:</strong> Obaluje celý slovník pojmů nebo seznam párů název-hodnota.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;dt&gt;</span> <strong>Description Term:</strong> Samotný pojem, termín nebo klíč.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;dd&gt;</span> <strong>Description Details:</strong> Popis, definice nebo hodnota pojmu. Může následovat i více &lt;dd&gt; za jedním &lt;dt&gt;.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Podrobný slovník pojmů pro seznamy -->
+        <div class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📚 Přehled všech tagů a atributů pro seznamy</h3>
+                    <p>Kompletní tabulka pro rychlou kontrolu před testem nebo zkoušením.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Pojem / Značka</th>
+                            <th>Typ</th>
+                            <th>Popis a školní využití</th>
+                            <th>Příklad zápisu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">&lt;ul&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Nečíslovaný seznam s odrážkami (puntíky, čtverečky).</td>
+                            <td><code>&lt;ul&gt;&lt;li&gt;Položka&lt;/li&gt;&lt;/ul&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;ol&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Číslovaný seznam s posloupností položek.</td>
+                            <td><code>&lt;ol&gt;&lt;li&gt;Krok 1&lt;/li&gt;&lt;/ol&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;li&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Položka seznamu. Přípustná výhradně uvnitř &lt;ul&gt; a &lt;ol&gt;.</td>
+                            <td><code>&lt;li&gt;Chléb&lt;/li&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">type</td>
+                            <td>Atribut pro &lt;ol&gt;</td>
+                            <td>Typ číslování: "1" (čísla), "a" (malá písmena), "A" (velká), "i" / "I" (římské číslice).</td>
+                            <td><code>&lt;ol type="A"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">start</td>
+                            <td>Atribut pro &lt;ol&gt;</td>
+                            <td>Počáteční číslo sekvence (vždy zadané číslicí, např. 3 začne od C).</td>
+                            <td><code>&lt;ol start="3"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">reversed</td>
+                            <td>Atribut pro &lt;ol&gt;</td>
+                            <td>Obrátí číslování od nejvyššího k nejnižšímu (odpočítávání).</td>
+                            <td><code>&lt;ol reversed&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;dl&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Obal pro popisný (definiční) seznam.</td>
+                            <td><code>&lt;dl&gt;...&lt;/dl&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;dt&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Definovaný termín / pojem uvnitř &lt;dl&gt;.</td>
+                            <td><code>&lt;dt&gt;HTML&lt;/dt&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;dd&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Popis nebo vysvětlení definovaného termínu.</td>
+                            <td><code>&lt;dd&gt;Značkovací jazyk&lt;/dd&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Modul 1: Seznamy</p>
+        <p>Čistý Apple design systém s editovatelným hřištěm kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

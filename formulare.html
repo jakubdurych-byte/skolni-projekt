@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formuláře v HTML — Interaktivní příklady a vysvětlení</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill active">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Modul 3: Formuláře</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly HTML:</span>
+            <a href="html-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="kostra-text.html" class="module-subnav-link">1. Kostra & Text</a>
+            <a href="seznamy.html" class="module-subnav-link">2. Seznamy</a>
+            <a href="tabulky.html" class="module-subnav-link">3. Tabulky</a>
+            <a href="formulare.html" class="module-subnav-link active">4. Formuláře</a>
+            <a href="semantika.html" class="module-subnav-link">5. Sémantika</a>
+            <a href="media.html" class="module-subnav-link">6. Média</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Modul 3 • Výuka v praxi</div>
+            <h1 class="section-heading">Formuláře (Forms)</h1>
+            <p class="section-desc">
+                Formuláře jsou srdcem interaktivity každého webu. Slouží k registraci, přihlašování, anketám nebo odesílání zpráv. Vyzkoušej si jednotlivé typy políček, párování popisků i validaci.
+            </p>
+        </div>
+
+        <!-- 3.1 Textové vstupy a validace -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">3.1 Textová pole, e-mail, heslo a atribut required</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><form onsubmit="event.preventDefault(); alert('Registrace odeslána!');">
+    <div>
+        <label for="jmeno">Jméno a příjmení:</label>
+        <input type="text" id="jmeno" name="jmeno" placeholder="např. Jan Novák" required>
+    </div>
+
+    <div>
+        <label for="email">Školní e-mail:</label>
+        <input type="email" id="email" name="email" placeholder="novak@skola.cz" required>
+    </div>
+
+    <div>
+        <label for="heslo">Tajné heslo:</label>
+        <input type="password" id="heslo" name="heslo" placeholder="Minimálně 6 znaků" minlength="6">
+    </div>
+
+    <div>
+        <label for="vek">Věk (číslo 10–99):</label>
+        <input type="number" id="vek" name="vek" min="10" max="99" value="16">
+    </div>
+
+    <div style="margin-top: 10px;">
+        <button type="submit">Zaregistrovat se</button>
+    </div>
+</form></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Klíčová pravidla:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">for="..."</span> a <span class="tag-chip">id="..."</span> Propojí <code>&lt;label&gt;</code> s <code>&lt;input&gt;</code>. Kliknutí na text popisku okamžitě aktivuje políčko (skvělé na mobilu!).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">name="..."</span> Klíč, pod kterým server data obdrží (např. <code>email=novak@skola.cz</code>).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">required</span> Prohlížeč nepustí uživatele dál, dokud políčko nevyplní.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">placeholder</span> Dočasný šedý text s nápovědou pro uživatele.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3.2 Výběry a přepínače -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">3.2 Radio přepínače, Checkboxy a roletka (&lt;select&gt;)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><form onsubmit="event.preventDefault(); alert('Volby uloženy!');">
+    <!-- Rozbalovací nabídka (select) -->
+    <div>
+        <label for="rocnik">Vyber ročník studia:</label>
+        <select id="rocnik" name="rocnik">
+            <optgroup label="Nižší ročníky">
+                <option value="1">1. ročník</option>
+                <option value="2" selected>2. ročník</option>
+            </optgroup>
+            <optgroup label="Vyšší ročníky">
+                <option value="3">3. ročník</option>
+                <option value="4">4. ročník (maturitní)</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <!-- Radio: STEJNÉ name="obor" umožňuje vybrat pouze 1 volbu! -->
+    <div>
+        <label>Zvolený obor studia:</label>
+        <div class="form-row">
+            <label class="form-check"><input type="radio" name="obor" value="it" checked> Informační technologie</label>
+            <label class="form-check"><input type="radio" name="obor" value="elektro"> Elektrotechnika</label>
+            <label class="form-check"><input type="radio" name="obor" value="stroj"> Strojírenství</label>
+        </div>
+    </div>
+
+    <!-- Checkbox: nezávislé volby -->
+    <div>
+        <label>Volitelné semináře (vyber libovolně):</label>
+        <div class="form-row">
+            <label class="form-check"><input type="checkbox" name="web" checked> Tvorba webu</label>
+            <label class="form-check"><input type="checkbox" name="robotika"> Robotika</label>
+            <label class="form-check"><input type="checkbox" name="siete"> Počítačové sítě</label>
+        </div>
+    </div>
+
+    <!-- Víceřádkový text -->
+    <div>
+        <label for="zprava">Poznámka / Vzkaz pro vyučujícího:</label>
+        <textarea id="zprava" name="zprava" rows="3" placeholder="Sem můžeš napsat doplňující informace..."></textarea>
+    </div>
+
+    <div style="margin-top: 8px; display:flex; gap:10px;">
+        <button type="submit" class="btn-primary">Odeslat volby</button>
+        <button type="reset" class="btn-secondary">Vymazat formulář</button>
+    </div>
+</form></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Rozdíly mezi prvky:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">type="radio"</span> <strong>Přepínač</strong> – uživatel smí vybrat <em>pouze 1 možnost</em>. Všechny přepínače ve stejné skupině musí mít <strong>stejný atribut <code>name</code></strong>!
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">type="checkbox"</span> <strong>Zaškrtávátko</strong> – každé pole je nezávislé, uživatel může zaškrtnout 0, 1 nebo všechny.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;select&gt;</span> a <span class="tag-chip">&lt;optgroup&gt;</span> Vytváří roletové menu rozdělené do tématických skupin voleb.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;textarea&gt;</span> Textové pole pro dlouhý víceřádkový text (na rozdíl od jednořádkového inputu).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3.3 Seskupování a nahrávání souborů: fieldset, legend, file -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">3.3 Seskupování polí (&lt;fieldset&gt;, &lt;legend&gt;) a nahrávání souborů</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><form enctype="multipart/form-data" onsubmit="event.preventDefault(); alert('Úkol odevzdán!');">
+    <fieldset>
+        <legend>Odevzdání školního úkolu</legend>
+
+        <div>
+            <label for="cislo-ukolu">Číslo úkolu:</label>
+            <input type="text" id="cislo-ukolu" name="cislo-ukolu" value="Úkol č. 4 – Tabulky a Seznamy" readonly>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <label for="soubor">Vyber soubor k nahrání (ZIP nebo HTML):</label>
+            <input type="file" id="soubor" name="soubor" accept=".zip,.html,.css">
+        </div>
+
+        <div style="margin-top: 10px;">
+            <label class="form-check">
+                <input type="checkbox" name="souhlas" required> Potvrzuji, že jsem kód vypracoval samostatně.
+            </label>
+        </div>
+
+        <div style="margin-top: 12px;">
+            <button type="submit" class="btn-primary">Odevzdat soubor</button>
+        </div>
+    </fieldset>
+</form></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Vysvětlení značek:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;fieldset&gt;</span> Logicky seskupuje související pole do vizuálního rámečku.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;legend&gt;</span> Popisek / titulek rámečku fieldsetu.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">type="file"</span> Umožní uživateli vybrat soubor z počítače či mobilu.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">readonly</span> Políčko lze přečíst a hodnota se odešle, ale uživatel text nemůže přepsat.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3.4 Moderní HTML5 ovládací prvky -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">3.4 Moderní HTML5 vstupy (date, time, color, range)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><form onsubmit="event.preventDefault();">
+    <!-- Výběr data -->
+    <div>
+        <label for="datum">Datum odevzdání:</label>
+        <input type="date" id="datum" name="datum">
+    </div>
+
+    <!-- Výběr času -->
+    <div>
+        <label for="cas">Čas odevzdání:</label>
+        <input type="time" id="cas" name="cas" value="14:00">
+    </div>
+
+    <!-- Výběr barvy -->
+    <div>
+        <label for="barva">Vyber oblíbenou barvu:</label>
+        <input type="color" id="barva" name="barva" value="#0071e3" style="height:38px; width:70px; padding:2px; cursor:pointer;">
+    </div>
+
+    <!-- Posuvník -->
+    <div>
+        <label for="uroven">Úroveň obtížnosti (0 až 100):</label>
+        <input type="range" id="uroven" name="uroven" min="0" max="100" step="5" value="65">
+    </div>
+</form></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Výhody HTML5 vstupů:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">type="date"</span> a <span class="tag-chip">type="time"</span> Zobrazí systémový kalendář i časovač bez nutnosti psát jediný řádek JavaScriptu.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">type="color"</span> Otevře paletu barev a vrátí hexadecimální hodnotu barvy (např. #0071e3).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">type="range"</span> Posuvník. Pomocí <code>min</code>, <code>max</code> a <code>step</code> nastavíš rozsah a velikost kroku.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Podrobný slovník pojmů pro formuláře -->
+        <div class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📚 Přehled všech tagů a atributů pro formuláře</h3>
+                    <p>Všechny pojmy pro písemky a zkoušení z formulářů.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Značka / Atribut</th>
+                            <th>Typ</th>
+                            <th>Význam a školní popis</th>
+                            <th>Příklad použití</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">&lt;form&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Obal pro celý formulář. Obsahuje atributy action a method.</td>
+                            <td><code>&lt;form action="uloz.php" method="POST"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;input&gt;</td>
+                            <td>Nepárový tag</td>
+                            <td>Univerzální formulářové pole. Typ určuje atribut <code>type="..."</code>.</td>
+                            <td><code>&lt;input type="text" name="jmeno"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;label&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Textový popisek spárovaný se vstupem přes <code>for="id"</code>.</td>
+                            <td><code>&lt;label for="jmeno"&gt;Jméno:&lt;/label&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;select&gt;, &lt;option&gt;</td>
+                            <td>Párové tagy</td>
+                            <td>Rozbalovací roletové menu s jednotlivými možnostmi.</td>
+                            <td><code>&lt;select&gt;&lt;option&gt;1.A&lt;/option&gt;&lt;/select&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;textarea&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Víceřádkové textové pole pro dlouhé texty a zprávy.</td>
+                            <td><code>&lt;textarea rows="4"&gt;&lt;/textarea&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;button&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Tlačítko formuláře: type="submit" (odeslat), type="reset" (vymazat).</td>
+                            <td><code>&lt;button type="submit"&gt;Odeslat&lt;/button&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;fieldset&gt;, &lt;legend&gt;</td>
+                            <td>Párové tagy</td>
+                            <td>Vizuální rámeček pro seskupení souvisejících polí s titulkem.</td>
+                            <td><code>&lt;fieldset&gt;&lt;legend&gt;Osobní údaje&lt;/legend&gt;...</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">name</td>
+                            <td>Atribut</td>
+                            <td>Klíčové jméno, pod kterým server hodnotu pole přijme.</td>
+                            <td><code>name="telefon"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">placeholder</td>
+                            <td>Atribut</td>
+                            <td>Šedá nápověda uvnitř vstupního pole před zapsáním textu.</td>
+                            <td><code>placeholder="např. Jan Novák"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">required</td>
+                            <td>Atribut</td>
+                            <td>Určuje, že pole je povinné pro odeslání.</td>
+                            <td><code>&lt;input required&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">disabled vs readonly</td>
+                            <td>Atributy</td>
+                            <td>Disabled pole je neaktivní a neodesílá se; readonly je jen pro čtení a odesílá se.</td>
+                            <td><code>&lt;input readonly&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Modul 3: Formuláře</p>
+        <p>Čistý Apple design systém s editovatelným hřištěm kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

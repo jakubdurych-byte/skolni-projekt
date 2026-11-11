@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sémantický web a SEO — Školní a maturitní průvodce</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill active">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Modul: Sémantický web & SEO</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly HTML:</span>
+            <a href="html-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="kostra-text.html" class="module-subnav-link">1. Kostra & Text</a>
+            <a href="seznamy.html" class="module-subnav-link">2. Seznamy</a>
+            <a href="tabulky.html" class="module-subnav-link">3. Tabulky</a>
+            <a href="formulare.html" class="module-subnav-link">4. Formuláře</a>
+            <a href="semantika.html" class="module-subnav-link active">5. Sémantika</a>
+            <a href="media.html" class="module-subnav-link">6. Média</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Základní i maturitní učivo</div>
+            <h1 class="section-heading">Sémantický web, SEO & Struktura</h1>
+            <p class="section-desc">
+                <strong>Sémantika</strong> znamená, že každá značka v HTML nese svůj přesný lidský i strojový význam. Místo nekonečného vrstvení bezejmenných <code>&lt;div&gt;</code> značek používáme prvky, které vyhledávačům (Google) i hlasovým čtečkám pro nevidomé říkají, co je navigace, co je článek a co patička.
+            </p>
+        </div>
+
+        <!-- 1. Anatomie sémantické stránky -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1. Sémantické rozvržení moderního webu</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor (můžeš přepisovat)</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><header style="background:var(--accent-subtle); padding:10px; border-radius:6px; margin-bottom:10px;">
+    <h2>Záhlaví webu (&lt;header&gt;)</h2>
+    <nav>
+        <a href="#domu">Domů</a> | <a href="#aktuality">Články</a>
+    </nav>
+</header>
+
+<main style="background:var(--bg-surface-secondary); padding:10px; border-radius:6px; margin-bottom:10px;">
+    <article style="border-bottom:1px solid var(--border-subtle); padding-bottom:8px; margin-bottom:8px;">
+        <h3>Samostatný příspěvek (&lt;article&gt;)</h3>
+        <p>Článek, který dává smysl i sám o sobě (např. zpráva na blogu).</p>
+        <time datetime="2026-11-10">10. listopadu 2026</time>
+    </article>
+
+    <aside style="font-size:0.85rem; color:var(--text-secondary); padding:6px; background:var(--bg-surface); border-radius:4px;">
+        <strong>Boční panel (&lt;aside&gt;):</strong> Doplňkové odkazy a tipy.
+    </aside>
+</main>
+
+<footer style="background:var(--tag-bg); padding:10px; border-radius:6px; font-size:0.85rem; text-align:center;">
+    &copy; 2026 Školní projekt (&lt;footer&gt;)
+</footer></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Vysvětlení sémantických značek:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;header&gt;</span> Záhlaví stránky nebo konkrétní sekce. Zpravidla obsahuje logo a název.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;nav&gt;</span> Hlavní navigační oblast s odkazy.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;main&gt;</span> Jedinečný hlavní obsah aktuální stránky. Na stránce smí být <strong>pouze jednou</strong>!
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;article&gt;</span> Samostatná jednotka obsahu, kterou lze vytrhnout z kontextu (např. článek, komentář, produkt).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;aside&gt;</span> Doplňkový boční obsah (související články, reklama, profil autora).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;footer&gt;</span> Zápatí s autorskými právy, kontakty a odkazy na podmínky.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slovník pojmů pro sémantiku a SEO -->
+        <div class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📚 Přehled sémantických a SEO značek</h3>
+                    <p>Maturitní pojmy pro vyhledávače a přístupnost.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Značka</th>
+                            <th>Význam a účel</th>
+                            <th>Proč ji používat místo &lt;div&gt;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">&lt;main&gt;</td>
+                            <td>Hlavní obsah stránky.</td>
+                            <td>Hlasové čtečky nevidomých na něj umí přeskočit přímo bez nutnosti číst celou navigaci.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;nav&gt;</td>
+                            <td>Navigační blok.</td>
+                            <td>Google a vyhledávače z něj chápou strukturu celého webu pro výsledky vyhledávání.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;article&gt;</td>
+                            <td>Samostatný článek nebo příspěvek.</td>
+                            <td>Umožňuje automatickým čtečkám (např. RSS nebo Safari Reader Mode) extrahovat čistý text.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;time datetime="..."&gt;</td>
+                            <td>Strojově čitelný datum a čas.</td>
+                            <td>Kalendáře a roboti přesně vědí, kdy byl obsah publikován.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Modul Sémantika & SEO</p>
+        <p>Čistý Apple design systém s editovatelným hřištěm kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

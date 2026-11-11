@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabulky v HTML — Interaktivní příklady a vysvětlení</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill active">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Modul 2: Tabulky</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly HTML:</span>
+            <a href="html-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="kostra-text.html" class="module-subnav-link">1. Kostra & Text</a>
+            <a href="seznamy.html" class="module-subnav-link">2. Seznamy</a>
+            <a href="tabulky.html" class="module-subnav-link active">3. Tabulky</a>
+            <a href="formulare.html" class="module-subnav-link">4. Formuláře</a>
+            <a href="semantika.html" class="module-subnav-link">5. Sémantika</a>
+            <a href="media.html" class="module-subnav-link">6. Média</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Modul 2 • Výuka v praxi</div>
+            <h1 class="section-heading">Tabulky (Tables)</h1>
+            <p class="section-desc">
+                Tabulky slouží k zobrazení strukturovaných dvourozměrných dat. V HTML se tabulka staví <strong>výhradně po řádcích</strong> (shora dolů). Zde si procvičíš základní stavbu, sémantiku i pokročilé slučování <code>colspan</code> a <code>rowspan</code>.
+            </p>
+        </div>
+
+        <!-- 2.1 Základní tabulka -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2.1 Klasická tabulka se známkami a učiteli</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><table>
+    <caption>Přehled předmětů a známek za pololetí</caption>
+    <!-- 1. řádek: Hlavička tabulky -->
+    <tr>
+        <th>Předmět</th>
+        <th>Vyučující</th>
+        <th>Hodnocení</th>
+    </tr>
+    <!-- 2. řádek: Data -->
+    <tr>
+        <td>Informatika</td>
+        <td>p. Čáp</td>
+        <td>Výborný (1)</td>
+    </tr>
+    <!-- 3. řádek: Data -->
+    <tr>
+        <td>Matematika</td>
+        <td>p. Novák</td>
+        <td>Chvalitebný (2)</td>
+    </tr>
+    <!-- 4. řádek: Data -->
+    <tr>
+        <td>Anglický jazyk</td>
+        <td>pí Svobodová</td>
+        <td>Výborný (1)</td>
+    </tr>
+</table></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Základní stavební kameny:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;table&gt;</span> Obaluje celou tabulku.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;caption&gt;</span> Titulek nebo nadpis tabulky (vždy jako první prvek v <code>&lt;table&gt;</code>).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;tr&gt;</span> <strong>Table Row</strong> – řádek tabulky. Každý řádek obsahuje buňky <code>&lt;th&gt;</code> nebo <code>&lt;td&gt;</code>.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;th&gt;</span> <strong>Table Header</strong> – záhlaví sloupce (text je tučný a centrovaný).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;td&gt;</span> <strong>Table Data</strong> – běžná buňka pro data zarovnaná vlevo.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2.2 Slučování buněk (Colspan a Rowspan) -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2.2 Slučování buněk: colspan (vodorovně) a rowspan (svisle)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><table>
+    <caption>Školní rozvrh se sloučenými hodinami</caption>
+    <tr>
+        <th>Den</th>
+        <th>1. hodina (8:00)</th>
+        <th>2. hodina (8:55)</th>
+        <th>3. hodina (10:00)</th>
+    </tr>
+    <tr>
+        <td>Pondělí</td>
+        <!-- colspan="2" sloučí 2 sloupce vedle sebe (dvouhodinovka) -->
+        <td colspan="2" style="background:var(--accent-subtle); text-align:center; font-weight:600;">
+            Webové praktikum (2 hodiny)
+        </td>
+        <td>Český jazyk</td>
+    </tr>
+    <tr>
+        <td>Úterý</td>
+        <td>Matematika</td>
+        <td>Dějepis</td>
+        <!-- rowspan="2" sloučí 2 řádky svisle pod sebou -->
+        <td rowspan="2" style="background:rgba(234, 179, 8, 0.2); text-align:center; font-weight:600;">
+            Tělocvik (Út + St)
+        </td>
+    </tr>
+    <tr>
+        <td>Středa</td>
+        <td>Fyzika</td>
+        <td>Zeměpis</td>
+        <!-- Třetí buňku už nepíšeme, je zabraná rowspanem z Úterý! -->
+    </tr>
+</table></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Zlatá pravidla slučování:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">colspan="N"</span> Sloučí <strong>N sloupců vodorovně</strong>. V aktuálním řádku musíš ubrat N-1 buněk <code>&lt;td&gt;</code>.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">rowspan="N"</span> Sloučí <strong>N řádků svisle dolů</strong>. V následujících N-1 řádcích na této pozici buňku <code>&lt;td&gt;</code> <strong>vynecháš</strong>!
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2.3 Sémantika: thead, tbody, tfoot a scope -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2.3 Sémantická tabulka (&lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;) a atribut scope</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><table>
+    <caption>Účet za školní pomůcky</caption>
+    <thead>
+        <tr>
+            <th scope="col">Název položky</th>
+            <th scope="col">Počet kusů</th>
+            <th scope="col">Cena celkem</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Sešit linkovaný A4</td>
+            <td>3</td>
+            <td>90 Kč</td>
+        </tr>
+        <tr>
+            <td>Kuličková tužka modrá</td>
+            <td>2</td>
+            <td>40 Kč</td>
+        </tr>
+        <tr>
+            <td>Úhloměr a trojúhelník</td>
+            <td>1</td>
+            <td>55 Kč</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2"><strong>Celková částka k úhradě</strong></td>
+            <td><strong>185 Kč</strong></td>
+        </tr>
+    </tfoot>
+</table></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Proč používat sémantické bloky:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;thead&gt;</span> Hlavička tabulky. Tiskárny a čtečky obrazovky ji opakují na každé vytištěné stránce.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;tbody&gt;</span> Tělo s daty. V jedné tabulce může být i více &lt;tbody&gt;.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;tfoot&gt;</span> Souhrnná patička (součty, průměry). Vždy se vykresluje vespod tabulky.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">scope="col|row"</span> Určuje, zda hlavička <code>&lt;th&gt;</code> patří celému sloupci nebo řádku (důležité pro hlasové čtečky).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2.4 Skupiny sloupců: colgroup a col -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2.4 Skupiny sloupců (&lt;colgroup&gt; a &lt;col&gt;)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><table>
+    <!-- colgroup umožňuje stylovat celé sloupce najednou! -->
+    <colgroup>
+        <col style="width: 30%;">
+        <col style="width: 35%; background: var(--bg-surface-secondary);">
+        <col style="width: 35%; background: var(--accent-subtle);">
+    </colgroup>
+    <tr>
+        <th>Zkratka</th>
+        <th>Celý název předmětu</th>
+        <th>Učebna</th>
+    </tr>
+    <tr>
+        <td>INF</td>
+        <td>Informatika</td>
+        <td>Učebna PC 1</td>
+    </tr>
+    <tr>
+        <td>MAT</td>
+        <td>Matematika</td>
+        <td>Třída 2.A</td>
+    </tr>
+</table></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">K čemu slouží colgroup:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;colgroup&gt;</span> Umožňuje nastavit šířky, pozadí nebo ohraničení pro celé sloupce najednou, aniž bys musel psát styl ke každé jednotlivé buňce <code>&lt;td&gt;</code>.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Podrobný slovník pojmů pro tabulky -->
+        <div class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📚 Přehled všech tagů a atributů pro tabulky</h3>
+                    <p>Všechny pojmy pro písemky a praktické testy.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Pojem / Značka</th>
+                            <th>Typ</th>
+                            <th>Popis a školní využití</th>
+                            <th>Příklad zápisu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">&lt;table&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Základní kontejner ohraničující celou tabulku.</td>
+                            <td><code>&lt;table&gt;...&lt;/table&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;caption&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Nadpis / popisek tabulky zobrazený nahoře.</td>
+                            <td><code>&lt;caption&gt;Rozvrh&lt;/caption&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;tr&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Table Row – jeden vodorovný řádek tabulky.</td>
+                            <td><code>&lt;tr&gt;...&lt;/tr&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;th&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Table Header – záhlavní buňka (tučný text na střed).</td>
+                            <td><code>&lt;th&gt;Jméno&lt;/th&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;td&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Table Data – běžná datová buňka.</td>
+                            <td><code>&lt;td&gt;Petr&lt;/td&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">colspan</td>
+                            <td>Atribut th / td</td>
+                            <td>Sloučení sloupce vodorovně přes N pozic.</td>
+                            <td><code>&lt;td colspan="2"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">rowspan</td>
+                            <td>Atribut th / td</td>
+                            <td>Sloučení řádku svisle dolů přes N řádků.</td>
+                            <td><code>&lt;td rowspan="2"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;thead&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Zabaluje řádky hlavičky tabulky.</td>
+                            <td><code>&lt;thead&gt;&lt;tr&gt;...&lt;/tr&gt;&lt;/thead&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;tbody&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Zabaluje tělo tabulky s datovými řádky.</td>
+                            <td><code>&lt;tbody&gt;&lt;tr&gt;...&lt;/tr&gt;&lt;/tbody&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;tfoot&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Zabaluje souhrnnou patičku tabulky.</td>
+                            <td><code>&lt;tfoot&gt;&lt;tr&gt;...&lt;/tr&gt;&lt;/tfoot&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;colgroup&gt;, &lt;col&gt;</td>
+                            <td>Párový / nepárový</td>
+                            <td>Definice sloupcových vlastností (šířky, barvy).</td>
+                            <td><code>&lt;col style="width:50%"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">scope</td>
+                            <td>Atribut pro &lt;th&gt;</td>
+                            <td>Určuje rozsah hlavičky: "col" (sloupec) nebo "row" (řádek).</td>
+                            <td><code>&lt;th scope="col"&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Modul 2: Tabulky</p>
+        <p>Čistý Apple design systém s editovatelným hřištěm kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

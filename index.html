@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Academy — Školní a maturitní vývojářský portál</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Apple-style Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Dev Academy</span>
+            </a>
+
+            <!-- Subpage navigation links -->
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill active">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Apple Popover Theme Menu -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header">
+                        <span>Výběr z 16 Apple & Dev motivů</span>
+                    </div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light">
+                            <span class="swatch swatch-light"></span>
+                            <span>Světlý (Silver)</span>
+                        </button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark">
+                            <span class="swatch swatch-dark"></span>
+                            <span>Space Black</span>
+                        </button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight">
+                            <span class="swatch swatch-midnight"></span>
+                            <span>Půlnoční modrá</span>
+                        </button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple">
+                            <span class="swatch swatch-purple"></span>
+                            <span>Fialový titan</span>
+                        </button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium">
+                            <span class="swatch swatch-titanium"></span>
+                            <span>Přírodní titan</span>
+                        </button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green">
+                            <span class="swatch swatch-green"></span>
+                            <span>Alpská zeleň</span>
+                        </button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper">
+                            <span class="swatch swatch-paper"></span>
+                            <span>Kniha & Papír</span>
+                        </button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose">
+                            <span class="swatch swatch-rose"></span>
+                            <span>Růžové zlato</span>
+                        </button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix">
+                            <span class="swatch swatch-matrix"></span>
+                            <span>Terminál Matrix</span>
+                        </button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-wrapper">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Školní & Maturitní Vývojářská Akademie</span>
+            </div>
+            <h1 class="hero-title">
+                Všechny programovací jazyky.<br>
+                <span>V jednom čistém studiu.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Komplexní interaktivní platforma pro výuku středoškolské informatiky a přípravu k maturitě. Vyber si technologii, prozkoumej podmoduly a testuj kód v reálném čase.
+            </p>
+
+            <!-- Language Quick Filter Bar -->
+            <div class="lang-filter-container">
+                <button type="button" class="lang-filter-btn active" data-lang="all">🌐 Všechna témata</button>
+                <button type="button" class="lang-filter-btn" data-lang="html">🟠 HTML</button>
+                <button type="button" class="lang-filter-btn" data-lang="css">🔷 CSS</button>
+                <button type="button" class="lang-filter-btn" data-lang="js">⚡ JavaScript</button>
+                <button type="button" class="lang-filter-btn" data-lang="python">🐍 Python</button>
+                <button type="button" class="lang-filter-btn" data-lang="java">☕ Java</button>
+                <button type="button" class="lang-filter-btn" data-lang="cpp">⚙️ C++</button>
+                <button type="button" class="lang-filter-btn" data-lang="csharp">🟣 C#</button>
+                <button type="button" class="lang-filter-btn" data-lang="sql">🗄️ SQL</button>
+                <button type="button" class="lang-filter-btn" data-lang="git">🐙 Git</button>
+                <button type="button" class="lang-filter-btn" data-lang="linux">🐧 Linux & CLI</button>
+                <button type="button" class="lang-filter-btn" data-lang="algo">🧮 Algoritmy</button>
+                <button type="button" class="lang-filter-btn" data-lang="net">🌐 Sítě</button>
+                <button type="button" class="lang-filter-btn" data-lang="sec">🛡️ Bezpečnost</button>
+                <button type="button" class="lang-filter-btn" data-lang="hw">💻 Hardware</button>
+                <button type="button" class="lang-filter-btn" data-lang="arch">🏗️ Architektura & API</button>
+            </div>
+        </section>
+
+        <!-- Bento Grid hlavních modulů a podmodulů -->
+        <section class="modules-overview">
+            <div class="section-intro">
+                <div class="section-tag">Hlavní moduly & Témata</div>
+                <h2 class="section-heading">Vyber si technologii</h2>
+                <p class="section-desc">
+                    Každý modul obsahuje sadu specializovaných podmodulů s živým editorem kódu, vysvětlením a školními příklady.
+                </p>
+            </div>
+
+            <div class="bento-container" id="bento-modules-grid">
+
+                <!-- 1. HTML Modul -->
+                <div class="bento-card" data-lang="html">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🟠</span>
+                        <div><span class="bento-badge badge-html">HTML5</span></div>
+                        <h3 class="bento-title">HTML & Kostra webu</h3>
+                        <p class="bento-desc">Základní stavební kámen webových stránek. Od kostry dokumentu přes seznamy a tabulky až po sémantiku a formuláře.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podmoduly k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="kostra-text.html" class="submodule-pill">1. Kostra & Text</a>
+                                <a href="seznamy.html" class="submodule-pill">2. Seznamy</a>
+                                <a href="tabulky.html" class="submodule-pill">3. Tabulky</a>
+                                <a href="formulare.html" class="submodule-pill">4. Formuláře</a>
+                                <a href="semantika.html" class="submodule-pill">5. Sémantika</a>
+                                <a href="media.html" class="submodule-pill">6. Média</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="html-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít HTML rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. CSS Modul -->
+                <div class="bento-card" data-lang="css">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🔷</span>
+                        <div><span class="bento-badge badge-css">CSS3</span></div>
+                        <h3 class="bento-title">CSS Styly & Moderní Layout</h3>
+                        <p class="bento-desc">Vizuální styl, barvy, krabičkový Box Model, 1D Flexbox, 2D CSS Grid a responzivní Media Queries pro mobilní telefony.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podmoduly k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="css-styly.html" class="submodule-pill">1. Box Model & Styly</a>
+                                <a href="css-layout.html" class="submodule-pill">2. Flexbox & Grid</a>
+                                <a href="responzivita.html" class="submodule-pill">3. Responzivita & Animace</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="css-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít CSS rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. JavaScript Modul -->
+                <div class="bento-card" data-lang="js">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">⚡</span>
+                        <div><span class="bento-badge badge-js">JavaScript ES6+</span></div>
+                        <h3 class="bento-title">JavaScript & DOM Logika</h3>
+                        <p class="bento-desc">Mozek klientského webu. Proměnné let/const, šipkové funkce, metody polí map/filter i živá manipulace s HTML elementy a kalkulačka.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podmoduly k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="js-zaklady.html" class="submodule-pill">1. Základy, Typy & ES6</a>
+                                <a href="javascript.html" class="submodule-pill">2. DOM manipulace & Projekty</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="js-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít JavaScript rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Python Modul -->
+                <div class="bento-card" data-lang="python">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🐍</span>
+                        <div><span class="bento-badge badge-py">Python 3</span></div>
+                        <h3 class="bento-title">Python: Základy, Struktury & OOP</h3>
+                        <p class="bento-desc">Univerzální jazyk výuky na SŠ. Čistá syntaxe bez závorek, seznamy, slovníky, objektový návrh class a backendové servery.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podmoduly k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="python-zaklady.html" class="submodule-pill">1. Základy & I/O</a>
+                                <a href="python-struktury.html" class="submodule-pill">2. Datové struktury</a>
+                                <a href="python-oop.html" class="submodule-pill">3. OOP v Pythonu</a>
+                                <a href="python-backend.html" class="submodule-pill">4. Web Backend</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="python-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Python rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Java Modul -->
+                <div class="bento-card" data-lang="java">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">☕</span>
+                        <div><span class="bento-badge badge-java">Java SE 21</span></div>
+                        <h3 class="bento-title">Java & Objektový návrh</h3>
+                        <p class="bento-desc">Silné statické typování, virtuální stroj JVM, metoda public static void main, zapouzdření s gettery a dědičnost extends a implements.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podmoduly k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="java-zaklady.html" class="submodule-pill">1. Základy & Pole</a>
+                                <a href="java-oop.html" class="submodule-pill">2. OOP & Rozhraní</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="java-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Java rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. C++ Modul -->
+                <div class="bento-card" data-lang="cpp">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">⚙️</span>
+                        <div><span class="bento-badge badge-cpp">C++ Standard</span></div>
+                        <h3 class="bento-title">C++: Výkon & Ukazatele</h3>
+                        <p class="bento-desc">Maximální rychlost a kontrola nad hardwarem. Proudy iostream, adresní operátory, ukazatele (pointers), správa paměti a new/delete.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podmoduly k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="cpp-zaklady.html" class="submodule-pill">1. Základy & I/O</a>
+                                <a href="cpp-pointry.html" class="submodule-pill">2. Ukazatele & Paměť</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="cpp-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít C++ rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. C# Modul -->
+                <div class="bento-card" data-lang="csharp">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🟣</span>
+                        <div><span class="bento-badge badge-cs">C# & .NET 8</span></div>
+                        <h3 class="bento-title">C#: .NET, Vlastnosti & LINQ</h3>
+                        <p class="bento-desc">Moderní jazyk pro Windows, backendy i hry v Unity. Automatické vlastnosti { get; set; }, lambda výrazy a mocný dotazovací jazyk LINQ.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podmoduly k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="csharp-zaklady.html" class="submodule-pill">1. Základy & Typy</a>
+                                <a href="csharp-oop.html" class="submodule-pill">2. OOP & LINQ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="csharp-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít C# rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 8. SQL Modul -->
+                <div class="bento-card" data-lang="sql">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🗄️</span>
+                        <div><span class="bento-badge badge-sql">Relační SQL</span></div>
+                        <h3 class="bento-title">SQL & Relační Databáze</h3>
+                        <p class="bento-desc">Správa a vyhledávání dat. Tvorba tabulek CREATE TABLE, primární a cizí klíče, agregační statistiky a relační propojení INNER a LEFT JOIN.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podmoduly k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="sql-zaklady.html" class="submodule-pill">1. Základy & DDL/DML</a>
+                                <a href="sql-dotazy.html" class="submodule-pill">2. Dotazy SELECT & JOIN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="sql-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít SQL rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 9. Git Modul -->
+                <div class="bento-card" data-lang="git">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🐙</span>
+                        <div><span class="bento-badge badge-git">Verzování</span></div>
+                        <h3 class="bento-title">Git & Příkazová řádka</h3>
+                        <p class="bento-desc">Základní nástroj každého vývojáře. Tvorba repozitáře, commitování změn, větve (branches), slučování kódu (merge) a 3 stavy souborů.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Témata modulu:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="git-zaklady.html" class="submodule-pill">Git Init, Add & Commit</a>
+                                <a href="git-zaklady.html" class="submodule-pill">Větve & Merge</a>
+                                <a href="git-zaklady.html" class="submodule-pill">3 Stavy v Gitu</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="git-zaklady.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Git průvodce</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 10. Algoritmy & Datové struktury -->
+                <div class="bento-card" data-lang="algo">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🧮</span>
+                        <div><span class="bento-badge badge-algo">Algoritmizace</span></div>
+                        <h3 class="bento-title">Algoritmy & Složitost (Big O)</h3>
+                        <p class="bento-desc">Asymptotická časová složitost O(1) až O(n²), řazení Bubble Sort, Selection Sort a rychlé binární vyhledávání O(log n).</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Témata a nástroje:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="algoritmy.html" class="submodule-pill">Živý vizualizér Bubble Sort</a>
+                                <a href="algoritmy.html" class="submodule-pill">Big O tabulka složitostí</a>
+                                <a href="algoritmy.html" class="submodule-pill">Binární vyhledávání</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="algoritmy.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Algoritmy & Vizualizér</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 11. Počítačové sítě -->
+                <div class="bento-card" data-lang="net">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🌐</span>
+                        <div><span class="bento-badge badge-net">Počítačové sítě</span></div>
+                        <h3 class="bento-title">Sítě, ISO/OSI & Subnetting</h3>
+                        <p class="bento-desc">7 vrstev modelu ISO/OSI, transportní protokoly TCP vs UDP, IP adresace a vestavěná interaktivní kalkulačka IPv4 podsítě.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Témata a nástroje:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="site.html" class="submodule-pill">Subnet Calculator (CIDR)</a>
+                                <a href="site.html" class="submodule-pill">7 Vrstev ISO/OSI</a>
+                                <a href="site.html" class="submodule-pill">Rozdíl TCP vs UDP</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="site.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Sítě & Kalkulačku</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 12. Kybernetická bezpečnost -->
+                <div class="bento-card" data-lang="sec">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🛡️</span>
+                        <div><span class="bento-badge badge-sec">Cybersecurity</span></div>
+                        <h3 class="bento-title">Bezpečnost & Kryptografie</h3>
+                        <p class="bento-desc">Symetrické vs asymetrické šifrování (AES vs RSA), jednosměrné hašování SHA-256, obrana proti SQL Injection a test síly hesel.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Témata a nástroje:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="bezpecnost.html" class="submodule-pill">Živý SHA-256 Hash generátor</a>
+                                <a href="bezpecnost.html" class="submodule-pill">Měřič entropie hesel</a>
+                                <a href="bezpecnost.html" class="submodule-pill">Prevence SQL Injection</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="bezpecnost.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Bezpečnost & Hash</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 13. Hardware & Číselné soustavy -->
+                <div class="bento-card" data-lang="hw">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">💻</span>
+                        <div><span class="bento-badge badge-hw">Hardware</span></div>
+                        <h3 class="bento-title">Hardware & Číselné soustavy</h3>
+                        <p class="bento-desc">Dvojková (BIN), šestnáctková (HEX) a desítková (DEC) soustava, interaktivní 8bitový bajt registr a Von Neumannova architektura.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Témata a nástroje:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="hardware.html" class="submodule-pill">Klikací 8bitový registr</a>
+                                <a href="hardware.html" class="submodule-pill">Převodník DEC/BIN/HEX</a>
+                                <a href="hardware.html" class="submodule-pill">Von Neumann vs Harvard</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="hardware.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Hardware & Převodník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 14. Linux & CLI Modul -->
+                <div class="bento-card" data-lang="linux">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🐧</span>
+                        <div><span class="bento-badge badge-linux">Linux OS</span></div>
+                        <h3 class="bento-title">Linux, Bash & Správa procesů</h3>
+                        <p class="bento-desc">Standard serverových systémů a cloudu: FHS stromová struktura, roury, přesměrování a živá chmod kalkulačka oprávnění.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Klíčová témata k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="linux.html" class="submodule-pill">1. FHS hierarchie</a>
+                                <a href="linux.html" class="submodule-pill">2. Oprávnění (chmod)</a>
+                                <a href="linux.html" class="submodule-pill">3. Roury & Grep</a>
+                                <a href="linux.html" class="submodule-pill">4. Bash skriptování</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="linux.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Linux modul</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 15. Architektura & REST API Modul -->
+                <div class="bento-card" data-lang="arch">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🏗️</span>
+                        <div><span class="bento-badge badge-arch">Software Eng</span></div>
+                        <h3 class="bento-title">Architektura, Návrhové vzory & REST API</h3>
+                        <p class="bento-desc">Profesionální stavba aplikací: vzory GoF (Singleton, Factory, Observer), vrstvení MVC a interaktivní simulátor HTTP REST dotazů.</p>
+                        
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Klíčová témata k prostudování:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="architektura.html" class="submodule-pill">1. REST API Simulator</a>
+                                <a href="architektura.html" class="submodule-pill">2. HTTP Stavové kódy</a>
+                                <a href="architektura.html" class="submodule-pill">3. Model-View-Ctrl</a>
+                                <a href="architektura.html" class="submodule-pill">4. GoF Vzory (Singleton)</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="architektura.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Architekturu & API</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 14. Maturitní centrum (Highlight Card) -->
+                <a href="maturita.html" class="bento-card highlight-card">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🎓</span>
+                        <div><span class="bento-badge" style="background:var(--accent); color:#fff;">Zkouškové centrum</span></div>
+                        <h3 class="bento-title">Maturitní tahák & Kvíz (20 otázek)</h3>
+                        <p class="bento-desc">Interaktivní test znalostí s okamžitým hodnocením a známkou, rozbalovací flashcards s nejčastějšími zkouškovými otázkami a checklist před odevzdáním webu.</p>
+                        <div class="bento-tags">
+                            <span class="tag-chip">Interaktivní kvíz</span>
+                            <span class="tag-chip">Maturitní tahák</span>
+                            <span class="tag-chip">GET vs POST</span>
+                            <span class="tag-chip">Stack vs Heap</span>
+                            <span class="tag-chip">Checklist odevzdání</span>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <span>Spustit Maturitní test</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+
+                <!-- 11. Generátory kódu (Nástroje) -->
+                <a href="nastroje.html" class="bento-card">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🛠️</span>
+                        <div><span class="bento-badge">Produktivita</span></div>
+                        <h3 class="bento-title">Generátory tabulek & stínů</h3>
+                        <p class="bento-desc">Vizuální posuvníky pro okamžité vygenerování čistého HTML kódu tabulky nebo luxusního Apple Box-Shadow stínu s přímým kopírováním do schránky.</p>
+                        <div class="bento-tags">
+                            <span class="tag-chip">Table Builder</span>
+                            <span class="tag-chip">Box Shadow</span>
+                            <span class="tag-chip">Kopírovat kód</span>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <span>Otevřít Nástroje</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Kompletní Spotlight Glosář pojmů -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📖 Celkový slovník pojmů se Spotlight vyhledáváním</h3>
+                    <p>Hledej v reálném čase klíčová slova, značky a koncepty ze všech 9 jazyků.</p>
+                </div>
+                <div class="glossary-search-box">
+                    <svg class="glossary-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" class="glossary-search-input" placeholder="Hledat pojem (např. class, pointer, select, flex, var)..." aria-label="Vyhledat v glosáři">
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Pojem / Značka / Příkaz</th>
+                            <th>Jazyk / Technologie</th>
+                            <th>Význam a školní vysvětlení</th>
+                            <th>Odkaz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">box-sizing: border-box</td>
+                            <td><span class="glossary-cat-badge badge-css">CSS</span></td>
+                            <td>Padding i border se započítají do stanovené šířky width, takže prvek nepřeteče.</td>
+                            <td><a href="css-styly.html" class="nav-pill">CSS Styly →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">display: flex</td>
+                            <td><span class="glossary-cat-badge badge-css">CSS</span></td>
+                            <td>Aktivuje jednorozměrný flexibilní kontejner pro snadné zarovnání a rozložení prvků.</td>
+                            <td><a href="css-layout.html" class="nav-pill">Flexbox →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">const vs let</td>
+                            <td><span class="glossary-cat-badge badge-js">JavaScript</span></td>
+                            <td>const definuje neměnnou proměnnou, let proměnnou s měnitelnou hodnotou a blokovým scope.</td>
+                            <td><a href="js-zaklady.html" class="nav-pill">JS Základy →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">document.querySelector()</td>
+                            <td><span class="glossary-cat-badge badge-js">JavaScript</span></td>
+                            <td>Vybere první prvek v DOM stromu odpovídající CSS selektoru.</td>
+                            <td><a href="javascript.html" class="nav-pill">JS DOM →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">f-string (f"...")</td>
+                            <td><span class="glossary-cat-badge badge-py">Python</span></td>
+                            <td>Formátovaný řetězec v Pythonu umožňující přímé vkládání proměnných do složených závorek.</td>
+                            <td><a href="python-zaklady.html" class="nav-pill">Python →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">__init__(self)</td>
+                            <td><span class="glossary-cat-badge badge-py">Python</span></td>
+                            <td>Konstruktor třídy v Pythonu. Volá se při inicializaci nové instance objektu.</td>
+                            <td><a href="python-oop.html" class="nav-pill">Python OOP →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">public static void main</td>
+                            <td><span class="glossary-cat-badge badge-java">Java</span></td>
+                            <td>Povinná vstupní metoda programu v Javě, kterou spouští virtuální stroj JVM.</td>
+                            <td><a href="java-zaklady.html" class="nav-pill">Java →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">extends vs implements</td>
+                            <td><span class="glossary-cat-badge badge-java">Java</span></td>
+                            <td>extends dědí od jedné třídy, implements implementuje rozhraní (interface).</td>
+                            <td><a href="java-oop.html" class="nav-pill">Java OOP →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Ukazatel (int* ptr)</td>
+                            <td><span class="glossary-cat-badge badge-cpp">C++</span></td>
+                            <td>Proměnná, která jako svou hodnotu ukládá fyzickou adresu v operační paměti RAM.</td>
+                            <td><a href="cpp-pointry.html" class="nav-pill">C++ Paměť →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">new a delete[]</td>
+                            <td><span class="glossary-cat-badge badge-cpp">C++</span></td>
+                            <td>Dynamická alokace paměti na haldě (Heap) a její povinné manuální uvolnění.</td>
+                            <td><a href="cpp-pointry.html" class="nav-pill">C++ Paměť →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">{ get; set; }</td>
+                            <td><span class="glossary-cat-badge badge-cs">C#</span></td>
+                            <td>Automatická vlastnost v C# elegantně nahrazující manuální gettery a settery.</td>
+                            <td><a href="csharp-oop.html" class="nav-pill">C# OOP →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">LINQ (.Where / .Select)</td>
+                            <td><span class="glossary-cat-badge badge-cs">C#</span></td>
+                            <td>Integrovanný dotazovací jazyk v C# pro funkcionální filtrování a transformaci kolekcí.</td>
+                            <td><a href="csharp-oop.html" class="nav-pill">C# LINQ →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">PRIMARY KEY</td>
+                            <td><span class="glossary-cat-badge badge-sql">SQL</span></td>
+                            <td>Unikátní sloupec (ID), který jednoznačně identifikuje každý řádek tabulky.</td>
+                            <td><a href="sql-zaklady.html" class="nav-pill">SQL Tabulky →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">INNER JOIN vs LEFT JOIN</td>
+                            <td><span class="glossary-cat-badge badge-sql">SQL</span></td>
+                            <td>INNER JOIN vrátí pouze řádky s oboustrannou shodou, LEFT JOIN vrátí všechny záznamy z levé tabulky.</td>
+                            <td><a href="sql-dotazy.html" class="nav-pill">SQL JOIN →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">git commit -m</td>
+                            <td><span class="glossary-cat-badge badge-git">Git</span></td>
+                            <td>Vytvoří trvalý snímek verzí připravených souborů se zadanou popisnou zprávou.</td>
+                            <td><a href="git-zaklady.html" class="nav-pill">Git →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Big O Složitost</td>
+                            <td><span class="glossary-cat-badge badge-algo">Algoritmy</span></td>
+                            <td>Asymptotické měřítko časové náročnosti algoritmu (např. O(1), O(log n), O(n²)).</td>
+                            <td><a href="algoritmy.html" class="nav-pill">Algoritmy →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Binární vyhledávání</td>
+                            <td><span class="glossary-cat-badge badge-algo">Algoritmy</span></td>
+                            <td>Extrémně rychlé vyhledávání v seřazeném poli s půlením intervalu O(log n).</td>
+                            <td><a href="algoritmy.html" class="nav-pill">Algoritmy →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Model ISO/OSI (7 vrstev)</td>
+                            <td><span class="glossary-cat-badge badge-net">Sítě</span></td>
+                            <td>Referenční model síťové komunikace od L1 (fyzická) po L7 (aplikační vrstva).</td>
+                            <td><a href="site.html" class="nav-pill">Sítě →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">TCP vs UDP</td>
+                            <td><span class="glossary-cat-badge badge-net">Sítě</span></td>
+                            <td>TCP garantuje doručení přes 3-Way Handshake, UDP je nespojované a rychlé pro streamy.</td>
+                            <td><a href="site.html" class="nav-pill">Sítě →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Subnetting (CIDR)</td>
+                            <td><span class="glossary-cat-badge badge-net">Sítě</span></td>
+                            <td>Dělení IP sítí na menší podsítě pomocí síťové masky (např. /24 = 255.255.255.0).</td>
+                            <td><a href="site.html" class="nav-pill">Sítě →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">SHA-256 Hash</td>
+                            <td><span class="glossary-cat-badge badge-sec">Bezpečnost</span></td>
+                            <td>Jednosměrná kryptografická funkce generující pevný 256bitový kontrolní otisk hesla.</td>
+                            <td><a href="bezpecnost.html" class="nav-pill">Bezpečnost →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">SQL Injection (SQLi)</td>
+                            <td><span class="glossary-cat-badge badge-sec">Bezpečnost</span></td>
+                            <td>Kritická zranitelnost vkládání škodlivého SQL kódu do nechráněných vstupů. Obrana: Prepared Statements.</td>
+                            <td><a href="bezpecnost.html" class="nav-pill">Bezpečnost →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Von Neumannova architektura</td>
+                            <td><span class="glossary-cat-badge badge-hw">Hardware</span></td>
+                            <td>Koncepce počítače se společnou pamětí pro data i programové instrukce a sběrnicí.</td>
+                            <td><a href="hardware.html" class="nav-pill">Hardware →</a></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Bajt (Byte) & Bity</td>
+                            <td><span class="glossary-cat-badge badge-hw">Hardware</span></td>
+                            <td>1 Bajt = 8 Bitů (rozsah 0 až 255). Základní adresovatelná jednotka paměti RAM.</td>
+                            <td><a href="hardware.html" class="nav-pill">Hardware →</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Dev Academy</strong> — Vzdělávací portál pro studenty SŠ a maturanty</p>
+        <p>Čistý Apple design systém s 10 barevnými motivy a okamžitou synchronizací.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

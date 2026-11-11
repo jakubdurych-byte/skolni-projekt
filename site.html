@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Počítačové sítě & Subnetting — Školní Akademie</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Dev Academy</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill active">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">Přehled</a>
+            <span>/</span>
+            <span>Počítačové sítě & Komunikace</span>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag badge-net" style="display:inline-block; padding:4px 12px; border-radius:20px; font-weight:700;">Síťová infrastruktura</div>
+            <h1 class="section-heading">Model ISO/OSI, Protokoly TCP/IP a Výpočet podsítí</h1>
+            <p class="section-desc">
+                Základní pilíř IT maturity: 7 vrstev modelu OSI, rozdíl mezi spolehlivým TCP a rychlým UDP, princip směrování v internetu a <strong>interaktivní kalkulačka IPv4 podsítí (Subnetting)</strong>.
+            </p>
+        </div>
+
+        <!-- 1. Interaktivní Kalkulačka Podsítě (Subnet Calculator) -->
+        <section class="sort-viz-container">
+            <h2 style="font-size:1.35rem; font-weight:700; color:var(--text-primary); margin-bottom:6px;">
+                🌐 Živá kalkulačka IPv4 podsítě (Subnet Calculator)
+            </h2>
+            <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:16px;">
+                Zadej IP adresu a prefix masky (CIDR). Kalkulačka okamžitě spočítá Network ID, Broadcast, rozsah hostů i třídu sítě.
+            </p>
+
+            <div style="display:grid; grid-template-columns: 2fr 1fr; gap:16px; margin-bottom:16px;">
+                <div>
+                    <label for="subnet-ip" style="display:block; font-size:0.82rem; font-weight:700; margin-bottom:6px;">IPv4 Adresa hosta:</label>
+                    <input type="text" id="subnet-ip" value="192.168.1.100" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-surface-secondary); font-family:'SF Mono', monospace; font-size:1rem; color:var(--text-primary);">
+                </div>
+                <div>
+                    <label for="subnet-prefix" style="display:block; font-size:0.82rem; font-weight:700; margin-bottom:6px;">Prefix masky (CIDR):</label>
+                    <input type="number" id="subnet-prefix" min="1" max="32" value="24" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-surface-secondary); font-family:'SF Mono', monospace; font-size:1rem; color:var(--text-primary);">
+                </div>
+            </div>
+
+            <!-- Karty výsledků -->
+            <div class="subnet-stats-grid">
+                <div class="subnet-card">
+                    <span class="subnet-card-lbl">Adresa sítě (Network ID)</span>
+                    <span class="subnet-card-val" id="res-net-ip" style="color:var(--accent);">192.168.1.0</span>
+                </div>
+                <div class="subnet-card">
+                    <span class="subnet-card-lbl">Všesměrové vysílání (Broadcast)</span>
+                    <span class="subnet-card-val" id="res-broadcast-ip" style="color:#ef4444;">192.168.1.255</span>
+                </div>
+                <div class="subnet-card">
+                    <span class="subnet-card-lbl">Maska sítě (Netmask)</span>
+                    <span class="subnet-card-val" id="res-netmask">255.255.255.0</span>
+                </div>
+                <div class="subnet-card">
+                    <span class="subnet-card-lbl">Inverzní maska (Wildcard)</span>
+                    <span class="subnet-card-val" id="res-wildcard">0.0.0.255</span>
+                </div>
+                <div class="subnet-card">
+                    <span class="subnet-card-lbl">První použitelný host</span>
+                    <span class="subnet-card-val" id="res-first-host" style="color:#10b981;">192.168.1.1</span>
+                </div>
+                <div class="subnet-card">
+                    <span class="subnet-card-lbl">Poslední použitelný host</span>
+                    <span class="subnet-card-val" id="res-last-host" style="color:#10b981;">192.168.1.254</span>
+                </div>
+                <div class="subnet-card">
+                    <span class="subnet-card-lbl">Počet dostupných hostů</span>
+                    <span class="subnet-card-val" id="res-usable-hosts" style="color:#a855f7;">254</span>
+                </div>
+                <div class="subnet-card">
+                    <span class="subnet-card-lbl">Třída sítě dle prvního oktetu</span>
+                    <span class="subnet-card-val" id="res-ip-class">Třída C (LAN)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Model ISO/OSI (7 Vrstev) -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📶 Referenční model ISO/OSI (7 Vrstev u maturity)</h3>
+                    <p>Hierarchické rozdělení síťové komunikace od fyzického kabelu po uživatelskou aplikaci.</p>
+                </div>
+            </div>
+
+            <div class="osi-container">
+                <!-- Vrstva 7 -->
+                <div class="osi-layer-card">
+                    <div class="osi-num">L7</div>
+                    <div class="osi-name">Aplikační vrstva (Application)</div>
+                    <div class="osi-pdu">PDU: Data</div>
+                    <div class="osi-protocols">HTTP, HTTPS, DNS, DHCP, SSH, FTP, SMTP</div>
+                </div>
+
+                <!-- Vrstva 6 -->
+                <div class="osi-layer-card">
+                    <div class="osi-num">L6</div>
+                    <div class="osi-name">Prezentační vrstva (Presentation)</div>
+                    <div class="osi-pdu">PDU: Data</div>
+                    <div class="osi-protocols">SSL/TLS šifrování, komprese, formáty JPEG, ASCII</div>
+                </div>
+
+                <!-- Vrstva 5 -->
+                <div class="osi-layer-card">
+                    <div class="osi-num">L5</div>
+                    <div class="osi-name">Relační vrstva (Session)</div>
+                    <div class="osi-pdu">PDU: Data</div>
+                    <div class="osi-protocols">Navázání a správa relace (Sockets, RPC, NetBIOS)</div>
+                </div>
+
+                <!-- Vrstva 4 -->
+                <div class="osi-layer-card">
+                    <div class="osi-num">L4</div>
+                    <div class="osi-name">Transportní vrstva (Transport)</div>
+                    <div class="osi-pdu">PDU: Segment / Datagram</div>
+                    <div class="osi-protocols"><strong>TCP</strong> (spolehlivý, handshake), <strong>UDP</strong> (rychlý stream)</div>
+                </div>
+
+                <!-- Vrstva 3 -->
+                <div class="osi-layer-card">
+                    <div class="osi-num">L3</div>
+                    <div class="osi-name">Síťová vrstva (Network)</div>
+                    <div class="osi-pdu">PDU: Paket (Packet)</div>
+                    <div class="osi-protocols"><strong>IPv4, IPv6, ICMP, ARP</strong> — Zařízení: <strong>Router (Směrovač)</strong></div>
+                </div>
+
+                <!-- Vrstva 2 -->
+                <div class="osi-layer-card">
+                    <div class="osi-num">L2</div>
+                    <div class="osi-name">Linková vrstva (Data Link)</div>
+                    <div class="osi-pdu">PDU: Rámec (Frame)</div>
+                    <div class="osi-protocols">Ethernet, Wi-Fi (802.11), MAC adresy — Zařízení: <strong>Switch (Přepínač)</strong></div>
+                </div>
+
+                <!-- Vrstva 1 -->
+                <div class="osi-layer-card">
+                    <div class="osi-num">L1</div>
+                    <div class="osi-name">Fyzická vrstva (Physical)</div>
+                    <div class="osi-pdu">PDU: Bity (Bits)</div>
+                    <div class="osi-protocols">UTP kabely (RJ-45), optická vlákna, rádiové vlny — Zařízení: <strong>Hub, Repeater</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Rozdíl TCP vs UDP -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>⚡ Rozdíl: TCP vs. UDP u zkoušky</h3>
+                    <p>Dva základní transportní protokoly internetu.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Vlastnost</th>
+                            <th>TCP (Transmission Control Protocol)</th>
+                            <th>UDP (User Datagram Protocol)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">Spojení</td>
+                            <td>Spojovaný protokol (3-Way Handshake SYN, SYN-ACK, ACK)</td>
+                            <td>Nespojovaný protokol (Fire-and-forget bez potvrzení)</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Spolehlivost</td>
+                            <td>Garantované doručení – ztracené pakety se posílají znovu</td>
+                            <td>Bez záruky – ztracený paket se zahodí a neřeší</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Rychlost & Režie</td>
+                            <td>Větší režie hlavičky (20 bajtů), pomalejší</td>
+                            <td>Minimální režie (8 bajtů), maximální rychlost</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Typické použití</td>
+                            <td>Web (HTTP/HTTPS), stahování souborů, e-maily, SSH</td>
+                            <td>Online hry pro více hráčů, živé video streamy, VoIP volání, DNS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Dev Academy</strong> — Modul Počítačové sítě & Subnetting</p>
+        <p>Interaktivní vzdělávací prostředí pro studenty a maturanty.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

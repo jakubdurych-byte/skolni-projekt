@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maturitní tahák z HTML a webu — Otázky, odpovědi a checklist</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Maturitní zkouška & Příprava</span>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Zkouškové centrum</div>
+            <h1 class="section-heading">Maturitní tahák & Cvičné otázky</h1>
+            <p class="section-desc">
+                Sada nejčastějších záludných otázek z ústní i praktické maturity z tvorby webu a informatiky. Kliknutím na otázku si zobrazíš detailní odpověď a vysvětlení.
+            </p>
+        </div>
+
+        <!-- Interaktivní Flashcards / Otázky a odpovědi -->
+        <section>
+            <h2 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--text-primary);">
+                💡 Nejčastější otázky u zkoušení & maturity
+            </h2>
+
+            <!-- Otázka 1 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>1. Jaký je zásadní rozdíl mezi blokovými a řádkovými (inline) prvky?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p><strong>Blokové prvky (Block):</strong> Vždy začínají na novém řádku a roztáhnou se na 100 % dostupné šířky. Lze u nich libovolně nastavovat <code>width</code>, <code>height</code>, horní i dolní <code>margin</code> a <code>padding</code>. Příklady: <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;–&lt;h6&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;table&gt;</code>.</p>
+                    <p style="margin-top:8px;"><strong>Řádkové prvky (Inline):</strong> Plynou přímo v textu vedle sebe a zabírají pouze tolik místa, kolik potřebuje jejich obsah. Nelze u nich přímo nastavit pevnou šířku a výšku. Příklady: <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>.</p>
+                </div>
+            </div>
+
+            <!-- Otázka 2 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>2. Kdy se ve formuláři použije metoda GET a kdy POST?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p><strong>Metoda GET:</strong> Připojí zadaná data přímo za URL adresu za otazník (např. <code>vyhledat.php?dotaz=auto&stranka=2</code>). Používá se pro <em>vyhledávání</em> a filtrování, kde uživatel chce odkaz poslat kamarádovi nebo si ho uložit do záložek. <strong>Nikdy se nepoužívá pro hesla a osobní údaje!</strong></p>
+                    <p style="margin-top:8px;"><strong>Metoda POST:</strong> Odesílá data skrytě v těle HTTP požadavku. Používá se pro přihlašování, hesla, platby, nahrávání souborů a ukládání záznamů do databáze.</p>
+                </div>
+            </div>
+
+            <!-- Otázka 3 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>3. Proč musí mít ve skupině přepínačů radio stejný atribut name?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p>Protože právě společný atribut <code>name="pohlavi"</code> prohlížeči říká, že tyto přepínače tvoří jednu logickou skupinu. Jakmile uživatel klikne na jeden přepínač, ostatní v téže skupině se automaticky odškrtnou. Kdyby měly různé hodnoty atributu name, fungovaly by nezávisle na sobě a uživatel by mohl zakliknout všechny najednou (což by popřelo smysl prvku radio).</p>
+                </div>
+            </div>
+
+            <!-- Otázka 4 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>4. Jak funguje CSS Box Model a co řeší box-sizing: border-box?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p>Box model se skládá ze 4 vrstev od středu ven: <strong>Content &rarr; Padding &rarr; Border &rarr; Margin</strong>.</p>
+                    <p style="margin-top:8px;">Ve výchozím nastavení prohlížeče (<code>box-sizing: content-box</code>) se nastavená šířka <code>width: 200px</code> zvětší o padding (např. 2x 20px) a rámeček (např. 2x 5px), takže výsledný prvek má 250px a může rozbít rozvržení stránky. S vlastností <code>box-sizing: border-box</code> se padding i rámeček započítají <strong>dovnitř</strong> stanovené šířky 200px.</p>
+                </div>
+            </div>
+
+            <!-- Otázka 5 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>5. Jaký je rozdíl mezi colspan a rowspan v tabulkách?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p><strong>colspan="2" (Column Span):</strong> Sloučí buňku přes 2 sloupce <em>vodorovně</em>. V daném řádku musíte vynechat jednu buňku <code>&lt;td&gt;</code>.</p>
+                    <p style="margin-top:8px;"><strong>rowspan="2" (Row Span):</strong> Sloučí buňku přes 2 řádky <em>svisle dolů</em>. V následujícím řádku na odpovídajícím místě buňku <code>&lt;td&gt;</code> vůbec nezapisujete, protože její místo zabrala buňka z horního řádku.</p>
+                </div>
+            </div>
+
+            <!-- Otázka 6 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>6. K čemu slouží atribut alt u značky &lt;img&gt;?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p>Atribut <code>alt</code> (Alternative Text) má 3 zásadní funkce:</p>
+                    <ul style="margin-top:6px; padding-left:20px;">
+                        <li><strong>Přístupnost:</strong> Hlasové čtečky pro nevidomé přečtou text popisku nahlas.</li>
+                        <li><strong>Záloha při výpadku:</strong> Zobrazí se jako náhradní text, pokud se obrázek nepodaří stáhnout nebo odkaz nefunguje.</li>
+                        <li><strong>SEO:</strong> Vyhledávač Google nevidí obrázek očima, ale indexuje ho právě podle textu v atributu alt.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Otázka 7 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>7. Jaký je rozdíl mezi Zásobníkem (Stack) a Haldou (Heap) v paměti RAM?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p><strong>Zásobník (Stack):</strong> Rychlá paměť s pevnou strukturou LIFO (Last-In, First-Out). Ukládají se sem lokální proměnné funkcí a návratové adresy. Paměť se uvolňuje automaticky při ukončení funkce. Při přetečení nastává <em>Stack Overflow</em>.</p>
+                    <p style="margin-top:8px;"><strong>Halda (Heap):</strong> Velká dynamická paměť pro objekty a dynamicky alokovaná pole (např. <code>new</code> v C++/Javě). Alokace i přístup jsou pomalejší a v jazycích bez Garbage Collectoru (C++) je nutné paměť manuálně uvolnit (<code>delete</code>), jinak dochází k úniku paměti (Memory Leak).</p>
+                </div>
+            </div>
+
+            <!-- Otázka 8 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>8. Jak funguje 3cestný handshake (3-Way Handshake) protokolu TCP?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p>Před přenosem dat navazuje TCP spolehlivé spojení třemi kroky:</p>
+                    <ol style="margin-top:6px; padding-left:20px;">
+                        <li><strong>SYN (Synchronize):</strong> Klient pošle serveru požadavek na synchronizaci se sekvenčním číslem.</li>
+                        <li><strong>SYN-ACK:</strong> Server potvrdí přijetí a pošle své vlastní synchronizační číslo.</li>
+                        <li><strong>ACK (Acknowledge):</strong> Klient potvrdí přijetí a spojení je navázáno. Nyní mohou bezpečně proudit data.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Otázka 9 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>9. K čemu slouží kryptografická sůl (Salt) při hašování hesel?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p>Sůl je náhodný řetězec znaků, který se přilepí k heslu uživatele ještě před výpočtem hashe. <strong>Zabraňuje útokům pomocí duhových tabulek (Rainbow Tables)</strong>. I když mají dva uživatelé stejné heslo <code>123456</code>, díky unikátní soli bude jejich výsledný uložený hash v databázi zcela odlišný.</p>
+                </div>
+            </div>
+
+            <!-- Otázka 10 -->
+            <div class="maturita-card">
+                <div class="maturita-q">
+                    <span>10. Co je to Von Neumannovo úzké hrdlo (Von Neumann Bottleneck)?</span>
+                    <span class="maturita-badge">Klikni pro odpověď ▾</span>
+                </div>
+                <div class="maturita-a">
+                    <p>Jde o omezení výkonu počítače dané tím, že procesor (CPU) a operační paměť (RAM) sdílejí jednu společnou datovou sběrnici. Protože moderní procesory zpracovávají data mnohem rychleji, než jak rychle je sběrnice stíhá z RAM dodávat, procesor musí čekat. Tento problém se řeší rychlými vyrovnávacími paměťmi <strong>Cache (L1, L2, L3)</strong> přímo na čipu CPU.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interaktivní Kvíz -->
+        <section class="quiz-container" id="maturita-quiz">
+            <div class="quiz-header">
+                <div>
+                    <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">
+                        🎯 Komplexní maturitní simulátor (15 zkušebních otázek)
+                    </h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        Kompletní průřez maturitními okruhy: Web, Programování, Algoritmy, Sítě, Bezpečnost a Hardware.
+                    </p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <div style="font-weight: 700; font-size: 1.1rem; color: var(--accent); background: var(--accent-subtle); padding: 6px 14px; border-radius: var(--radius-pill);">
+                        Skóre: <span id="quiz-score">0</span> / <span id="quiz-total">15</span>
+                    </div>
+                    <button type="button" class="btn-pill" id="btn-reset-quiz">↺ Restartovat kvíz</button>
+                </div>
+            </div>
+
+            <div id="quiz-questions-list">
+                <!-- Otázka 1 -->
+                <div class="quiz-question-box" data-q-index="0">
+                    <div class="quiz-question-title">1. Jaký význam má zápis &lt;!DOCTYPE html&gt; na samém začátku HTML dokumentu?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Nastavuje jazyk stránky a kódování UTF-8 pro české znaky.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Informuje prohlížeč, že jde o moderní standard HTML5 a přepíná ho do standardního režimu (Standards Mode).</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Připojuje externí CSS styly a JavaScriptové knihovny.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Vytváří kořenový element dokumentu, ve kterém se nachází celá stránka.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>&lt;!DOCTYPE html&gt;</code> je DTD deklarace pro HTML5. Říká prohlížeči, aby nevyužíval starý kompatibilní režim (quirks mode), ale renderoval podle moderních standardů.
+                    </div>
+                </div>
+
+                <!-- Otázka 2 -->
+                <div class="quiz-question-box" data-q-index="1">
+                    <div class="quiz-question-title">2. Který z uvedených elementů je ve výchozím stavu řádkový (inline)?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>&lt;div&gt;</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>B)</span> <span>&lt;p&gt;</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>C)</span> <span>&lt;span&gt;</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>&lt;section&gt;</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>&lt;span&gt;</code> je inline prvek – plyne v řádku textu a zabírá jen tolik šířky, kolik potřebuje jeho obsah. <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code> a <code>&lt;section&gt;</code> jsou blokové prvky (block), které začínají na novém řádku a roztáhnou se na 100 % šířky.
+                    </div>
+                </div>
+
+                <!-- Otázka 3 -->
+                <div class="quiz-question-box" data-q-index="2">
+                    <div class="quiz-question-title">3. Co v CSS způsobí vlastnost box-sizing: border-box?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Přidá automatický zaoblený rámeček okolo elementu.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Vnitřní okraj (padding) a rámeček (border) se započítají do celkově zadané šířky width, takže prvek nepřeteče.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Způsobí, že element ignoruje veškeré vnější okraje (margin).</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Přemění element na flexibilní flexbox kontejner.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Ve výchozím modelu (<code>content-box</code>) se padding a border přičítají navíc k šířce <code>width</code>. S <code>box-sizing: border-box</code> se padding i border schovají dovnitř zadané šířky.
+                    </div>
+                </div>
+
+                <!-- Otázka 4 -->
+                <div class="quiz-question-box" data-q-index="3">
+                    <div class="quiz-question-title">4. Jak zajistit, aby ve formuláři fungovala skupina přepínačů (radio) tak, že lze vybrat pouze jeden?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Všechny přepínače musí mít stejný atribut id.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Všechny přepínače musí mít naprosto shodný atribut name (např. name="platba").</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Do značky form se musí přidat atribut method="radio".</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Každý přepínač musí mít nastavenou vlastnost type="single".</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Prohlížeč spojuje přepínače <code>&lt;input type="radio"&gt;</code> do jedné vzájemně se vylučující volby výhradně podle společného atributu <code>name</code>. Atribut <code>id</code> musí být naopak unikátní.
+                    </div>
+                </div>
+
+                <!-- Otázka 5 -->
+                <div class="quiz-question-box" data-q-index="4">
+                    <div class="quiz-question-title">5. Kdy je nezbytné ve formuláři použít metodu POST namísto metody GET?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Když vytváříme vyhledávací pole a chceme, aby uživatel mohl odkaz zkopírovat.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Při přihlašování, odesílání hesel, osobních údajů nebo nahrávání velkých souborů.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Pouze tehdy, když web běží na protokolu HTTP bez šifrování.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>GET a POST jsou plně zaměnitelné a rozdíl je pouze v názvu.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Metoda GET posílá data přímo v URL adrese za otazníkem (což je viditelné v historii prohlížeče a logách). Metoda POST odesílá data skrytě v těle (body) HTTP požadavku.
+                    </div>
+                </div>
+
+                <!-- Otázka 6 -->
+                <div class="quiz-question-box" data-q-index="5">
+                    <div class="quiz-question-title">6. Který atribut slouží ke sloučení buňky tabulky přes 2 sloupce vodorovně?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>rowspan="2"</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>colspan="2"</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>column-span="2"</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>colmerge="2"</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>colspan</code> = column span (vodorovné sloučení přes sloupce). <code>rowspan</code> = row span (svislé sloučení přes řádky dolů).
+                    </div>
+                </div>
+
+                <!-- Otázka 7 -->
+                <div class="quiz-question-box" data-q-index="6">
+                    <div class="quiz-question-title">7. Proč je u značky &lt;img&gt; povinné a zásadní uvádět atribut alt?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Definuje animaci obrázku při najetí myší (hover efekt).</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Slouží hlasovým čtečkám pro nevidomé, zobrazí se při výpadku spojení a pomáhá vyhledávačům (SEO).</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Určuje alternativní rozlišení obrázku pro Retina displeje.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Nastavuje autorská práva a licenci k obrázku.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>alt</code> (Alternative text) je klíčový pilíř webové přístupnosti (accessibility), záchranná síť při chybějícím souboru a primární zdroj pro roboty vyhledávačů.
+                    </div>
+                </div>
+
+                <!-- Otázka 8 -->
+                <div class="quiz-question-box" data-q-index="7">
+                    <div class="quiz-question-title">8. Která značka v hlavičce &lt;head&gt; zajistí, aby mobilní prohlížeč nezmenšoval stránku jako zmenšeninu desktopu?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>&lt;meta name="responsive" content="yes"&gt;</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>&lt;meta http-equiv="device" content="mobile"&gt;</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>&lt;meta charset="UTF-8"&gt;</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Značka <code>viewport</code> říká mobilnímu prohlížeči, aby nastavil šířku zobrazovací plochy na skutečnou šířku zařízení v poměru 1:1, bez čehož by se aplikoval 980px virtuální desktop zoom.
+                    </div>
+                </div>
+
+                <!-- Otázka 9 -->
+                <div class="quiz-question-box" data-q-index="8">
+                    <div class="quiz-question-title">9. Jak v moderním JavaScriptu vybereme prvek s třídou "hlavni-karta"?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>document.getTag("hlavni-karta")</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>document.querySelector(".hlavni-karta")</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>window.selectClass("hlavni-karta")</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>document.getElementsById(".hlavni-karta")</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>document.querySelector(".hlavni-karta")</code> přijímá standardní CSS selektor (tečka pro třídu, křížek # pro ID). Pro výběr více prvků slouží <code>querySelectorAll</code>.
+                    </div>
+                </div>
+
+                <!-- Otázka 10 -->
+                <div class="quiz-question-box" data-q-index="9">
+                    <div class="quiz-question-title">10. Která dvojice tagů tvoří položky v popisovém seznamu &lt;dl&gt; (Description List)?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>&lt;ul&gt; a &lt;li&gt;</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>&lt;dt&gt; (pojem / termín) a &lt;dd&gt; (popis / definice)</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>&lt;item&gt; a &lt;desc&gt;</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>&lt;th&gt; a &lt;td&gt;</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>&lt;dl&gt;</code> je kontejner, <code>&lt;dt&gt;</code> (Definition Term) je definovaný pojem a <code>&lt;dd&gt;</code> (Definition Description) je jeho vysvětlení.
+                    </div>
+                </div>
+
+                <!-- Otázka 11: Algoritmy & Složitost -->
+                <div class="quiz-question-box" data-q-index="10">
+                    <div class="quiz-question-title">11. Který z následujících řadicích algoritmů dosahuje v průměrném i nejhorším případě časové složitosti O(n log n)?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Bubble Sort (Bublinkové řazení)</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Merge Sort (Řazení slučováním)</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Selection Sort (Řazení výběrem)</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Lineární prohledávání</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>Merge Sort</code> rozděluje pole na poloviny metodou Divide & Conquer a garantuje složitost <code>O(n log n)</code> za všech okolností. Bubble Sort i Selection Sort mají kvadratickou složitost <code>O(n²)</code>.
+                    </div>
+                </div>
+
+                <!-- Otázka 12: Počítačové sítě -->
+                <div class="quiz-question-box" data-q-index="11">
+                    <div class="quiz-question-title">12. Na které vrstvě referenčního modelu ISO/OSI operuje směrovač (Router) a protokol IP?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>L2 – Linková vrstva (Data Link)</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>L3 – Síťová vrstva (Network)</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>L4 – Transportní vrstva (Transport)</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>L7 – Aplikační vrstva (Application)</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>L3 (Síťová vrstva)</code> pracuje s IP adresami a směrováním paketů přes Router. Přepínač (Switch) pracuje na vrstvě L2 (s MAC adresami).
+                    </div>
+                </div>
+
+                <!-- Otázka 13: Subnetting -->
+                <div class="quiz-question-box" data-q-index="12">
+                    <div class="quiz-question-title">13. Kolik reálně použitelných IP adres pro počítače nabízí podsíť s maskou /24 (např. 192.168.1.0/24)?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Přesně 256 adres</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>254 adres (protože .0 je adresa sítě a .255 je broadcast)</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>128 adres</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Neomezeně podle potřeby DHCP serveru</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Maska <code>/24</code> má 8 bitů pro hosty (2⁸ = 256 adres). První adresa (všechny host bity 0) je adresa sítě a poslední (všechny host bity 1) je broadcast. Zbývá tedy <code>256 - 2 = 254</code> použitelných IP.
+                    </div>
+                </div>
+
+                <!-- Otázka 14: Kybernetická bezpečnost -->
+                <div class="quiz-question-box" data-q-index="13">
+                    <div class="quiz-question-title">14. Proč se uživatelská hesla do databáze NIKDY neukládají v otevřeném textu, ale hašují funkcí jako SHA-256 se solí?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Aby heslo zabíralo méně místa na pevném disku serveru.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Protože hašování je jednosměrné a při úniku databáze útočník nezíská hesla v čitelné podobě.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Protože SQL databáze nepodporují ukládání textových řetězců delších než 8 znaků.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Je to pouze volitelné doporučení, které nemá vliv na bezpečnost.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Kryptografický hash je jednosměrná matematická funkce. Ani správce databáze ani útočník nemůže z hashe získat původní heslo. Při přihlášení se pouze porovnává nově spočtený hash zadaného hesla s uloženým hashem.
+                    </div>
+                </div>
+
+                <!-- Otázka 15: Hardware & Architektura -->
+                <div class="quiz-question-box" data-q-index="14">
+                    <div class="quiz-question-title">15. Co je klíčovým rysem Von Neumannovy architektury počítače?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Oddělená fyzická paměť pro data a oddělená pro instrukce programu.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Společná paměť pro instrukce i data a společná sběrnice spojující procesor s pamětí.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Počítač nemá operační paměť RAM a běží výhradně na registrech.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Procesor vykonává všechny operace v šestnáctkové soustavě místo dvojkové.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>Von Neumannova architektura</code> používá jednu univerzální paměť RAM, kde jsou uložena jak data, tak programový kód. Oddělenou paměť má naopak <code>Harvardská architektura</code>.
+                    </div>
+                </div>
+                            <!-- Otázka 16: Linux & Oprávnění -->
+                <div class="quiz-question-box" data-q-index="15">
+                    <div class="quiz-question-title">16. Co znamená číselné oprávnění chmod 755 pro skript v Linuxu?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>A)</span> <span>Vlastník má rwx (7), skupina i ostatní mají r-x (čtení a spuštění, 5).</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>B)</span> <span>Všichni uživatelé mají plná práva pro zápis i mazání souboru.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Soubor je zašifrován klíčem o délce 755 bitů.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Soubor může číst pouze uživatel s UID rovným 755.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Oprávnění je součtem bitů: <code>r = 4, w = 2, x = 1</code>. Hodnota <code>7 = 4+2+1 (rwx)</code>, hodnota <code>5 = 4+1 (r-x)</code>. Zápis 755 je typický pro spustitelné programy a webové skripty.
+                    </div>
+                </div>
+
+                <!-- Otázka 17: Linuxové roury -->
+                <div class="quiz-question-box" data-q-index="16">
+                    <div class="quiz-question-title">17. K čemu slouží v příkazové řádce Linuxu svislá čára zvaná roura (|)?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Ukončí běžící proces podobně jako signál SIGKILL.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Předá standardní výstup (stdout) prvního programu na standardní vstup (stdin) druhého programu.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Slouží jako logický operátor OR pro porovnání dvou celých čísel.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Smaže vybranou složku i s celým jejím podstromem.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Roura (<code>Pipe |</code>) propojuje procesy. Například <code>cat access.log | grep 404 | wc -l</code> předává řádky z výstupu jednoho programu do vstupu dalšího bez ukládání na disk.
+                    </div>
+                </div>
+
+                <!-- Otázka 18: HTTP Stavové kódy -->
+                <div class="quiz-question-box" data-q-index="17">
+                    <div class="quiz-question-title">18. Co znamená HTTP stavový kód 404 Not Found a jaký je rozdíl oproti kódu 500?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>A)</span> <span>404 je chyba na straně klienta (požadovaná URL neexistuje), 500 je neošetřená chyba na straně serveru.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>B)</span> <span>404 znamená pád databáze, zatímco 500 znamená překročení limitu paměti RAM.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Oba kódy znamenají úspěšné načtení dat, pouze v jiném kódování textu.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>404 značí přesměrování a 500 úspěšné přihlášení uživatele.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Stavové kódy <code>4xx</code> značí chybu klienta (špatná adresa, chybějící oprávnění 403), zatímco kódy <code>5xx</code> indikují vnitřní selhání webového serveru či backendové aplikace.
+                    </div>
+                </div>
+
+                <!-- Otázka 19: REST API a HTTP metody -->
+                <div class="quiz-question-box" data-q-index="18">
+                    <div class="quiz-question-title">19. Která HTTP metoda je v architektuře REST API určena pro vytvoření nového záznamu?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>GET</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>POST</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>HEAD</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>OPTIONS</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> Standardní konvence REST API: <code>GET</code> = čtení, <code>POST</code> = vytvoření nového zdroje, <code>PUT / PATCH</code> = aktualizace, <code>DELETE</code> = smazání zdroje.
+                    </div>
+                </div>
+
+                <!-- Otázka 20: Návrhové vzory (Singleton) -->
+                <div class="quiz-question-box" data-q-index="19">
+                    <div class="quiz-question-title">20. Jaký je hlavní účel návrhového vzoru Singleton (Jedináček)?</div>
+                    <div class="quiz-options-list">
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>A)</span> <span>Zajistit, aby každá metoda ve třídě měla pouze jeden jediný parametr.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="true">
+                            <span>B)</span> <span>Zaručit, že daná třída má v celém běhu programu pouze jednu instanci, a poskytnout k ní globální přístup.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>C)</span> <span>Zamezit dědění třídy pomocí klíčového slova final.</span>
+                        </button>
+                        <button type="button" class="quiz-option-btn" data-correct="false">
+                            <span>D)</span> <span>Automaticky mazat nepoužívané objekty bez pomoci Garbage Collectoru.</span>
+                        </button>
+                    </div>
+                    <div class="quiz-explanation">
+                        <strong>💡 Vysvětlení:</strong> <code>Singleton</code> má privátní konstruktor a statickou tovární metodu (např. <code>getInstance()</code>). Používá se pro centrální správce spojení s databází, loggery a systémové konfigurace.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Závěrečný banner -->
+            <div class="quiz-score-banner" id="quiz-banner">
+                <h3 id="quiz-banner-title" style="font-size: 1.45rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">
+                    Test dokončen!
+                </h3>
+                <p id="quiz-banner-desc" style="color: var(--text-secondary); margin-bottom: 18px; font-size: 1rem;"></p>
+                <button type="button" class="btn-primary" id="btn-quiz-retry">
+                    ↺ Spustit test znovu
+                </button>
+            </div>
+        </section>
+
+        <!-- Checklist před odevzdáním webu -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>✅ Kontrolní checklist před odevzdáním školního projektu / maturity</h3>
+                    <p>Zkontroluj si svůj projekt bod po bodu dříve, než ho odevzdáš učiteli nebo zkušební komisi.</p>
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px; font-size:0.92rem;">
+                <label class="form-check" style="background:var(--bg-surface-secondary); padding:10px 14px; border-radius:8px;">
+                    <input type="checkbox"> <strong>1. Validní kostra:</strong> Na začátku je <code>&lt;!DOCTYPE html&gt;</code>, v html je <code>lang="cs"</code> a v hlavičce <code>&lt;meta charset="UTF-8"&gt;</code>.
+                </label>
+                <label class="form-check" style="background:var(--bg-surface-secondary); padding:10px 14px; border-radius:8px;">
+                    <input type="checkbox"> <strong>2. Titulek stránky:</strong> V hlavičce nechybí <code>&lt;title&gt;</code> se smysluplným názvem.
+                </label>
+                <label class="form-check" style="background:var(--bg-surface-secondary); padding:10px 14px; border-radius:8px;">
+                    <input type="checkbox"> <strong>3. Hierarchie nadpisů:</strong> Na stránce je právě jeden nadpis <code>&lt;h1&gt;</code> a nadpisy nepřeskakují úrovně (např. z h2 rovnou na h4).
+                </label>
+                <label class="form-check" style="background:var(--bg-surface-secondary); padding:10px 14px; border-radius:8px;">
+                    <input type="checkbox"> <strong>4. Popisky obrázků:</strong> Každý tag <code>&lt;img&gt;</code> má vyplněný smysluplný atribut <code>alt="..."</code>.
+                </label>
+                <label class="form-check" style="background:var(--bg-surface-secondary); padding:10px 14px; border-radius:8px;">
+                    <input type="checkbox"> <strong>5. Formulářová přístupnost:</strong> Každé textové pole má svůj <code>&lt;label for="id"&gt;</code> a atribut <code>name</code> pro odeslání.
+                </label>
+                <label class="form-check" style="background:var(--bg-surface-secondary); padding:10px 14px; border-radius:8px;">
+                    <input type="checkbox"> <strong>6. Responzivita:</strong> V hlavičce je meta značka <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> a web funguje na mobilu.
+                </label>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Maturitní zkouškové centrum</p>
+        <p>Čistý Apple design systém s editovatelným hřištěm kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

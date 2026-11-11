@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0071e3"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <!-- Apple rounded squircle icon background -->
+  <rect width="64" height="64" rx="16" fill="url(#grad)"/>
+  <!-- Graduation cap & code prompt icon -->
+  <path d="M32 14 L12 25 L32 36 L52 25 Z" fill="#ffffff" opacity="0.95"/>
+  <path d="M20 31.5 L20 44 C20 48 44 48 44 44 L44 31.5" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M52 25 L52 39" stroke="#ffd60a" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="52" cy="41" r="2" fill="#ffd60a"/>
+  <!-- Terminal code glyph in lower center -->
+  <path d="M26 38 L30 42 L26 46" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="33" y1="46" x2="38" y2="46" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

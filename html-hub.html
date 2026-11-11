@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Modul — Přehled podmodulů</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Dev Academy</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill active">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">Přehled</a>
+            <span>/</span>
+            <span>HTML Modul</span>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag badge-html" style="display:inline-block; padding:4px 12px; border-radius:20px; font-weight:700;">HTML5 Základy Webu</div>
+            <h1 class="section-heading">HTML: Školní a maturitní rozcestník</h1>
+            <p class="section-desc">
+                Hypertext Markup Language tvoří kostru celého internetu. Zde najdeš všech 6 klíčových školních témat od seznamů a tabulek přes formuláře až po multimédia a sémantiku.
+            </p>
+        </div>
+
+        <!-- Bento Grid podmodulů HTML -->
+        <section class="bento-container" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+
+            <!-- Podmodul 1 -->
+            <a href="kostra-text.html" class="bento-card">
+                <div class="bento-card-top">
+                    <span class="bento-icon">🧱</span>
+                    <div><span class="bento-badge badge-html">Podmodul 1</span></div>
+                    <h3 class="bento-title">Kostra webu & Text</h3>
+                    <p class="bento-desc">Anatomie HTML5 dokumentu, &lt;!DOCTYPE html&gt;, hlavička head, UTF-8 kódování, nadpisy h1–h6, odkazy a typografie.</p>
+                    <div class="bento-tags">
+                        <span class="tag-chip">&lt;!DOCTYPE&gt;</span>
+                        <span class="tag-chip">&lt;head&gt; / &lt;body&gt;</span>
+                        <span class="tag-chip">&lt;a href&gt;</span>
+                        <span class="tag-chip">&lt;strong&gt;</span>
+                    </div>
+                </div>
+                <div class="bento-card-action">
+                    <span>Otevřít Kostra & Text</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- Podmodul 2 -->
+            <a href="seznamy.html" class="bento-card">
+                <div class="bento-card-top">
+                    <span class="bento-icon">📋</span>
+                    <div><span class="bento-badge badge-html">Podmodul 2</span></div>
+                    <h3 class="bento-title">Seznamy (Lists)</h3>
+                    <p class="bento-desc">Nečíslované odrážky &lt;ul&gt;, číslované seznamy &lt;ol&gt; s atributy type/start/reversed a popisné slovníky &lt;dl&gt;.</p>
+                    <div class="bento-tags">
+                        <span class="tag-chip">&lt;ul&gt;</span>
+                        <span class="tag-chip">&lt;ol&gt;</span>
+                        <span class="tag-chip">&lt;dl&gt; / &lt;dt&gt; / &lt;dd&gt;</span>
+                        <span class="tag-chip">reversed</span>
+                    </div>
+                </div>
+                <div class="bento-card-action">
+                    <span>Otevřít Seznamy</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- Podmodul 3 -->
+            <a href="tabulky.html" class="bento-card">
+                <div class="bento-card-top">
+                    <span class="bento-icon">📊</span>
+                    <div><span class="bento-badge badge-html">Podmodul 3</span></div>
+                    <h3 class="bento-title">Tabulky (Tables)</h3>
+                    <p class="bento-desc">Stavba tabulky po řádcích, záhlaví &lt;th&gt;, slučování buněk vodorovně colspan a svisle rowspan a sémantika thead/tbody/tfoot.</p>
+                    <div class="bento-tags">
+                        <span class="tag-chip">&lt;table&gt;</span>
+                        <span class="tag-chip">colspan</span>
+                        <span class="tag-chip">rowspan</span>
+                        <span class="tag-chip">&lt;thead&gt; / &lt;tbody&gt;</span>
+                    </div>
+                </div>
+                <div class="bento-card-action">
+                    <span>Otevřít Tabulky</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- Podmodul 4 -->
+            <a href="formulare.html" class="bento-card">
+                <div class="bento-card-top">
+                    <span class="bento-icon">📝</span>
+                    <div><span class="bento-badge badge-html">Podmodul 4</span></div>
+                    <h3 class="bento-title">Formuláře (Forms)</h3>
+                    <p class="bento-desc">Textové vstupy, email, heslo, přepínače radio se stejným name, checkboxy, roletky select, textarea a HTML5 datum/barva.</p>
+                    <div class="bento-tags">
+                        <span class="tag-chip">&lt;form&gt;</span>
+                        <span class="tag-chip">&lt;input&gt;</span>
+                        <span class="tag-chip">&lt;label for&gt;</span>
+                        <span class="tag-chip">required</span>
+                    </div>
+                </div>
+                <div class="bento-card-action">
+                    <span>Otevřít Formuláře</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- Podmodul 5 -->
+            <a href="semantika.html" class="bento-card">
+                <div class="bento-card-top">
+                    <span class="bento-icon">📐</span>
+                    <div><span class="bento-badge badge-html">Podmodul 5</span></div>
+                    <h3 class="bento-title">Sémantika & SEO</h3>
+                    <p class="bento-desc">Významové rozvržení: &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;section&gt;, &lt;aside&gt; a &lt;footer&gt; pro přístupnost čteček i Google.</p>
+                    <div class="bento-tags">
+                        <span class="tag-chip">&lt;header&gt;</span>
+                        <span class="tag-chip">&lt;main&gt;</span>
+                        <span class="tag-chip">&lt;article&gt;</span>
+                        <span class="tag-chip">SEO & A11y</span>
+                    </div>
+                </div>
+                <div class="bento-card-action">
+                    <span>Otevřít Sémantika</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- Podmodul 6 -->
+            <a href="media.html" class="bento-card">
+                <div class="bento-card-top">
+                    <span class="bento-icon">🎬</span>
+                    <div><span class="bento-badge badge-html">Podmodul 6</span></div>
+                    <h3 class="bento-title">Média & Multimédia</h3>
+                    <p class="bento-desc">Vkládání obrázků s popisem &lt;figure&gt;, přehrávače &lt;audio controls&gt;, &lt;video&gt; a externí vložené rámce &lt;iframe&gt;.</p>
+                    <div class="bento-tags">
+                        <span class="tag-chip">&lt;img alt&gt;</span>
+                        <span class="tag-chip">&lt;audio&gt;</span>
+                        <span class="tag-chip">&lt;video&gt;</span>
+                        <span class="tag-chip">&lt;iframe&gt;</span>
+                    </div>
+                </div>
+                <div class="bento-card-action">
+                    <span>Otevřít Média</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Dev Academy</strong> — HTML Rozcestník</p>
+        <p>Interaktivní vzdělávací prostředí pro studenty a maturanty.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

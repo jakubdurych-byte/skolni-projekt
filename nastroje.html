@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generátory a nástroje kódu — Školní webové studio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill active">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Modul: Nástroje & Generátory</span>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Produktivita pro školu i projekty</div>
+            <h1 class="section-heading">Vizuální generátory kódu</h1>
+            <p class="section-desc">
+                Nastav si parametry pomocí posuvníků a nástroj ti automaticky vygeneruje čistý HTML nebo CSS kód, který si jedním klikem zkopíruješ do svého editoru.
+            </p>
+        </div>
+
+        <!-- Generátor Tabulek -->
+        <section class="playground-card" style="padding: 24px;">
+            <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; color: var(--text-primary);">
+                📊 Vizuální generátor HTML tabulek
+            </h2>
+
+            <div class="tool-grid">
+                <div class="tool-controls">
+                    <div>
+                        <label for="table-rows">Počet řádků: <strong id="val-rows">3</strong></label>
+                        <input type="range" id="table-rows" min="1" max="8" value="3">
+                    </div>
+
+                    <div>
+                        <label for="table-cols">Počet sloupců: <strong id="val-cols">3</strong></label>
+                        <input type="range" id="table-cols" min="1" max="6" value="3">
+                    </div>
+
+                    <label class="form-check">
+                        <input type="checkbox" id="table-has-th" checked> Zahrnout hlavičkový řádek (&lt;th&gt;)
+                    </label>
+
+                    <label class="form-check">
+                        <input type="checkbox" id="table-has-caption" checked> Přidat nadpis (&lt;caption&gt;)
+                    </label>
+                </div>
+
+                <div class="tool-preview-area">
+                    <div>
+                        <div class="box-label">Živý náhled tabulky</div>
+                        <div id="table-preview-output" style="overflow-x: auto;"></div>
+                    </div>
+
+                    <div style="margin-top: 16px;">
+                        <button type="button" class="btn-primary" id="copy-table-code">
+                            📋 Zkopírovat HTML kód tabulky
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generátor CSS Stínů (Box Shadow) -->
+        <section class="playground-card" style="padding: 24px;">
+            <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; color: var(--text-primary);">
+                🎨 Generátor Apple CSS stínů (Box Shadow)
+            </h2>
+
+            <div class="tool-grid">
+                <div class="tool-controls">
+                    <div>
+                        <label for="shadow-x">Vodorovný posun (X): <strong id="val-shadow-x">0px</strong></label>
+                        <input type="range" id="shadow-x" min="-40" max="40" value="0">
+                    </div>
+
+                    <div>
+                        <label for="shadow-y">Svislý posun (Y): <strong id="val-shadow-y">12px</strong></label>
+                        <input type="range" id="shadow-y" min="-40" max="40" value="12">
+                    </div>
+
+                    <div>
+                        <label for="shadow-blur">Rozostření (Blur): <strong id="val-shadow-blur">28px</strong></label>
+                        <input type="range" id="shadow-blur" min="0" max="60" value="28">
+                    </div>
+
+                    <div>
+                        <label for="shadow-spread">Rozpětí (Spread): <strong id="val-shadow-spread">-4px</strong></label>
+                        <input type="range" id="shadow-spread" min="-20" max="20" value="-4">
+                    </div>
+                </div>
+
+                <div class="tool-preview-area">
+                    <div>
+                        <div class="box-label">Živý náhled stínu</div>
+                        <div class="shadow-target-box" id="shadow-box">
+                            Karta s efektem
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="code-box" style="padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                            <code id="shadow-css-text" style="color: #38bdf8; font-size: 0.85rem;">box-shadow: 0px 12px 28px -4px rgba(0, 0, 0, 0.2);</code>
+                        </div>
+                        <button type="button" class="btn-primary" id="copy-shadow-code">
+                            📋 Zkopírovat CSS vlastnost
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Modul Nástroje & Generátory</p>
+        <p>Čistý Apple design systém pro efektivní tvorbu kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

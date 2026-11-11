@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média v HTML — Interaktivní příklady a vysvětlení</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill active">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Modul 5: Média & Multimédia</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly HTML:</span>
+            <a href="html-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="kostra-text.html" class="module-subnav-link">1. Kostra & Text</a>
+            <a href="seznamy.html" class="module-subnav-link">2. Seznamy</a>
+            <a href="tabulky.html" class="module-subnav-link">3. Tabulky</a>
+            <a href="formulare.html" class="module-subnav-link">4. Formuláře</a>
+            <a href="semantika.html" class="module-subnav-link">5. Sémantika</a>
+            <a href="media.html" class="module-subnav-link active">6. Média</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Modul 5 • Výuka v praxi</div>
+            <h1 class="section-heading">Média & Multimédia</h1>
+            <p class="section-desc">
+                Moderní web se neobejde bez vizuálního a zvukového obsahu. HTML5 přineslo nativní prvky pro vkládání obrázků, audia a videa bez nutnosti instalovat externí doplňky.
+            </p>
+        </div>
+
+        <!-- 5.1 Obrázky a figure -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">5.1 Obrázky (&lt;img&gt;) a sémantický popisek (&lt;figure&gt;, &lt;figcaption&gt;)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><figure style="text-align:center;">
+    <!-- Obrázek s atributy src a alt -->
+    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80" 
+         alt="Notebook s kódem na obrazovce" 
+         style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    
+    <figcaption style="margin-top: 8px; font-style: italic; color: var(--text-secondary);">
+        Obrázek 1: Pracovní stůl webového programátora.
+    </figcaption>
+</figure></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Pravidla pro obrázky:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;img&gt;</span> <strong>Nepárový tag!</strong> Nemá uzavírací <code>&lt;/img&gt;</code>.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">src="..."</span> <em>Source:</em> Cesta k souboru (např. <code>obrazky/foto.jpg</code>) nebo webová URL adresa.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">alt="..."</span> <em>Alternative Text:</em> Popis pro nevidomé, čtečky obrazovky a vyhledávače. Zobrazí se i v případě, že se obrázek nepodaří načíst.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;figure&gt;</span> a <span class="tag-chip">&lt;figcaption&gt;</span> Sémantické spojení obrázku s jeho popiskem.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5.2 Audio a Video -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">5.2 Přehrávače Audia (&lt;audio&gt;) a Videa (&lt;video&gt;)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><h3>Ukázka HTML5 Audio přehrávače:</h3>
+<p>Zde je přehrávač se standardními ovládacími prvky:</p>
+<audio controls style="width: 100%;">
+    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+    Váš prohlížeč nepodporuje přehrávání zvuku.
+</audio>
+
+<h3 style="margin-top: 20px;">Ukázka HTML5 Video přehrávače:</h3>
+<video controls width="100%" style="border-radius: 8px;">
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    Váš prohlížeč nepodporuje přehrávání videa.
+</video></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Atributy přehrávačů:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">controls</span> Klíčový atribut! Bez něj by prohlížeč nezobrazil tlačítka Play, Pauza ani posuvník hlasitosti.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">autoplay</span> Spustí přehrávání automaticky po načtení (prohlížeče to u videa povolují jen se zapnutým <code>muted</code>).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">loop</span> Přehrává záznam ve smyčce neustále dokola.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">poster="..."</span> Obrázek, který se na videu zobrazí před jeho spuštěním (náhledový obrázek).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5.3 Vložený rámec iframe -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">5.3 Vložený rámec (&lt;iframe&gt;)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><h3>Vložení jiné stránky do okna (iframe):</h3>
+<iframe src="seznamy.html" 
+        width="100%" 
+        height="220" 
+        style="border: 1px solid var(--border-subtle); border-radius: 8px;"
+        title="Vložený náhled modulu seznamy">
+</iframe></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Využití iframe:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;iframe&gt;</span> <em>Inline Frame:</em> Slouží k vložení cizího obsahu do tvé stránky – např. YouTube video, Google Maps nebo widget s předpovědí počasí.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Podrobný slovník pojmů pro média -->
+        <div class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📚 Přehled všech tagů pro média</h3>
+                    <p>Pojmy pro obrázky, audio, video a rámce.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Značka</th>
+                            <th>Typ</th>
+                            <th>Popis a školní význam</th>
+                            <th>Příklad zápisu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">&lt;img&gt;</td>
+                            <td>Nepárový tag</td>
+                            <td>Vložení obrázku. Vyžaduje atributy src a alt.</td>
+                            <td><code>&lt;img src="foto.jpg" alt="Foto"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;figure&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Sémantický obal pro obrázek, graf nebo kód.</td>
+                            <td><code>&lt;figure&gt;...&lt;/figure&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;figcaption&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Textový titulek / popisek k elementu &lt;figure&gt;.</td>
+                            <td><code>&lt;figcaption&gt;Popis&lt;/figcaption&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;audio&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Nativní HTML5 přehrávač zvukových stop (mp3, wav).</td>
+                            <td><code>&lt;audio controls&gt;...&lt;/audio&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;video&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Nativní HTML5 přehrávač videa (mp4, webm).</td>
+                            <td><code>&lt;video controls&gt;...&lt;/video&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;source&gt;</td>
+                            <td>Nepárový tag</td>
+                            <td>Určuje alternativní zdroje médií pro &lt;audio&gt; a &lt;video&gt;.</td>
+                            <td><code>&lt;source src="film.mp4" type="video/mp4"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;iframe&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Vkládá do stránky externí dokument, video nebo mapu.</td>
+                            <td><code>&lt;iframe src="url"&gt;&lt;/iframe&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Modul 5: Média</p>
+        <p>Čistý Apple design systém s editovatelným hřištěm kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

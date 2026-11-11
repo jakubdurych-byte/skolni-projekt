@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python OOP — Třídy, Objekty a Dědičnost</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Dev Academy</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill active">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">Přehled</a>
+            <span>/</span>
+            <a href="python-hub.html">Python</a>
+            <span>/</span>
+            <span>3. Objektově orientované programování</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly Python:</span>
+            <a href="python-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="python-zaklady.html" class="module-subnav-link">1. Základy & I/O</a>
+            <a href="python-struktury.html" class="module-subnav-link">2. Datové struktury</a>
+            <a href="python-oop.html" class="module-subnav-link active">3. OOP v Pythonu</a>
+            <a href="python-backend.html" class="module-subnav-link">4. Web Backend</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag badge-py" style="display:inline-block; padding:4px 12px; border-radius:20px; font-weight:700;">OOP Architektura</div>
+            <h1 class="section-heading">Třídy, Objekty, Konstruktor a Dědičnost</h1>
+            <p class="section-desc">
+                Objektově orientované programování (OOP) je základní maturitní téma. Umožňuje sdružovat data (atributy) a logiku (metody) do logických celků – <strong>tříd</strong> (šablon) a vytvářet konkrétní <strong>instance (objekty)</strong>.
+            </p>
+        </div>
+
+        <!-- Příklad 1: Třída a konstruktor __init__ -->
+        <div class="playground-card" data-lang="python">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1. Definice třídy, konstruktoru a metod</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>Python 3 Editor</span>
+                        <span class="pane-badge">tridy.py</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false">class Student:
+    # Konstruktor třídy – volá se automaticky při vytvoření instance
+    def __init__(self, jmeno, trida, rocnik):
+        self.jmeno = jmeno      # Atribut instance
+        self.trida = trida
+        self.rocnik = rocnik
+        self.znamky = []
+
+    def pridej_znamku(self, znamka):
+        if 1 <= znamka <= 5:
+            self.znamky.append(znamka)
+
+    def vypocitej_prumer(self):
+        if not self.znamky:
+            return 0.0
+        return sum(self.znamky) / len(self.znamky)
+
+    def predstav_se(self):
+        return f"{self.jmeno} ({self.trida}), ročník {self.rocnik}"
+
+# Vytvoření instancí (objektů)
+s1 = Student("Jan Novák", "4.A", 4)
+s1.pridej_znamku(1)
+s1.pridej_znamku(2)
+s1.pridej_znamku(1)
+
+print(s1.predstav_se())
+print(f"Studijní průměr: {s1.vypocitej_prumer():.2f}")</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — python3 tridy.py</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ python3 tridy.py</span>
+<span class="terminal-output-text">Jan Novák (4.A), ročník 4
+Studijní průměr: 1.33</span>
+<span class="terminal-success">✓ Process finished with exit code 0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Příklad 2: Dědičnost a polymorfismus -->
+        <div class="playground-card" data-lang="python">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2. Dědičnost tříd (Inheritance) a super()</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>Python 3 Editor</span>
+                        <span class="pane-badge">dedicnost.py</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"># Obecná nadtřída (Rodič)
+class Clovek:
+    def __init__(self, jmeno, vek):
+        self.jmeno = jmeno
+        self.vek = vek
+
+    def info(self):
+        return f"{self.jmeno}, {self.vek} let"
+
+# Podtřída (Potomek) – dědí od třídy Clovek
+class Ucitel(Clovek):
+    def __init__(self, jmeno, vek, aprobace):
+        super().__init__(jmeno, vek) # Zavolá konstruktor rodiče
+        self.aprobace = aprobace
+
+    # Přetížení metody (Polymorfismus)
+    def info(self):
+        return f"Vyučující {self.jmeno} (Předměty: {', '.join(self.aprobace)})"
+
+u = Ucitel("RNDr. Karel Svoboda", 48, ["Informatika", "Programování"])
+print(u.info())</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — python3 dedicnost.py</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ python3 dedicnost.py</span>
+<span class="terminal-output-text">Vyučující RNDr. Karel Svoboda (Předměty: Informatika, Programování)</span>
+<span class="terminal-success">✓ Process finished with exit code 0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 pilíře OOP -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>🏛️ 4 Základní pilíře OOP (Maturitní tahák)</h3>
+                    <p>Tyto čtyři principy musí umět každý student u maturitní zkoušky zpaměti vysvětlit.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Pilíř</th>
+                            <th>Význam</th>
+                            <th>Praktický příklad v Pythonu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">1. Zapouzdření (Encapsulation)</td>
+                            <td>Skrytí vnitřního stavu objektu a zpřístupnění pouze přes metody.</td>
+                            <td>Privátní atributy s podtržítkem <code>self._tajne_heslo</code> a metody pro bezpečný přístup.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">2. Dědičnost (Inheritance)</td>
+                            <td>Vytváření nových tříd na základě existujících s převzetím jejich vlastností.</td>
+                            <td><code>class Pes(Zvire):</code> – pes automaticky umí všechno co zvíře + přidává štěkání.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">3. Polymorfismus (Polymorphism)</td>
+                            <td>Schopnost různých tříd reagovat na stejné volání metody svým vlastním způsobem.</td>
+                            <td>Třídy Pes i Kocka mají metodu <code>vydej_zvuk()</code>, ale pes štěká a kočka mňouká.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">4. Abstrakce (Abstraction)</td>
+                            <td>Zjednodušení komplexní reality zobrazením pouze podstatných vlastností modelu.</td>
+                            <td>Při modelování studenta řešíme známky a jméno, nikoliv barvu očí nebo číslo bot.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Dev Academy</strong> — Modul Python: OOP</p>
+        <p>Interaktivní vzdělávací prostředí pro studenty a maturanty.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

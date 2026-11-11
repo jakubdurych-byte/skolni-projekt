@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java OOP, Dědičnost & Rozhraní — Školní Akademie</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Dev Academy</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill active">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">Přehled</a>
+            <span>/</span>
+            <a href="java-hub.html">Java</a>
+            <span>/</span>
+            <span>2. OOP, Dědičnost & Rozhraní</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly Java:</span>
+            <a href="java-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="java-zaklady.html" class="module-subnav-link">1. Základy & Typy</a>
+            <a href="java-oop.html" class="module-subnav-link active">2. OOP, Dědičnost & Rozhraní</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag badge-java" style="display:inline-block; padding:4px 12px; border-radius:20px; font-weight:700;">Objektový návrh</div>
+            <h1 class="section-heading">Třídy, Zapouzdření, Dědičnost a Rozhraní (Interface)</h1>
+            <p class="section-desc">
+                Java je striktně objektový jazyk. Žádná proměnná ani funkce nemůže existovat mimo třídu. V této části si ukážeme zapouzdření pomocí <code>private</code> atributů a getterů/setterů, dědičnost pomocí <code>extends</code> a kontrakt rozhraní <code>implements</code>.
+            </p>
+        </div>
+
+        <!-- Příklad 1: Zapouzdření, třída a gettery/settery -->
+        <div class="playground-card" data-lang="java">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1. Třída, konstruktor a zapouzdření (Encapsulation)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>Java Editor</span>
+                        <span class="pane-badge">Student.java</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false">class Student {
+    // 1. Privátní atributy (Zapouzdření)
+    private String jmeno;
+    private int rocnik;
+
+    // 2. Konstruktor
+    public Student(String jmeno, int rocnik) {
+        this.jmeno = jmeno;
+        setRocnik(rocnik); // Použití validace v setteru
+    }
+
+    // 3. Gettery a Settery s kontrolou
+    public String getJmeno() {
+        return this.jmeno;
+    }
+
+    public void setRocnik(int rocnik) {
+        if (rocnik >= 1 && rocnik <= 4) {
+            this.rocnik = rocnik;
+        } else {
+            System.out.println("Neplatný ročník střední školy!");
+        }
+    }
+
+    public int getRocnik() {
+        return this.rocnik;
+    }
+}
+
+public class MainApp {
+    public static void main(String[] args) {
+        Student s = new Student("Tereza Novotná", 4);
+        System.out.println("Vytvořen student: " + s.getJmeno() + ", ročník: " + s.getRocnik());
+    }
+}</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — javac Student.java && java MainApp</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ javac Student.java && java MainApp</span>
+<span class="terminal-output-text">Vytvořen student: Tereza Novotná, ročník: 4</span>
+<span class="terminal-success">✓ BUILD SUCCESSFUL</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Příklad 2: Dědičnost a Interface -->
+        <div class="playground-card" data-lang="java">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2. Rozhraní (Interface) a polymorfismus</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>Java Editor</span>
+                        <span class="pane-badge">InterfaceDemo.java</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false">// Rozhraní – kontrakt metod bez implementace
+interface IOhodnotitelny {
+    double spoctiZnamku();
+}
+
+// Rodičovská třída
+class Uzivatel {
+    protected String login;
+    public Uzivatel(String login) { this.login = login; }
+}
+
+// Dědičnost (extends) i implementace rozhraní (implements)
+class Maturant extends Uzivatel implements IOhodnotitelny {
+    private int bodyPisemek;
+
+    public Maturant(String login, int body) {
+        super(login); // Volání rodiče
+        this.bodyPisemek = body;
+    }
+
+    @Override
+    public double spoctiZnamku() {
+        return this.bodyPisemek >= 80 ? 1.0 : 2.0;
+    }
+}
+
+public class TestRozhrani {
+    public static void main(String[] args) {
+        IOhodnotitelny student = new Maturant("jan_maturita", 92);
+        System.out.println("Výsledná známka: " + student.spoctiZnamku());
+    }
+}</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — javac InterfaceDemo.java</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ javac InterfaceDemo.java && java TestRozhrani</span>
+<span class="terminal-output-text">Výsledná známka: 1.0</span>
+<span class="terminal-success">✓ BUILD SUCCESSFUL</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rozdíl extends vs implements -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>⚖️ Rozdíl: extends vs. implements v Javě</h3>
+                    <p>Jedna z nejdůležitějších otázek na maturitu z programování v Javě.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Klíčové slovo</th>
+                            <th>Vztah</th>
+                            <th>Násobnost</th>
+                            <th>Popis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">extends</td>
+                            <td>Dědičnost třídy od třídy</td>
+                            <td>Pouze 1 (Jednoduchá dědičnost)</td>
+                            <td>Třída přebírá kód a implementaci rodiče. V Javě nemůže třída dědit od více tříd najednou!</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">implements</td>
+                            <td>Implementace rozhraní (Interface)</td>
+                            <td>Neomezeně (Násobná implementace)</td>
+                            <td>Třída slibuje, že naprogramuje těla metod předepsaných v rozhraní. Lze implementovat klidně 5 rozhraní naráz.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Dev Academy</strong> — Modul Java: OOP & Rozhraní</p>
+        <p>Interaktivní vzdělávací prostředí pro studenty a maturanty.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

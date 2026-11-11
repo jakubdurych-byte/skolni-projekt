@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C# Základy & .NET — Školní Akademie</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Dev Academy</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill active">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">Přehled</a>
+            <span>/</span>
+            <a href="csharp-hub.html">C#</a>
+            <span>/</span>
+            <span>1. Základy & .NET</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly C#:</span>
+            <a href="csharp-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="csharp-zaklady.html" class="module-subnav-link active">1. Základy & Typy</a>
+            <a href="csharp-oop.html" class="module-subnav-link">2. OOP, Vlastnosti & LINQ</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag badge-cs" style="display:inline-block; padding:4px 12px; border-radius:20px; font-weight:700;">.NET 8 Ekosystém</div>
+            <h1 class="section-heading">Základní syntaxe C#, Console a datové typy</h1>
+            <p class="section-desc">
+                C# (C-Sharp) je moderní objektový jazyk vyvinutý Microsoftem pro platformu .NET. Je standardem pro tvorbu Windows aplikací, webových API, her v Unity i backend systémů.
+            </p>
+        </div>
+
+        <!-- Příklad 1: Program.cs a Console.WriteLine -->
+        <div class="playground-card" data-lang="csharp">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1. Struktura Program.cs, typy a interpolace řetězců ($)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>C# Editor</span>
+                        <span class="pane-badge">Program.cs</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false">using System;
+
+namespace SkolniProjekt
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Typový systém v C#
+            string jmeno = "Lukáš Moravec";
+            int vek = 18;
+            double prumer = 1.35;
+            bool prospelSvyznamenanim = prumer <= 1.5;
+
+            // Řetězcová interpolace pomocí znaku $
+            Console.WriteLine($"Student: {jmeno}");
+            Console.WriteLine($"Věk: {vek} let, Studijní průměr: {prumer:F2}");
+            Console.WriteLine($"Vyznamenání: {prospelSvyznamenanim}");
+        }
+    }
+}</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — dotnet run</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ dotnet run</span>
+<span class="terminal-output-text">Student: Lukáš Moravec
+Věk: 18 let, Studijní průměr: 1.35
+Vyznamenání: True</span>
+<span class="terminal-success">✓ Build succeeded. 0 Warning(s), 0 Error(s).</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Příklad 2: Pole a foreach v C# -->
+        <div class="playground-card" data-lang="csharp">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2. Práce s polem a klíčové slovo var</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>C# Editor</span>
+                        <span class="pane-badge">Pole.cs</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false">using System;
+
+class PolePriklad
+{
+    static void Main()
+    {
+        // Implicitně typovaná proměnná var (typ určí kompilátor)
+        var znamky = new int[] { 1, 2, 1, 1, 3 };
+
+        Console.WriteLine($"Počet zadaných známek: {znamky.Length}");
+        
+        int soucet = 0;
+        foreach (var z in znamky)
+        {
+            soucet += z;
+        }
+
+        double prumer = (double)soucet / znamky.Length;
+        Console.WriteLine($"Vypočtený průměr: {prumer:0.00}");
+    }
+}</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — dotnet run</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ dotnet run</span>
+<span class="terminal-output-text">Počet zadaných známek: 5
+Vypočtený průměr: 1.60</span>
+<span class="terminal-success">✓ Build succeeded.</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Glosář k C# -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>🟣 Základní pojmy C# a .NET</h3>
+                    <p>Co je nutné znát k písemkám a maturitě z C#.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Koncept</th>
+                            <th>Syntaxe</th>
+                            <th>Význam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">namespace</td>
+                            <td><code>namespace MojeAplikace { ... }</code></td>
+                            <td>Jmenný prostor, který zabraňuje konfliktům shodných názvů tříd ve větších projektech.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">var</td>
+                            <td><code>var cislo = 10;</code></td>
+                            <td>Implicitní statické typování. Pozor, proměnná stále má pevný typ určený při překladu!</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Interpolace ($)</td>
+                            <td><code>$"Hodnota je {x}"</code></td>
+                            <td>Přímé vkládání hodnot proměnných do textu bez nutnosti spojování přes operátor +.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">CLR</td>
+                            <td>Common Language Runtime</td>
+                            <td>Virtuální prostředí .NET (obdoba JVM u Javy), které provádí zkompilovaný mezikód (MSIL / CIL).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Dev Academy</strong> — Modul C#: Základy & .NET</p>
+        <p>Interaktivní vzdělávací prostředí pro studenty a maturanty.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

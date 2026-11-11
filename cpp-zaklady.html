@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Základy & Syntaxe — Školní Akademie</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Dev Academy</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill active">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">Přehled</a>
+            <span>/</span>
+            <a href="cpp-hub.html">C++</a>
+            <span>/</span>
+            <span>1. Základy & Syntaxe</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly C++:</span>
+            <a href="cpp-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="cpp-zaklady.html" class="module-subnav-link active">1. Základy & I/O</a>
+            <a href="cpp-pointry.html" class="module-subnav-link">2. Ukazatele (Pointry) & Paměť</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag badge-cpp" style="display:inline-block; padding:4px 12px; border-radius:20px; font-weight:700;">C++20 Standard</div>
+            <h1 class="section-heading">Struktura programu, iostream a funkce v C++</h1>
+            <p class="section-desc">
+                C++ je extrémně rychlý, nízkoúrovňový i objektový jazyk přímo kompilovaný do strojového kódu procesoru. Používá se pro herní enginy, operační systémy a výkonné aplikace.
+            </p>
+        </div>
+
+        <!-- Příklad 1: Základní kostra a proudový I/O -->
+        <div class="playground-card" data-lang="cpp">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1. Struktura main(), #include &lt;iostream&gt; a proudy cin/cout</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>C++ Editor</span>
+                        <span class="pane-badge">main.cpp</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false">#include <iostream>
+#include <string>
+
+int main() {
+    // Definice proměnných v C++
+    std::string jmeno = "David Kučera";
+    int vek = 19;
+    double skore = 98.5;
+
+    // Standardní výstupní proud cout
+    std::cout << "--- Školní záznam C++ ---" << std::endl;
+    std::cout << "Student: " << jmeno << std::endl;
+    std::cout << "Věk: " << vek << " let" << std::endl;
+    std::cout << "Úspěšnost u zkoušky: " << skore << " %" << std::endl;
+
+    return 0; // Návratový kód 0 značí úspěch pro OS
+}</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — g++ -O2 main.cpp && ./a.out</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ g++ -O2 main.cpp && ./a.out</span>
+<span class="terminal-output-text">--- Školní záznam C++ ---
+Student: David Kučera
+Věk: 19 let
+Úspěšnost u zkoušky: 98.5 %</span>
+<span class="terminal-success">✓ Process finished with exit code 0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Příklad 2: Funkce a předávání hodnotou vs referencí -->
+        <div class="playground-card" data-lang="cpp">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2. Funkce a předávání referencí (&amp;)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>C++ Editor</span>
+                        <span class="pane-badge">funkce.cpp</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false">#include <iostream>
+
+// Předání referencí (&): Funkce přímo modifikuje původní proměnné v paměti
+void prohodHodnoty(int &a, int &b) {
+    int docasna = a;
+    a = b;
+    b = docasna;
+}
+
+int main() {
+    int x = 10;
+    int y = 20;
+
+    std::cout << "Před prohozením: x=" << x << ", y=" << y << std::endl;
+    prohodHodnoty(x, y);
+    std::cout << "Po prohození:    x=" << x << ", y=" << y << std::endl;
+
+    return 0;
+}</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — g++ funkce.cpp && ./a.out</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ g++ funkce.cpp && ./a.out</span>
+<span class="terminal-output-text">Před prohozením: x=10, y=20
+Po prohození:    x=20, y=10</span>
+<span class="terminal-success">✓ Process finished with exit code 0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Glosář k C++ -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>⚙️ Zásadní pojmy C++ k maturitní zkoušce</h3>
+                    <p>Základní terminologie překladu a proudů v C++.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Pojem / Zápis</th>
+                            <th>Význam</th>
+                            <th>Školní vysvětlení</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">#include &lt;iostream&gt;</td>
+                            <td>Direktiva preprocesoru</td>
+                            <td>Připojí standardní hlavičkový soubor pro proudový vstup a výstup (I/O).</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">std::cout / std::cin</td>
+                            <td>Standardní proudy</td>
+                            <td><code>cout &lt;&lt;</code> posílá data na konzoli, <code>cin &gt;&gt;</code> čte ze vstupu klávesnice.</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">std::endl</td>
+                            <td>Zalomení řádku</td>
+                            <td>Vloží znak nového řádku <code>\n</code> a okamžitě vyprázdní výstupní vyrovnávací paměť (flush buffer).</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Reference (&amp;)</td>
+                            <td>Alias v paměti</td>
+                            <td>Odkazuje přímo na původní proměnnou bez vytváření kopie, což šetří čas procesoru i paměť RAM.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Dev Academy</strong> — Modul C++: Základy & Syntaxe</p>
+        <p>Interaktivní vzdělávací prostředí pro studenty a maturanty.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

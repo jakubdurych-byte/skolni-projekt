@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Styly a Layout — Školní a maturitní průvodce</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill active">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Modul: CSS Styly & Layout</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly CSS:</span>
+            <a href="css-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="css-styly.html" class="module-subnav-link active">1. Box Model & Styly</a>
+            <a href="css-layout.html" class="module-subnav-link">2. Flexbox & Grid</a>
+            <a href="responzivita.html" class="module-subnav-link">3. Responzivita & Animace</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Základní i maturitní učivo</div>
+            <h1 class="section-heading">CSS Styly, Box Model & Selektory</h1>
+            <p class="section-desc">
+                Zatímco HTML tvoří kostru stránky, <strong>CSS (Cascading Style Sheets)</strong> dodává barvy, písma, rozvržení a animace. Toto je klíčová látka pro každého, kdo se učí web a chystá se k maturitě z informatiky.
+            </p>
+        </div>
+
+        <!-- 1. Tři způsoby vložení CSS -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">1. Způsoby vložení CSS do stránky</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor (můžeš přepisovat)</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><!-- 1. Interní styl uvnitř <style> -->
+<style>
+    .modry-text {
+        color: #0071e3;
+        font-weight: bold;
+    }
+    .karta-demo {
+        padding: 16px;
+        background: var(--bg-surface-secondary);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+    }
+</style>
+
+<div class="karta-demo">
+    <!-- 2. Přímý řádkový styl přes atribut style="..." (inline) -->
+    <p style="color: #10b981; font-size: 1.1rem; margin-bottom: 6px;">
+        Toto je inline styl přímo v tagu (nejvyšší priorita).
+    </p>
+
+    <p class="modry-text">
+        Toto je styl definovaný třídou v hlavičce &lt;style&gt;.
+    </p>
+</div></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Maturitní otázka: 3 způsoby vložení CSS</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">1. Externí soubor</span> <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> v hlavičce <code>&lt;head&gt;</code>. <strong>Nejlepší a nejčistší praxe v praxi i u zkoušek!</strong>
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">2. Interní blok</span> <code>&lt;style&gt; ... &lt;/style&gt;</code> přímo v hlavičce HTML dokumentu. Vhodné pro jednostránkové projekty.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">3. Řádkový (inline)</span> Přímo v atributu <code>&lt;p style="color: red;"&gt;</code>. Má nejvyšší prioritu, ale zhoršuje přehlednost kódu.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. Box Model -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">2. Krabičkový model (CSS Box Model)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><style>
+    .krabicka {
+        /* Content: šířka a výška obsahu */
+        width: 80%;
+        /* Padding: vnitřní prostor mezi obsahem a rámečkem */
+        padding: 20px;
+        /* Border: samotný rámeček */
+        border: 4px solid var(--accent);
+        /* Margin: vnější odstup od okolních prvků */
+        margin: 20px auto;
+        /* Moderní pravidlo: rozměry započítávají i padding a border */
+        box-sizing: border-box;
+        border-radius: 12px;
+        background: var(--bg-surface-secondary);
+        text-align: center;
+    }
+</style>
+
+<div class="krabicka">
+    <strong>Obsah prvku (Content)</strong>
+    <p style="margin-top:6px; font-size:0.85rem; color:var(--text-secondary);">
+        Margin (venku) &rarr; Border (rámeček) &rarr; Padding (uvnitř) &rarr; Content (text)
+    </p>
+</div></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Vysvětlení 4 vrstev Box Modelu:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <strong>1. Content (Obsah):</strong> Samotný text, obrázek či video. Nastavuje se přes <code>width</code> a <code>height</code>.
+                    </li>
+                    <li class="explanation-item">
+                        <strong>2. Padding (Vnitřní odsazení):</strong> Mezera mezi obsahem a rámečkem.
+                    </li>
+                    <li class="explanation-item">
+                        <strong>3. Border (Rámeček):</strong> Čára ohraničující prvek (např. <code>2px solid #333</code>).
+                    </li>
+                    <li class="explanation-item">
+                        <strong>4. Margin (Vnější odstup):</strong> Volné místo <em>kolem</em> prvku, které ho odtlačuje od ostatních prvků.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">box-sizing: border-box</span> <strong>Maturitní chyták!</strong> Způsobí, že nastavená šířka <code>width: 300px</code> je konečná a padding s borderem ji už dále nezvětšují.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. Flexbox zjednodušeně -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">3. Flexbox – Moderní rozvržení prvků vedle sebe</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><style>
+    .flex-kontejner {
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .flex-polozka {
+        flex: 1;
+        min-width: 100px;
+        padding: 14px;
+        background: var(--accent-subtle);
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+    }
+</style>
+
+<div class="flex-kontejner">
+    <div class="flex-polozka">Karta 1</div>
+    <div class="flex-polozka">Karta 2</div>
+    <div class="flex-polozka">Karta 3</div>
+</div></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Klíčové vlastnosti Flexboxu:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">display: flex</span> Zapne flexibilní chování. Prvky se automaticky poskládají do řádku vedle sebe.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">gap: 12px</span> Moderní zápis pro mezery mezi flexibilními položkami.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">justify-content</span> Zarovnává prvky v hlavní ose (center, space-between, flex-start).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">align-items</span> Zarovnává prvky na kolmé ose (na střed svisle: center).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slovník pojmů CSS -->
+        <div class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📚 Přehled základních CSS vlastností a selektorů</h3>
+                    <p>Nezbytné znalosti pro testy i praktické úlohy.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Selektor / Vlastnost</th>
+                            <th>Typ</th>
+                            <th>Popis a význam</th>
+                            <th>Příklad zápisu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">.nazev-tridy</td>
+                            <td>Třídní selektor</td>
+                            <td>Vybere všechny prvky s atributem <code>class="nazev-tridy"</code>. Může být použit vícekrát.</td>
+                            <td><code>.tlacitko { color: red; }</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">#unikatni-id</td>
+                            <td>ID selektor</td>
+                            <td>Vybere jediný prvek s daným <code>id="..."</code>. Má vyšší prioritu než třída.</td>
+                            <td><code>#hlavni-nadpis { font-size: 2rem; }</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">:hover</td>
+                            <td>Pseudotřída</td>
+                            <td>Styl, který se aktivuje při najetí myší na prvek.</td>
+                            <td><code>a:hover { text-decoration: none; }</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">margin vs padding</td>
+                            <td>Box model</td>
+                            <td>Margin je vnější odstup kolem prvku; padding je vnitřní odsazení od rámečku dovnitř.</td>
+                            <td><code>margin: 10px; padding: 15px;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">rem / em / px</td>
+                            <td>Jednotky</td>
+                            <td><code>px</code> je absolutní pixel; <code>rem</code> je relativní k základní velikosti písma dokumentu.</td>
+                            <td><code>font-size: 1.25rem;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Modul CSS Styly & Layout</p>
+        <p>Čistý Apple design systém s editovatelným hřištěm kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

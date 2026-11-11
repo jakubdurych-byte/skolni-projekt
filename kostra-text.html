@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostra webu a text v HTML — Interaktivní příklady a vysvětlení</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>HTML Lab</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill active">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Zpět na přehled modulů
+            </a>
+            <span>/</span>
+            <span>Modul 4: Kostra webu & Text</span>
+        </div>
+
+        <!-- Secondary Submodule Nav -->
+        <div class="module-subnav">
+            <span class="module-subnav-label">Podmoduly HTML:</span>
+            <a href="html-hub.html" class="module-subnav-link">Přehled modulu</a>
+            <a href="kostra-text.html" class="module-subnav-link active">1. Kostra & Text</a>
+            <a href="seznamy.html" class="module-subnav-link">2. Seznamy</a>
+            <a href="tabulky.html" class="module-subnav-link">3. Tabulky</a>
+            <a href="formulare.html" class="module-subnav-link">4. Formuláře</a>
+            <a href="semantika.html" class="module-subnav-link">5. Sémantika</a>
+            <a href="media.html" class="module-subnav-link">6. Média</a>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag">Modul 4 • Výuka v praxi</div>
+            <h1 class="section-heading">Kostra webu & Text</h1>
+            <p class="section-desc">
+                Každá webová stránka na světě začíná stejnou základní kostrou – deklarací <code>&lt;!DOCTYPE html&gt;</code>, hlavičkou pro metadata a tělem pro viditelný obsah. Zde si vyzkoušíš hierarchii nadpisů, hypertextové odkazy a formátovací značky textu.
+            </p>
+        </div>
+
+        <!-- 4.1 Základní kostra HTML5 -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">4.1 Anatomie HTML5 dokumentu</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor (můžeš přepisovat)</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><!-- Ukázka kompletní kostry stránky -->
+<div style="padding:10px; border:1px dashed var(--accent); border-radius:8px;">
+    <h2>Moje první webová stránka</h2>
+    <p>Toto je viditelný obsah, který píšeme do značky <code>&lt;body&gt;</code>.</p>
+    <p>Hlavička <code>&lt;head&gt;</code> obsahuje nastavení češtiny (UTF-8) a titulek záložky v prohlížeči.</p>
+</div></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Základní stavební kameny kostry:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;!DOCTYPE html&gt;</span> Deklarace oznamující prohlížeči, že jde o moderní standard HTML5.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;html lang="cs"&gt;</span> Kořenový tag celého dokumentu. Atribut <code>lang="cs"</code> pomáhá vyhledávačům a překladačům.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;head&gt;</span> Zde jsou metadata: <code>&lt;meta charset="UTF-8"&gt;</code> pro českou diakritiku a <code>&lt;title&gt;</code> pro název záložky.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;body&gt;</span> Všechno, co uživatel reálně vidí v okně prohlížeče.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4.2 Nadpisy a odstavce -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">4.2 Hierarchie nadpisů (h1–h6), odstavce (&lt;p&gt;) a oddělovače</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><h1>Hlavní nadpis stránky (h1)</h1>
+<p>Toto je běžný odstavec textu. Odstavec se v HTML zapisuje do párové značky <code>&lt;p&gt;</code> a prohlížeč mu automaticky přidává mezeru nahoře i dole.</p>
+
+<hr> <!-- Vodorovná oddělovací čára -->
+
+<h2>Podnadpis kapitoly (h2)</h2>
+<p>Text v odstavci může mít zalomení řádku<br>pomocí nepárového tagu br bez vytvoření nového odstavce.</p>
+
+<h3>Menší sekce (h3)</h3>
+<h4>Detailní podsekce (h4)</h4></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Pravidla správné struktury:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;h1&gt;</span> až <span class="tag-chip">&lt;h6&gt;</span> Šest úrovní nadpisů podle důležitosti. <code>&lt;h1&gt;</code> by měl být na stránce <strong>pouze jednou</strong> jako hlavní titulek!
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;p&gt;</span> Odstavec (Paragraph). Obaluje běžné souvislé věty.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;br&gt;</span> <em>Break:</em> Zalomí text na nový řádek bez mezer nového odstavce.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;hr&gt;</span> <em>Horizontal Rule:</em> Vloží vodorovnou dělicí čáru.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4.3 Hypertextové odkazy -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">4.3 Hypertextové odkazy (&lt;a&gt;) a atributy</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><p>
+    <!-- Otevření v novém okně -->
+    Podívej se na oficiální web 
+    <a href="https://www.apple.com" target="_blank" rel="noopener">Apple.com</a> (otevře se v novém okně).
+</p>
+
+<p>
+    <!-- Odkaz na interní podstránku -->
+    Chceš procvičit tabulky? Přejdi na <a href="tabulky.html">modul Tabulky</a>.
+</p>
+
+<p>
+    <!-- Emailový a telefonní odkaz -->
+    Napiš učiteli: <a href="mailto:ucitel@skola.cz">ucitel@skola.cz</a><br>
+    Nebo zavolej: <a href="tel:+420123456789">+420 123 456 789</a>
+</p></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Jak fungují odkazy:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;a href="..."&gt;</span> <em>Anchor:</em> Základní prvek webu. Atribut <code>href</code> udává cíl (URL adresu nebo název souboru).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">target="_blank"</span> Otevře odkaz v nové záložce prohlížeče.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">mailto:</span> a <span class="tag-chip">tel:</span> Protokoly, které v mobilu nebo počítači spustí poštovního klienta nebo zahájí hovor.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4.4 Formátování textu -->
+        <div class="playground-card">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">4.4 Zvýraznění a formátování textu</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>HTML Editor</span>
+                        <span class="pane-badge">Živý náhled</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false"><p>V HTML rozlišujeme různé způsoby zvýraznění:</p>
+<ul>
+    <li>Toto je <strong>důležitý text (strong)</strong> – prohlížeč ho zobrazí tučně.</li>
+    <li>Toto je <em>důrazný text (em)</em> – zobrazen kurzívou.</li>
+    <li>Toto je <mark>zvýrazněný text (mark)</mark> jako žlutým zvýrazňovačem.</li>
+    <li>Původní cena byla <del>500 Kč</del>, nová je <ins>350 Kč</ins>.</li>
+    <li>Vzorce: H<sub>2</sub>O (dolní index sub) nebo 10<sup>2</sup> = 100 (horní index sup).</li>
+    <li>Klávesová zkratka: <kbd>Ctrl</kbd> + <kbd>S</kbd>.</li>
+</ul>
+
+<blockquote>
+    "Kód je poezie psaná pro stroje i lidi."
+</blockquote></textarea>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-bar"><span>Výsledek v prohlížeči</span></div>
+                    <div class="preview-render"></div>
+                </div>
+            </div>
+
+            <div class="explanation-drawer">
+                <div class="explanation-title">Sémantické významy značek:</div>
+                <ul class="explanation-items">
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;strong&gt;</span> Významově důležitý text (čtečky obrazovky ho čtou s důrazem).
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;em&gt;</span> Důraz (Emphasis), kurzíva.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;del&gt;</span> a <span class="tag-chip">&lt;ins&gt;</span> Přeškrtnutý smazaný text a nově vložený text.
+                    </li>
+                    <li class="explanation-item">
+                        <span class="tag-chip">&lt;blockquote&gt;</span> Rozsáhlá bloková citace textu.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Podrobný slovník pojmů pro kostru a text -->
+        <div class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📚 Přehled všech tagů pro kostru webu a text</h3>
+                    <p>Kompletní přehled značek pro formátování a strukturu.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Značka</th>
+                            <th>Typ</th>
+                            <th>Popis a význam</th>
+                            <th>Příklad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">&lt;!DOCTYPE html&gt;</td>
+                            <td>Deklarace</td>
+                            <td>Definuje dokument jako moderní standard HTML5.</td>
+                            <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;html&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Kořenový element celé HTML stránky.</td>
+                            <td><code>&lt;html lang="cs"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;head&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Hlavička s metadaty, kódováním, styly a skripty.</td>
+                            <td><code>&lt;head&gt;...&lt;/head&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;title&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Název stránky zobrazený v záložce prohlížeče.</td>
+                            <td><code>&lt;title&gt;Můj web&lt;/title&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;body&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Tělo dokumentu obsahující viditelné prvky.</td>
+                            <td><code>&lt;body&gt;...&lt;/body&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;h1&gt; až &lt;h6&gt;</td>
+                            <td>Párové tagy</td>
+                            <td>Hierarchie nadpisů od nejdůležitějšího (h1) po nejmenší (h6).</td>
+                            <td><code>&lt;h1&gt;Nadpis&lt;/h1&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;p&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Odstavec souvislého textu.</td>
+                            <td><code>&lt;p&gt;Text...&lt;/p&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;a&gt;</td>
+                            <td>Párový tag</td>
+                            <td>Odkaz s cílovou adresou v atributu <code>href</code>.</td>
+                            <td><code>&lt;a href="url"&gt;Odkaz&lt;/a&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;strong&gt;, &lt;em&gt;</td>
+                            <td>Párové tagy</td>
+                            <td>Sémantické tučné písmo a kurzíva.</td>
+                            <td><code>&lt;strong&gt;Důležité&lt;/strong&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">&lt;br&gt;, &lt;hr&gt;</td>
+                            <td>Nepárové tagy</td>
+                            <td>Zalomení řádku (br) a vodorovná oddělovací linka (hr).</td>
+                            <td><code>&lt;br&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>HTML Interaktivní Laboratoř</strong> — Modul 4: Kostra webu & Text</p>
+        <p>Čistý Apple design systém s editovatelným hřištěm kódu.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

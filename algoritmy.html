@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmy & Složitost — Školní Akademie</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Dev Academy</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">Přehled</a>
+                <a href="html-hub.html" class="nav-pill">HTML</a>
+                <a href="css-hub.html" class="nav-pill">CSS</a>
+                <a href="js-hub.html" class="nav-pill">JavaScript</a>
+                <a href="python-hub.html" class="nav-pill">Python</a>
+                <a href="java-hub.html" class="nav-pill">Java</a>
+                <a href="cpp-hub.html" class="nav-pill">C++</a>
+                <a href="csharp-hub.html" class="nav-pill">C#</a>
+                <a href="sql-hub.html" class="nav-pill">SQL</a>
+                <a href="git-zaklady.html" class="nav-pill">Git</a>
+                <a href="linux.html" class="nav-pill">🐧 Linux</a>
+                <a href="algoritmy.html" class="nav-pill active">Algoritmy</a>
+                <a href="site.html" class="nav-pill">Sítě</a>
+                <a href="bezpecnost.html" class="nav-pill">Bezpečnost</a>
+                <a href="hardware.html" class="nav-pill">Hardware</a>
+                <a href="architektura.html" class="nav-pill">🏗️ Architektura</a>
+                <a href="nastroje.html" class="nav-pill">Nástroje</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <!-- Theme trigger -->
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span> Světlý</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span> Space Black</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span> Půlnoční</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span> Fialový titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span> Přírodní titan</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span> Alpská zeleň</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span> Kniha & Papír</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span> Růžové zlato</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span> Matrix</button>
+                                                <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Main Content -->
+    <main class="content-wrapper" style="margin-top: 36px;">
+
+        <div class="subpage-breadcrumb">
+            <a href="index.html">Přehled</a>
+            <span>/</span>
+            <span>Algoritmy & Datové struktury</span>
+        </div>
+
+        <div class="section-intro">
+            <div class="section-tag badge-algo" style="display:inline-block; padding:4px 12px; border-radius:20px; font-weight:700;">Informatika & Teorie</div>
+            <h1 class="section-heading">Algoritmizace, Řadicí algoritmy a Asymptotická složitost (Big O)</h1>
+            <p class="section-desc">
+                Algoritmus je přesný postup kroků vedoucí k vyřešení zadané úlohy. Zjisti, jak efektivně program běží, proč je Bubble Sort pomalý a vyzkoušej si <strong>interaktivní vizualizér řazení</strong> přímo na této stránce.
+            </p>
+        </div>
+
+        <!-- 1. Interaktivní Vizualizér Řazení -->
+        <section class="sort-viz-container">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+                <div>
+                    <h2 style="font-size:1.35rem; font-weight:700; color:var(--text-primary); margin-bottom:4px;">
+                        📊 Živý vizualizér řazení: Bubble Sort
+                    </h2>
+                    <p style="color:var(--text-secondary); font-size:0.88rem;">
+                        Sleduj, jak algoritmus postupně probublává největší prvky na konec pole pomocí sousedních porovnání.
+                    </p>
+                </div>
+                <div class="sort-status-text" id="sort-status-text">Připraveno</div>
+            </div>
+
+            <!-- Jeviště se sloupci -->
+            <div class="sort-stage" id="sort-stage"></div>
+
+            <!-- Ovládání -->
+            <div class="sort-controls">
+                <div style="display:flex; gap:8px;">
+                    <button type="button" class="btn-primary" id="btn-sort-play">▶ Spustit řazení</button>
+                    <button type="button" class="btn-pill" id="btn-sort-step">Krok za krokem ➔</button>
+                    <button type="button" class="btn-pill" id="btn-sort-shuffle">🎲 Zamíchat pole</button>
+                </div>
+                <div style="font-size:0.82rem; color:var(--text-tertiary); display:flex; gap:16px;">
+                    <span><strong style="color:#f59e0b;">■</strong> Porovnávání</span>
+                    <span><strong style="color:#ef4444;">■</strong> Prohození</span>
+                    <span><strong style="color:#10b981;">■</strong> Seřazeno</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Přehled Asymptotické složitosti Big O -->
+        <section class="glossary-section">
+            <div class="glossary-header">
+                <div class="glossary-title-group">
+                    <h3>📈 Časová složitost: Big O notace u maturity</h3>
+                    <p>Jak rychle roste počet operací algoritmu s rostoucím počtem prvků N.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Zápis složitosti</th>
+                            <th>Název</th>
+                            <th>Příklad algoritmu</th>
+                            <th>Hodnocení rychlosti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">O(1)</td>
+                            <td>Konstantní</td>
+                            <td>Přístup k prvku pole přes index: <code>pole[5]</code>, vložení do HashMapy.</td>
+                            <td><span style="color:#10b981; font-weight:700;">Blesková (Ideální)</span></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">O(log n)</td>
+                            <td>Logaritmická</td>
+                            <td><strong>Binární vyhledávání</strong> (půlení intervalu v seřazeném poli). V 1 milionu prvků najde cíl na max 20 kroků!</td>
+                            <td><span style="color:#10b981; font-weight:700;">Velmi rychlá</span></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">O(n)</td>
+                            <td>Lineární</td>
+                            <td>Lineární vyhledávání (průchod neseřazeného pole cyklem for od začátku do konce).</td>
+                            <td><span style="color:#0ea5e9; font-weight:700;">Přijatelná</span></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">O(n log n)</td>
+                            <td>Lineárně-logaritmická</td>
+                            <td>Efektivní řazení: <strong>Merge Sort</strong>, <strong>Quick Sort</strong> (průměr), vestavěné řazení v Pythonu/JS.</td>
+                            <td><span style="color:#38bdf8; font-weight:700;">Standard pro řazení</span></td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">O(n²)</td>
+                            <td>Kvadratická</td>
+                            <td>Základní řazení: <strong>Bubble Sort</strong>, <strong>Selection Sort</strong>, <strong>Insertion Sort</strong> (dva vnořené cykly for).</td>
+                            <td><span style="color:#ef4444; font-weight:700;">Pomalá pro velká data</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. Kód: Binární vyhledávání (O(log n)) -->
+        <div class="playground-card" data-lang="python">
+            <div class="window-header">
+                <div class="window-dots">
+                    <span class="dot-btn dot-red"></span>
+                    <span class="dot-btn dot-yellow"></span>
+                    <span class="dot-btn dot-green"></span>
+                </div>
+                <span class="window-title">Binární vyhledávání v Pythonu (Půlení intervalu)</span>
+                <div class="window-actions">
+                    <button type="button" class="btn-run-code">▶ Spustit kód</button>
+                    <button type="button" class="btn-pill btn-copy">Kopírovat</button>
+                    <button type="button" class="btn-pill btn-reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <div class="editor-pane">
+                    <div class="pane-bar">
+                        <span>Python 3 Algoritmus</span>
+                        <span class="pane-badge">binary_search.py</span>
+                    </div>
+                    <textarea class="code-textarea" spellcheck="false">def binarni_vyhledavani(pole, hledane):
+    levy = 0
+    pravy = len(pole) - 1
+    kroky = 0
+
+    while levy <= pravy:
+        kroky += 1
+        stred = (levy + pravy) // 2
+
+        if pole[stred] == hledane:
+            return stred, kroky
+        elif pole[stred] < hledane:
+            levy = stred + 1   # Hledaná hodnota je v pravé polovině
+        else:
+            pravy = stred - 1  # Hledaná hodnota je v levé polovině
+
+    return -1, kroky
+
+# Pozor: Pole MUSÍ být předem seřazeno!
+serazena_data = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+cil = 23
+
+index, pocet_kroku = binarni_vyhledavani(serazena_data, cil)
+print(f"Hledané číslo {cil} nalezeno na indexu {index}!")
+print(f"Potřebný počet porovnání: pouze {pocet_kroku} kroky.")</textarea>
+                </div>
+
+                <div class="mac-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot terminal-dot-red"></span>
+                            <span class="terminal-dot-yellow terminal-dot"></span>
+                            <span class="terminal-dot-green terminal-dot"></span>
+                        </div>
+                        <span class="terminal-title">Terminal — python3 binary_search.py</span>
+                    </div>
+                    <div class="terminal-body"><span class="terminal-prompt">$ python3 binary_search.py</span>
+<span class="terminal-output-text">Hledané číslo 23 nalezeno na indexu 5!
+Potřebný počet porovnání: pouze 2 kroky.</span>
+<span class="terminal-success">✓ Složitost O(log N) v praxi</span></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Dev Academy</strong> — Modul Algoritmy & Datové struktury</p>
+        <p>Interaktivní vzdělávací prostředí pro studenty a maturanty.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
