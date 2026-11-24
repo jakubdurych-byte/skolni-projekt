@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14. Termodynamika a tepelné stroje | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2. ročník: Molekulová fyzika a termika</span>
+                <span>/</span>
+                <span>Kapitola 14</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="08-termodynamika-stroje">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="01-kineticka-teorie.html" class="module-subnav-link " data-ch-nav="01-kineticka-teorie">7. Kinetická teorie látek</a><a href="02-vnitrni-energie-teplota.html" class="module-subnav-link " data-ch-nav="02-vnitrni-energie-teplota">8. Vnitřní energie a teplota</a><a href="03-tepelna-vymena-kalorimetrie.html" class="module-subnav-link " data-ch-nav="03-tepelna-vymena-kalorimetrie">9. Tepelná výměna a kalorimetrie</a><a href="04-anomalie-vody.html" class="module-subnav-link " data-ch-nav="04-anomalie-vody">10. Anomálie vody</a><a href="05-pevne-latky-kapaliny.html" class="module-subnav-link " data-ch-nav="05-pevne-latky-kapaliny">11. Pevné látky a kapaliny</a><a href="06-zmeny-skupenstvi.html" class="module-subnav-link " data-ch-nav="06-zmeny-skupenstvi">12. Změny skupenství látek</a><a href="07-plyny.html" class="module-subnav-link " data-ch-nav="07-plyny">13. Plyny a děje v plynech</a><a href="08-termodynamika-stroje.html" class="module-subnav-link active" data-ch-nav="08-termodynamika-stroje">14. Termodynamika a tepelné stroje</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>8. Termodynamické zákony a tepelné stroje</h1>
+      <p class="chapter-lead">Práce plynu v p-V diagramu, 1., 2. a 3. termodynamický zákon, kruhový děj, Carnotova účinnost, tepelná čerpadla.</p>
+      
+      <h2>8.1 Práce plynu a první termodynamický zákon</h2>
+<p>Práce vykonaná plynem <em>W&#x27;</em> odpovídá ploše pod křivkou v <em>p-V</em> diagramu (při izobarickém ději <em>W&#x27;</em> = <em>p</em> · Δ<em>V</em>).</p>
+<div class="callout callout-formula"><div class="callout-title">První termodynamický zákon</div><div class="callout-body"><p><strong>ΔU = Q + W = Q − W&#x27;</strong></p><p>• Δ<em>U</em> = přírůstek vnitřní energie, <em>Q</em> = přijaté teplo, <em>W</em> = práce okolí, <em>W&#x27;</em> = práce plynu.</p></div></div>
+<h2>8.2 Druhý a třetí termodynamický zákon</h2>
+<ul><li><strong>Clausiova formulace:</strong> Teplo nemůže samovolně přecházet z chladnějšího tělesa na teplejší.</li><li><strong>Kelvinova-Planckova formulace:</strong> Perpetuum mobile 2. druhu nelze sestrojit (nelze beze zbytku přeměnit teplo v práci bez chladiče).</li><li><strong>Entropie (ΔS ≥ 0):</strong> V izolované soustavě entropie samovolně neklesá. <strong>3. zákon:</strong> Absolutní nuly (<em>T</em> = 0 K) nelze dosáhnout v konečném počtu kroků.</li></ul>
+<h2>8.3 Kruhový děj a účinnost tepelných strojů</h2>
+<div class="callout callout-formula"><div class="callout-title">Účinnost, Carnotův cyklus a tepelná čerpadla</div><div class="callout-body"><p><strong>Účinnost tepelného motoru:</strong>  <strong>η = W&#x27; / Q<sub>1</sub> = 1 − (Q<sub>2</sub> / Q<sub>1</sub>) &lt; 1</strong></p><p><strong>Carnotova max. účinnost:</strong>  <strong>η<sub>max</sub> = (T<sub>1</sub> − T<sub>2</sub>) / T<sub>1</sub> = 1 − (T<sub>2</sub> / T<sub>1</sub>)</strong></p><p><strong>Topný faktor (tepelné čerpadlo):</strong>  <strong>COP = Q<sub>1</sub> / W = P<sub>topný</sub> / P<sub>el</sub></strong>   |   <strong>COP<sub>max</sub> = T<sub>1</sub> / (T<sub>1</sub> − T<sub>2</sub>) &gt; 1</strong></p></div></div>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>1. termodynamický zákon:</strong> Δ<em>U</em> = <em>Q</em> − <em>W</em>' &nbsp;|&nbsp; <strong>Objemová práce (<em>p</em> = konst.):</strong> <em>W</em>' = <em>p</em> · Δ<em>V</em></p>
+          <p><strong>Účinnost tepelného stroje:</strong> <em>η</em> = <em>W</em>' / <em>Q</em><sub>1</sub> = (<em>Q</em><sub>1</sub> − <em>Q</em><sub>2</sub>) / <em>Q</em><sub>1</sub> = 1 − <em>Q</em><sub>2</sub> / <em>Q</em><sub>1</sub></p>
+          <p><strong>Maximální Carnotova účinnost:</strong> <em>η</em><sub>max</sub> = 1 − <em>T</em><sub>2</sub> / <em>T</em><sub>1</sub> &nbsp;|&nbsp; <strong>Topný faktor čerpadla:</strong> COP<sub>max</sub> = <em>T</em><sub>1</sub> / (<em>T</em><sub>1</sub> − <em>T</em><sub>2</sub>)</p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Skutečná účinnost tepelného stroje</h3>
+    <span class="badge">Tepelné stroje</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Tepelný motor přijme za jeden cyklus od ohřívače teplo <em>Q</em><sub>1</sub> = 12 kJ a chladiči odevzdá teplo <em>Q</em><sub>2</sub> = 8,4 kJ. Jakou práci <em>W</em>' vykoná a jaká je jeho účinnost?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vykonaná práce:</strong> <em>W</em>' = <em>Q</em><sub>1</sub> − <em>Q</em><sub>2</sub> = 12 − 8,4 = <strong>3,6 kJ</strong>.</p><p><strong>2. Účinnost:</strong> <em>η</em> = <em>W</em>' / <em>Q</em><sub>1</sub> = 3,6 / 12 = 0,30 = <strong>30 %</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Maximální Carnotova účinnost parní turbíny</h3>
+    <span class="badge">Carnotův cyklus</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Parní turbína pracuje s přehřátou párou o teplotě <em>t</em><sub>1</sub> = 527 °C a kondenzátor (chladič) má teplotu <em>t</em><sub>2</sub> = 27 °C. Jaká je nejvyšší teoreticky možná účinnost této turbíny?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Převod teplot na Kelviny:</strong> <em>T</em><sub>1</sub> = 527 + 273 = 800 K, &nbsp; <em>T</em><sub>2</sub> = 27 + 273 = 300 K.</p><p><strong>2. Carnotův vzorec:</strong> <em>η</em><sub>max</sub> = 1 − <em>T</em><sub>2</sub> / <em>T</em><sub>1</sub> = 1 − 300 / 800 = 1 − 0,375 = 0,625 = <strong>62,5 %</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Tepelné čerpadlo (topný faktor)</h3>
+    <span class="badge">Tepelná čerpadla</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Tepelné čerpadlo vytápí dům na teplotu <em>t</em><sub>1</sub> = 27 °C (300 K) a odebírá teplo venkovnímu vzduchu o teplotě <em>t</em><sub>2</sub> = −3 °C (270 K). Jaký je jeho maximální teoretický topný faktor COP?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> COP<sub>max</sub> = <em>T</em><sub>1</sub> / (<em>T</em><sub>1</sub> − <em>T</em><sub>2</sub>)</p><p><strong>2. Výpočet:</strong> COP<sub>max</sub> = 300 / (300 − 270) = 300 / 30 = <strong>10</strong> (za 1 kWh elektřiny může dodat teoreticky až 10 kWh tepla).</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="07-plyny.html" class="pager-btn">← 13. Plyny a děje v plynech</a>
+            <a href="09-kmitani.html" class="pager-btn pager-next">15. Mechanické kmitání →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

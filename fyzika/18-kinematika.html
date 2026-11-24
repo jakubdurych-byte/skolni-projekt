@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Kinematika (pohyb a vrhy) | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>1. ročník: Úvod a mechanika</span>
+                <span>/</span>
+                <span>Kapitola 2</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="18-kinematika">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="17-fyzikalni-veliciny-jednotky.html" class="module-subnav-link " data-ch-nav="17-fyzikalni-veliciny-jednotky">1. Fyzikální veličiny, SI a vektory</a><a href="18-kinematika.html" class="module-subnav-link active" data-ch-nav="18-kinematika">2. Kinematika (pohyb a vrhy)</a><a href="19-dynamika-sily.html" class="module-subnav-link " data-ch-nav="19-dynamika-sily">3. Dynamika a Newtonovy zákony</a><a href="20-prace-energie-vykon.html" class="module-subnav-link " data-ch-nav="20-prace-energie-vykon">4. Práce, výkon a energie</a><a href="21-tuhe-teleso-gravitace.html" class="module-subnav-link " data-ch-nav="21-tuhe-teleso-gravitace">5. Tuhé těleso a gravitační pole</a><a href="22-mechanika-tekutin.html" class="module-subnav-link " data-ch-nav="22-mechanika-tekutin">6. Mechanika kapalin a plynů</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>2. Kinematika (pohyb a vrhy)</h1>
+      <p class="chapter-lead">Vztažná soustava, dráha a posunutí, rovnoměrný a rovnoměrně zrychlený pohyb, volný pád, vrhy a pohyb po kružnici.</p>
+      
+<p>Kinematika popisuje mechanický pohyb těles v prostoru a čase, aniž by zkoumala příčiny tohoto pohybu (síly). Pohyb je vždy <strong>relativní</strong> – závisí na zvolené vztažné soustavě.</p>
+
+<h2>1. Základní pojmy kinematiky</h2>
+<ul>
+  <li><strong>Hmotný bod:</strong> Idealizované těleso, jehož rozměry jsou zanedbatelné vůči dráze, kterou urazí.</li>
+  <li><strong>Trajektorie:</strong> Čára, kterou hmotný bod při svém pohybu opisuje (přímka, křivka, kružnice).</li>
+  <li><strong>Dráha (<em>s</em>):</strong> Délka trajektorie [m] (skalár). <strong>Posunutí (Δ<strong>r</strong>):</strong> Vektor spojující počáteční a koncovou polohu.</li>
+</ul>
+
+<h2>2. Přímočaré pohyby</h2>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Rovnoměrný a rovnoměrně zrychlený pohyb</div>
+  <div class="callout-body">
+    <p><strong>Rovnoměrný pohyb (<em>v</em> = konst., <em>a</em> = 0):</strong> <em>s</em> = <em>v</em> · <em>t</em></p>
+    <p><strong>Rovnoměrně zrychlený pohyb (<em>a</em> = konst.):</strong></p>
+    <p><em>v</em> = <em>v</em><sub>0</sub> + <em>a</em> · <em>t</em> &nbsp;|&nbsp; <em>s</em> = <em>v</em><sub>0</sub> · <em>t</em> + ½ · <em>a</em> · <em>t</em><sup>2</sup> &nbsp;|&nbsp; <em>v</em><sup>2</sup> = <em>v</em><sub>0</sub><sup>2</sup> + 2 · <em>a</em> · <em>s</em></p>
+    <p><strong>Převod rychlosti:</strong> 1 m/s = 3,6 km/h</p>
+  </div>
+</div>
+
+<h2>3. Volný pád a vrhy v tíhovém poli (<em>g</em> ≈ 9,81 m/s<sup>2</sup>)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Druh pohybu</th><th>Dráha / Souřadnice</th><th>Rychlost</th><th>Poznámka</th></tr></thead>
+<tbody>
+<tr><td>Volný pád (<em>v</em><sub>0</sub> = 0)</td><td><em>h</em> = ½ · <em>g</em> · <em>t</em><sup>2</sup></td><td><em>v</em> = <em>g</em> · <em>t</em> = √(2<em>gh</em>)</td><td>Doba pádu <em>t</em> = √(2<em>h</em>/<em>g</em>)</td></tr>
+<tr><td>Vrh svislý vzhůru</td><td><em>y</em> = <em>v</em><sub>0</sub><em>t</em> − ½<em>gt</em><sup>2</sup></td><td><em>v</em> = <em>v</em><sub>0</sub> − <em>gt</em></td><td>Max. výška <em>h</em><sub>max</sub> = <em>v</em><sub>0</sub><sup>2</sup> / (2<em>g</em>)</td></tr>
+<tr><td>Vrh vodorovný</td><td><em>x</em> = <em>v</em><sub>0</sub><em>t</em>, <em>y</em> = <em>h</em> − ½<em>gt</em><sup>2</sup></td><td><em>v</em> = √(<em>v</em><sub>0</sub><sup>2</sup> + (<em>gt</em>)<sup>2</sup>)</td><td>Délka vrhu <em>d</em> = <em>v</em><sub>0</sub>√(2<em>h</em>/<em>g</em>)</td></tr>
+<tr><td>Vrh šikmý (úhel α)</td><td><em>x</em> = <em>v</em><sub>0</sub><em>t</em> cos α, <em>y</em> = <em>v</em><sub>0</sub><em>t</em> sin α − ½<em>gt</em><sup>2</sup></td><td>Složení rovnoměrného a svislého</td><td>Max. dostřel pro α = 45°: <em>d</em> = <em>v</em><sub>0</sub><sup>2</sup> sin(2α)/<em>g</em></td></tr>
+</tbody></table></div>
+
+<h2>4. Rovnoměrný pohyb po kružnici</h2>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Veličiny kruhového pohybu</div>
+  <div class="callout-body">
+    <p><strong>Perioda <em>T</em> a frekvence <em>f</em>:</strong> <em>f</em> = 1 / <em>T</em> [Hz]</p>
+    <p><strong>Úhlová rychlost:</strong> <em>ω</em> = <em>φ</em> / <em>t</em> = 2π / <em>T</em> = 2π<em>f</em> [rad/s]</p>
+    <p><strong>Obvodová rychlost:</strong> <em>v</em> = <em>ω</em> · <em>r</em> = 2π<em>r</em> / <em>T</em></p>
+    <p><strong>Dostředivé zrychlení:</strong> <em>a</em><sub>d</sub> = <em>v</em><sup>2</sup> / <em>r</em> = <em>ω</em><sup>2</sup> · <em>r</em> (směřuje vždy do středu kružnice!)</p>
+  </div>
+</div>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Rovnoměrný pohyb:</strong> <em>s</em> = <em>v</em> · <em>t</em> &nbsp;|&nbsp; <strong>Průměrná rychlost:</strong> <em>v</em><sub>p</sub> = <em>s</em><sub>celk</sub> / <em>t</em><sub>celk</sub></p>
+          <p><strong>Rovnoměrně zrychlený/zpomalený pohyb:</strong> <em>v</em> = <em>v</em><sub>0</sub> ± <em>a</em><em>t</em> &nbsp;|&nbsp; <em>s</em> = <em>v</em><sub>0</sub><em>t</em> ± ½<em>a</em><em>t</em><sup>2</sup> &nbsp;|&nbsp; <em>v</em><sup>2</sup> − <em>v</em><sub>0</sub><sup>2</sup> = ±2<em>a</em><em>s</em></p>
+          <p><strong>Volný pád:</strong> <em>h</em> = ½<em>g</em><em>t</em><sup>2</sup>, <em>v</em> = <em>g</em><em>t</em> = √(2<em>g</em><em>h</em>) &nbsp;|&nbsp; <strong>Kruhový pohyb:</strong> <em>ω</em> = 2π<em>f</em> = 2π/<em>T</em>, <em>v</em> = <em>ωr</em>, <em>a</em><sub>d</sub> = <em>v</em><sup>2</sup>/<em>r</em></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Brzdění automobilu (rovnoměrně zpomalený pohyb)</h3>
+    <span class="badge">Kinematika</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Auto jede rychlostí 72 km/h a začne brzdit se zpomalením <em>a</em> = 4 m·s<sup>-2</sup>. Za jak dlouho zastaví a jak dlouhou brzdnou dráhu ujede?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Převod rychlosti:</strong> <em>v</em><sub>0</sub> = 72 / 3,6 = 20 m/s. Po zastavení je <em>v</em> = 0 m/s.</p><p><strong>2. Doba brzdění:</strong> <em>v</em> = <em>v</em><sub>0</sub> − <em>a</em>·<em>t</em> ⟹ 0 = 20 − 4·<em>t</em> ⟹ <em>t</em> = <strong>5 s</strong>.</p><p><strong>3. Brzdná dráha:</strong> <em>s</em> = <em>v</em><sub>0</sub><em>t</em> − ½<em>a</em><em>t</em><sup>2</sup> = 20·5 − 0,5·4·25 = 100 − 50 = <strong>50 m</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Vrh svislý vzhůru</h3>
+    <span class="badge">Volný pád a vrhy</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Míč vyhodíme svisle vzhůru počáteční rychlostí <em>v</em><sub>0</sub> = 15 m/s (<em>g</em> = 10 m·s<sup>-2</sup>). Do jaké maximální výšky vystoupá a za jakou dobu spadne zpět do ruky?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Čas výstupu do nejvyššího bodu (kde <em>v</em> = 0):</strong> <em>t</em><sub>1</sub> = <em>v</em><sub>0</sub> / <em>g</em> = 15 / 10 = 1,5 s.</p><p><strong>2. Maximální výška:</strong> <em>h</em><sub>max</sub> = <em>v</em><sub>0</sub><sup>2</sup> / (2<em>g</em>) = 225 / 20 = <strong>11,25 m</strong>.</p><p><strong>3. Celková doba letu (výstup + pád):</strong> <em>t</em><sub>celk</sub> = 2 · <em>t</em><sub>1</sub> = <strong>3,0 s</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Rovnoměrný pohyb po kružnici</h3>
+    <span class="badge">Kruhový pohyb</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Kolo jízdního kola o poloměru <em>r</em> = 0,35 m se otočí 2× za sekundu (<em>f</em> = 2 Hz). Vypočítejte úhlovou rychlost, obvodovou rychlost kola a dostředivé zrychlení ventilku na obvodu.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Úhlová rychlost:</strong> <em>ω</em> = 2π · <em>f</em> = 2 · 3,14 · 2 ≈ <strong>12,57 rad/s</strong>.</p><p><strong>2. Obvodová rychlost:</strong> <em>v</em> = <em>ω</em> · <em>r</em> = 12,57 · 0,35 ≈ <strong>4,40 m/s</strong> (≈ 15,8 km/h).</p><p><strong>3. Dostředivé zrychlení:</strong> <em>a</em><sub>d</sub> = <em>v</em><sup>2</sup> / <em>r</em> = 4,40<sup>2</sup> / 0,35 ≈ <strong>55,3 m/s<sup>2</sup></strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="17-fyzikalni-veliciny-jednotky.html" class="pager-btn">← 1. Fyzikální veličiny, SI a vektory</a>
+            <a href="19-dynamika-sily.html" class="pager-btn pager-next">3. Dynamika a Newtonovy zákony →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

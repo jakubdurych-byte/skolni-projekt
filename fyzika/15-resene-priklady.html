@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28. Vzorové řešené příklady | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>Procvičování a maturitní přehledy</span>
+                <span>/</span>
+                <span>Kapitola 28</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="15-resene-priklady">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="15-resene-priklady.html" class="module-subnav-link active" data-ch-nav="15-resene-priklady">28. Vzorové řešené příklady</a><a href="16-prehled-vzorcu-konstant.html" class="module-subnav-link " data-ch-nav="16-prehled-vzorcu-konstant">29. Přehled vzorců a konstant</a>
+        </div>
+
+        <article class="chapter-article">
+<h1>28. Vzorové řešené příklady s detailním postupem</h1>
+      <p class="chapter-lead">20 podrobně řešených úloh pokrývajících celý 2. ročník: kalorimetrie, plyny, tepelné stroje, kmitání, vlnění i elektřina.</p>
+      
+        <div class="examples-toolbar">
+          <div class="filter-bar" id="exampleFilters">
+            <button type="button" class="filter-btn active" data-filter="all">Všechny (20)</button>
+            <button type="button" class="filter-btn" data-filter="kalorimetrie">Kalorimetrie (3)</button>
+            <button type="button" class="filter-btn" data-filter="plyny">Plyny (8)</button>
+            <button type="button" class="filter-btn" data-filter="stroje">Tepelné stroje (4)</button>
+            <button type="button" class="filter-btn" data-filter="kmitani">Kmitání & vlnění (2)</button>
+            <button type="button" class="filter-btn" data-filter="elektrina">Elektřina & magnetismus (3)</button>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" id="toggleAllSolutions">Skrýt všechna řešení</button>
+        </div>
+        
+      <p>Rozšířená sbírka vzorových úloh s kompletním postupem krok za krokem. Pomocí tlačítek níže můžete příklady filtrovat podle okruhu nebo si skrýt řešení a vyzkoušet si výpočet sami.</p>
+<h2>28.1 Kalorimetrie a tepelná výměna</h2>
+<article class="example-card" data-category="kalorimetrie"><div class="example-header"><h3>Příklad 1: Směšování vody a zahřátého kovového tělesa v kalorimetru</h3><span class="badge badge-kalorimetrie">Kalorimetrie</span></div><div class="example-task"><strong>Zadání:</strong> Do tepelně izolované nádoby obsahující <em>m</em><sub>1</sub> = 0,2 kg vody (<em>t</em><sub>1</sub> = 20 °C, <em>c</em><sub>1</sub> = 4 200 J·kg<sup>-1</sup>·°C<sup>-1</sup>) vložíme měděné těleso (<em>m</em><sub>2</sub> = 0,2 kg, <em>t</em><sub>2</sub> = 80 °C, <em>c</em><sub>2</sub> = 380 J·kg<sup>-1</sup>·°C<sup>-1</sup>). Vypočtěte výslednou teplotu <em>t</em>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Kalorimetrická rovnice:</strong> <em>m</em><sub>1</sub> · <em>c</em><sub>1</sub> · (<em>t</em> − <em>t</em><sub>1</sub>) = <em>m</em><sub>2</sub> · <em>c</em><sub>2</sub> · (<em>t</em><sub>2</sub> − <em>t</em>)</p><p><strong>2. Výpočet:</strong> 4 200(<em>t</em> − 20) = 380(80 − <em>t</em>)  ⟹  4 580<em>t</em> = 114 400  ⟹  <strong>t ≈ 24,98 °C</strong>.</p></div></article>
+<article class="example-card" data-category="kalorimetrie"><div class="example-header"><h3>Příklad 2: Příprava koupele směšováním horké a studené vody</h3><span class="badge badge-kalorimetrie">Kalorimetrie</span></div><div class="example-task"><strong>Zadání:</strong> Ve vaně je <em>m</em><sub>2</sub> = 10 kg studené vody o teplotě <em>t</em><sub>2</sub> = 8 °C. Kolik kg horké vody (<em>t</em><sub>1</sub> = 85 °C) musíme přilít pro výslednou teplotu <em>t</em> = 24 °C?</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Rovnice:</strong> <em>m</em><sub>1</sub> · (<em>t</em><sub>1</sub> − <em>t</em>) = <em>m</em><sub>2</sub> · (<em>t</em> − <em>t</em><sub>2</sub>)</p><p><strong>2. Výpočet:</strong> <em>m</em><sub>1</sub> = 10 · (24 − 8) / (85 − 24) = 160 / 61 ≈ <strong>2,62 kg</strong>.</p></div></article>
+<article class="example-card" data-category="kalorimetrie"><div class="example-header"><h3>Příklad 3: Tání ledu ve vodě</h3><span class="badge badge-kalorimetrie">Kalorimetrie</span></div><div class="example-task"><strong>Zadání:</strong> Do <em>m</em><sub>v</sub> = 0,5 kg vody (25 °C) vhodíme 0,05 kg ledu (0 °C). <em>c</em> = 4 180 J·kg<sup>-1</sup>·°C<sup>-1</sup>, <em>l</em><sub>t</sub> = 334 000 J·kg<sup>-1</sup>. Rozpustí se všechen led a jaká bude teplota <em>t</em>?</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Ověření:</strong> <em>Q</em><sub>tání</sub> = 0,05 · 334 000 = 16 700 J &lt; <em>Q</em><sub>max,voda</sub> = 52 250 J (led se rozpustí celý).</p><p><strong>2. Rovnice:</strong> 0,5 · 4 180 · (25 − <em>t</em>) = 16 700 + 0,05 · 4 180 · <em>t</em>  ⟹  2 299<em>t</em> = 35 550  ⟹  <strong>t ≈ 15,46 °C</strong>.</p></div></article>
+<h2>28.2 Plyny, stavová rovnice a děje v plynech</h2>
+<article class="example-card" data-category="plyny"><div class="example-header"><h3>Příklad 4: Izochorické zahřátí plynu v tlakové lahvi</h3><span class="badge badge-plyny">Plyny</span></div><div class="example-task"><strong>Zadání:</strong> Ocelová láhev (<em>V</em> = 0,05 m<sup>3</sup>) obsahuje kyslík (<em>p</em><sub>1</sub> = 15 MPa, <em>t</em><sub>1</sub> = 20 °C). Zahřeje se na <em>t</em><sub>2</sub> = 50 °C. Určete nový tlak <em>p</em><sub>2</sub> a látkové množství <em>n</em>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Převod:</strong> <em>T</em><sub>1</sub> = 293,15 K, <em>T</em><sub>2</sub> = 323,15 K.</p><p><strong>2. Charlesův zákon:</strong> <em>p</em><sub>2</sub> = 15 · (323,15 / 293,15) ≈ <strong>16,53 MPa</strong>.</p><p><strong>3. Stavová rovnice:</strong> <em>n</em> = (<em>p</em><sub>1</sub> · <em>V</em>) / (<em>R</em> · <em>T</em><sub>1</sub>) = (15·10<sup>6</sup> · 0,05) / (8,314 · 293,15) ≈ <strong>307,7 mol</strong>.</p></div></article>
+<article class="example-card" data-category="plyny"><div class="example-header"><h3>Příklad 5: Hmotnost a hustota vzduchu v místnosti</h3><span class="badge badge-plyny">Plyny</span></div><div class="example-task"><strong>Zadání:</strong> Určete hmotnost <em>m</em> a hustotu <em>ρ</em> vzduchu v místnosti 5 × 4 × 3 m při <em>t</em> = 20 °C a <em>p</em> = 101 325 Pa (<em>M</em><sub>m</sub> = 0,029 kg·mol<sup>-1</sup>).</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Stavová rovnice:</strong> <em>m</em> = (<em>p</em> · <em>V</em> · <em>M</em><sub>m</sub>) / (<em>R</em> · <em>T</em>) = (101 325 · 60 · 0,029) / (8,314 · 293,15) ≈ <strong>72,34 kg</strong>.</p><p><strong>2. Hustota:</strong> <em>ρ</em> = 72,34 / 60 ≈ <strong>1,21 kg·m<sup>-3</sup></strong>.</p></div></article>
+<article class="example-card" data-category="plyny"><div class="example-header"><h3>Příklad 6: Střední kvadratická rychlost molekul dusíku</h3><span class="badge badge-plyny">Plyny</span></div><div class="example-task"><strong>Zadání:</strong> Jakou střední kvadratickou rychlostí <em>v</em><sub>k</sub> se pohybují molekuly dusíku (<em>M</em><sub>m</sub> = 0,028 kg·mol<sup>-1</sup>) při <em>t</em> = 27 °C?</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Převod:</strong> <em>T</em> = 300,15 K.</p><p><strong>2. Výpočet:</strong> <em>v</em><sub>k</sub> = √(3 · 8,314 · 300,15 / 0,028) = √267 369,3 ≈ <strong>517,1 m·s<sup>-1</sup></strong>.</p></div></article>
+<article class="example-card" data-category="plyny"><div class="example-header"><h3>Příklad 7: Izotermický děj – vzduchová bublina</h3><span class="badge badge-plyny">Plyny</span></div><div class="example-task"><strong>Zadání:</strong> Bublina o objemu <em>V</em><sub>1</sub> = 2,0 cm<sup>3</sup> stoupá z hloubky <em>h</em> = 20 m (<em>p</em><sub>a</sub> = 100 kPa, <em>ρ</em> = 1 000 kg·m<sup>-3</sup>, <em>T</em> = konst.). Jaký objem <em>V</em><sub>2</sub> má pod hladinou?</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Tlak v hloubce:</strong> <em>p</em><sub>1</sub> = 100 + 1 000 · 9,81 · 20 / 1 000 = <strong>296,2 kPa</strong>.</p><p><strong>2. Boyleův-Mariottův zákon:</strong> <em>V</em><sub>2</sub> = 2,0 · (296,2 / 100) = <strong>5,92 cm<sup>3</sup></strong>.</p></div></article>
+<article class="example-card" data-category="plyny"><div class="example-header"><h3>Příklad 8: Izobarický děj – práce, vnitřní energie a teplo</h3><span class="badge badge-plyny">Plyny</span></div><div class="example-task"><strong>Zadání:</strong> Jednoatomový plyn (<em>p</em> = 250 kPa, <em>V</em><sub>1</sub> = 0,020 m<sup>3</sup>, <em>T</em><sub>1</sub> = 300 K) izobaricky zahřejeme na <em>T</em><sub>2</sub> = 450 K. Určete <em>V</em><sub>2</sub>, <em>W&#x27;</em>, Δ<em>U</em> a <em>Q</em><sub>p</sub>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Gay-Lussacův zákon:</strong> <em>V</em><sub>2</sub> = 0,020 · (450 / 300) = <strong>0,030 m<sup>3</sup></strong>.</p><p><strong>2. Práce a energie:</strong> <em>W&#x27;</em> = 250 000 · 0,010 = <strong>2 500 J</strong>; Δ<em>U</em> = (3/2) <em>p</em> Δ<em>V</em> = <strong>3 750 J</strong>; <em>Q</em><sub>p</sub> = Δ<em>U</em> + <em>W&#x27;</em> = <strong>6 250 J</strong>.</p></div></article>
+<article class="example-card" data-category="plyny"><div class="example-header"><h3>Příklad 9: Spojený plynový zákon – meteorologický balón</h3><span class="badge badge-plyny">Plyny</span></div><div class="example-task"><strong>Zadání:</strong> Balón má u země (<em>p</em><sub>1</sub> = 101 kPa, <em>t</em><sub>1</sub> = 20 °C) objem <em>V</em><sub>1</sub> = 2,0 m<sup>3</sup>. Vystoupá do výšky s <em>p</em><sub>2</sub> = 25 kPa a <em>t</em><sub>2</sub> = -40 °C. Určete <em>V</em><sub>2</sub>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Spojený zákon:</strong> <em>V</em><sub>2</sub> = 2,0 · (101 / 25) · (233,15 / 293,15) ≈ <strong>6,43 m<sup>3</sup></strong>.</p></div></article>
+<article class="example-card" data-category="plyny"><div class="example-header"><h3>Příklad 10: Adiabatický děj – dieselový motor</h3><span class="badge badge-plyny">Plyny</span></div><div class="example-task"><strong>Zadání:</strong> Vzduch (<em>κ</em> = 1,40, <em>p</em><sub>1</sub> = 100 kPa, <em>t</em><sub>1</sub> = 27 °C) se adiabaticky stlačí na 1/16 objemu. Určete <em>p</em><sub>2</sub> a <em>t</em><sub>2</sub>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Tlak:</strong> <em>p</em><sub>2</sub> = 100 · 16<sup>1,4</sup> ≈ <strong>4 850 kPa = 4,85 MPa</strong>.</p><p><strong>2. Teplota:</strong> <em>T</em><sub>2</sub> = 300,15 · 16<sup>0,4</sup> ≈ <strong>909,9 K</strong> (<strong>636,7 °C</strong>).</p></div></article>
+<article class="example-card" data-category="plyny"><div class="example-header"><h3>Příklad 11: Daltonův zákon – směs dvou plynů</h3><span class="badge badge-plyny">Plyny</span></div><div class="example-task"><strong>Zadání:</strong> Nádoba A (<em>V</em><sub>1</sub> = 3 l, <em>p</em><sub>1</sub> = 200 kPa) a B (<em>V</em><sub>2</sub> = 2 l, <em>p</em><sub>2</sub> = 300 kPa) se propojí za stálé teploty. Jaký je výsledný tlak?</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Parciální tlaky:</strong> <em>p&#x27;</em><sub>1</sub> = 200 · (3/5) = 120 kPa; <em>p&#x27;</em><sub>2</sub> = 300 · (2/5) = 120 kPa.</p><p><strong>2. Daltonův zákon:</strong> <em>p</em> = 120 + 120 = <strong>240 kPa</strong>.</p></div></article>
+<h2>28.3 Tepelné stroje a zařízení</h2>
+<article class="example-card" data-category="stroje"><div class="example-header"><h3>Příklad 12: Carnotova účinnost parní turbíny</h3><span class="badge badge-stroje">Stroje</span></div><div class="example-task"><strong>Zadání:</strong> Turbína pracuje mezi <em>t</em><sub>1</sub> = 550 °C a <em>t</em><sub>2</sub> = 25 °C a přijímá <em>Q</em><sub>1</sub> = 200 MJ/s. Určete <em>η</em><sub>max</sub>, max. výkon a odpadní teplo.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Účinnost:</strong> <em>η</em><sub>max</sub> = 1 − (298,15 / 823,15) ≈ <strong>63,8 %</strong>.</p><p><strong>2. Výkon:</strong> <em>P</em> = 0,6378 · 200 = <strong>127,6 MW</strong>, odpadní teplo <strong>72,4 MJ/s</strong>.</p></div></article>
+<article class="example-card" data-category="stroje"><div class="example-header"><h3>Příklad 13: Účinnost spalovacího motoru</h3><span class="badge badge-stroje">Stroje</span></div><div class="example-task"><strong>Zadání:</strong> Motor má výkon 18 kW a za 1 h spotřebuje 6,5 l benzínu (<em>ρ</em> = 750 kg·m<sup>-3</sup>, <em>H</em> = 43 MJ·kg<sup>-1</sup>). Určete skutečnou účinnost <em>η</em>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Energie paliva a práce:</strong> <em>Q</em><sub>1</sub> = 0,006 5 · 750 · 43 = 209,6 MJ; <em>W&#x27;</em> = 18 000 · 3 600 = 64,8 MJ.</p><p><strong>2. Účinnost:</strong> <em>η</em> = 64,8 / 209,625 ≈ <strong>30,9 %</strong>.</p></div></article>
+<article class="example-card" data-category="stroje"><div class="example-header"><h3>Příklad 14: Účinnost obdélníkového cyklu v p-V diagramu</h3><span class="badge badge-stroje">Stroje</span></div><div class="example-task"><strong>Zadání:</strong> Jednoatomový plyn vykoná cyklus mezi <em>p</em><sub>1</sub> = 200 kPa, <em>p</em><sub>2</sub> = 100 kPa a <em>V</em><sub>1</sub> = 1 dm<sup>3</sup>, <em>V</em><sub>2</sub> = 3 dm<sup>3</sup>. Určete <em>W&#x27;</em>, <em>Q</em><sub>1</sub> a <em>η</em>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Práce a teplo:</strong> <em>W&#x27;</em> = 100 000 · 0,002 = <strong>200 J</strong>; <em>Q</em><sub>1</sub> = 150 + 1 000 = <strong>1 150 J</strong>.</p><p><strong>2. Účinnost:</strong> <em>η</em> = 200 / 1 150 ≈ <strong>17,4 %</strong>.</p></div></article>
+<article class="example-card" data-category="stroje"><div class="example-header"><h3>Příklad 15: Tepelné čerpadlo a rychlovarná konvice</h3><span class="badge badge-stroje">Stroje</span></div><div class="example-task"><strong>Zadání:</strong> a) Tepelné čerpadlo (<em>P</em><sub>topný</sub> = 8,4 kW, COP = 4,2) mezi 2 °C a 35 °C – určete COP<sub>max</sub> a <em>P</em><sub>el</sub>. b) Konvice (2 200 W) ohřeje 1,5 kg vody z 18 °C na 100 °C za 255 s – určete <em>η</em>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>a) TČ:</strong> COP<sub>max</sub> = 308,15 / (308,15 − 275,15) ≈ <strong>9,34</strong>; <em>P</em><sub>el</sub> = 8,4 / 4,2 = <strong>2,0 kW</strong>.</p><p><strong>b) Konvice:</strong> <em>Q</em><sub>už</sub> = 514 140 J, <em>E</em><sub>el</sub> = 561 000 J  ⟹  <em>η</em> ≈ <strong>91,7 %</strong>.</p></div></article>
+<h2>28.4 Kmitání, vlnění, elektřina a magnetismus</h2>
+<article class="example-card" data-category="kmitani"><div class="example-header"><h3>Příklad 16: Pružinový oscilátor a energie kmitání</h3><span class="badge badge-kmitani">Kmitani</span></div><div class="example-task"><strong>Zadání:</strong> Závaží o hmotnosti <em>m</em> = 0,4 kg kmitá na pružině o tuhosti <em>k</em> = 40 N·m<sup>-1</sup> s amplitudou <em>y</em><sub>m</sub> = 0,05 m. Určete periodu <em>T</em>, maximální rychlost <em>v</em><sub>max</sub> a celkovou energii <em>E</em>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Perioda:</strong> <em>T</em> = 2π · √(<em>m</em> / <em>k</em>) = 2π · √(0,4 / 40) = 2π · 0,1 ≈ <strong>0,628 s</strong>.</p><p><strong>2. Úhlová frekvence a rychlost:</strong> <em>ω</em> = √(<em>k</em> / <em>m</em>) = 10 rad·s<sup>-1</sup>  ⟹  <em>v</em><sub>max</sub> = <em>ω</em> · <em>y</em><sub>m</sub> = 10 · 0,05 = <strong>0,5 m·s<sup>-1</sup></strong>.</p><p><strong>3. Energie:</strong> <em>E</em> = (1/2) · <em>k</em> · <em>y</em><sub>m</sub><sup>2</sup> = 0,5 · 40 · 0,002 5 = <strong>0,05 J</strong>.</p></div></article>
+<article class="example-card" data-category="kmitani"><div class="example-header"><h3>Příklad 17: Vlnová délka zvuku ve vzduchu a ve vodě</h3><span class="badge badge-kmitani">Kmitani</span></div><div class="example-task"><strong>Zadání:</strong> Komorní a (frekvence <em>f</em> = 440 Hz) zní ve vzduchu (<em>v</em><sub>1</sub> = 340 m·s<sup>-1</sup>) a šíří se i do vody (<em>v</em><sub>2</sub> = 1 480 m·s<sup>-1</sup>). Určete vlnové délky <em>λ</em><sub>1</sub> a <em>λ</em><sub>2</sub>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Ve vzduchu:</strong> <em>λ</em><sub>1</sub> = <em>v</em><sub>1</sub> / <em>f</em> = 340 / 440 ≈ <strong>0,773 m</strong>.</p><p><strong>2. Ve vodě:</strong> Frekvence se při přechodu nemění, proto <em>λ</em><sub>2</sub> = 1 480 / 440 ≈ <strong>3,36 m</strong>.</p></div></article>
+<article class="example-card" data-category="elektrina"><div class="example-header"><h3>Příklad 18: Coulombova síla a intenzita elektrického pole</h3><span class="badge badge-elektrina">Elektrina</span></div><div class="example-task"><strong>Zadání:</strong> Dva bodové náboje <em>Q</em><sub>1</sub> = 4 μC a <em>Q</em><sub>2</sub> = 9 μC jsou ve vakuu ve vzdálenosti <em>r</em> = 0,3 m. Určete velikost elektrické síly <em>F</em><sub>e</sub> a intenzitu <em>E</em> od náboje <em>Q</em><sub>1</sub> v místě <em>Q</em><sub>2</sub>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Coulombova síla:</strong> <em>F</em><sub>e</sub> = 8,988·10<sup>9</sup> · (4·10<sup>-6</sup> · 9·10<sup>-6</sup>) / 0,3<sup>2</sup> = 8,988·10<sup>9</sup> · 4·10<sup>-10</sup> ≈ <strong>3,60 N</strong>.</p><p><strong>2. Intenzita:</strong> <em>E</em> = <em>F</em><sub>e</sub> / <em>Q</em><sub>2</sub> = 3,60 / (9·10<sup>-6</sup>) = <strong>400 000 N·C<sup>-1</sup></strong>.</p></div></article>
+<article class="example-card" data-category="elektrina"><div class="example-header"><h3>Příklad 19: Paralelní a sériové zapojení rezistorů, Ohmův zákon</h3><span class="badge badge-elektrina">Elektrina</span></div><div class="example-task"><strong>Zadání:</strong> Rezistory <em>R</em><sub>1</sub> = 10 Ω a <em>R</em><sub>2</sub> = 15 Ω jsou zapojeny paralelně ke zdroji <em>U</em> = 12 V. Určete celkový odpor <em>R</em>, celkový proud <em>I</em> a celkový výkon <em>P</em>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Celkový odpor:</strong> 1/<em>R</em> = 1/10 + 1/15 = 5/30 = 1/6  ⟹  <strong>R = 6 Ω</strong>.</p><p><strong>2. Celkový proud a výkon:</strong> <em>I</em> = <em>U</em> / <em>R</em> = 12 / 6 = <strong>2,0 A</strong>; <em>P</em> = <em>U</em> · <em>I</em> = 12 · 2,0 = <strong>24 W</strong>.</p></div></article>
+<article class="example-card" data-category="elektrina"><div class="example-header"><h3>Příklad 20: Ampérova síla na vodič v magnetickém poli</h3><span class="badge badge-elektrina">Elektrina</span></div><div class="example-task"><strong>Zadání:</strong> Přímým vodičem o délce <em>l</em> = 0,5 m prochází proud <em>I</em> = 4 A kolmo k indukčním čarám homogenního magnetického pole s <em>B</em> = 0,2 T. Určete magnetickou sílu <em>F</em><sub>m</sub>.</div><button type="button" class="toggle-solution-btn" aria-expanded="true">Skrýt postup řešení</button><div class="example-solution"><p><strong>1. Vzorec (sin 90° = 1):</strong> <em>F</em><sub>m</sub> = <em>B</em> · <em>I</em> · <em>l</em> = 0,2 · 4 · 0,5 = <strong>0,4 N</strong>.</p></div></article>
+        </article>
+
+        <div class="pager">
+            <a href="29-astrofyzika-kosmologie.html" class="pager-btn">← 27. Astrofyzika a kosmologie</a>
+            <a href="16-prehled-vzorcu-konstant.html" class="pager-btn pager-next">29. Přehled vzorců a konstant →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

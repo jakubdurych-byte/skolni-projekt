@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. Anomálie vody | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2. ročník: Molekulová fyzika a termika</span>
+                <span>/</span>
+                <span>Kapitola 10</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="04-anomalie-vody">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="01-kineticka-teorie.html" class="module-subnav-link " data-ch-nav="01-kineticka-teorie">7. Kinetická teorie látek</a><a href="02-vnitrni-energie-teplota.html" class="module-subnav-link " data-ch-nav="02-vnitrni-energie-teplota">8. Vnitřní energie a teplota</a><a href="03-tepelna-vymena-kalorimetrie.html" class="module-subnav-link " data-ch-nav="03-tepelna-vymena-kalorimetrie">9. Tepelná výměna a kalorimetrie</a><a href="04-anomalie-vody.html" class="module-subnav-link active" data-ch-nav="04-anomalie-vody">10. Anomálie vody</a><a href="05-pevne-latky-kapaliny.html" class="module-subnav-link " data-ch-nav="05-pevne-latky-kapaliny">11. Pevné látky a kapaliny</a><a href="06-zmeny-skupenstvi.html" class="module-subnav-link " data-ch-nav="06-zmeny-skupenstvi">12. Změny skupenství látek</a><a href="07-plyny.html" class="module-subnav-link " data-ch-nav="07-plyny">13. Plyny a děje v plynech</a><a href="08-termodynamika-stroje.html" class="module-subnav-link " data-ch-nav="08-termodynamika-stroje">14. Termodynamika a tepelné stroje</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>4. Anomálie vody a její fyzikální význam</h1>
+      <p class="chapter-lead">Neobvyklé chování vody mezi 0 °C a 4 °C, vodíkové můstky a ekologický i technický význam.</p>
+      
+      <h2>4.1 Chování a definice anomálie</h2>
+<ul><li>Při ohřevu z 0 °C na 4 °C se objem vody <strong>zmenšuje</strong> a její hustota <strong>roste</strong>.</li><li>Při teplotě <strong>3,98 °C (≈ 4 °C)</strong> má čistá voda maximální hustotu (<em>ρ</em><sub>max</sub> ≈ 1 000 kg·m<sup>-3</sup>).</li><li>Teprve nad 4 °C se voda chová standardně – její objem roste a hustota klesá.</li></ul>
+<h2>4.2 Mikroskopická příčina a význam</h2>
+<ul><li><strong>Vodíkové můstky:</strong> Led (0 °C) má otevřenou hexagonální mřížku s dutinami, proto má menší hustotu (<em>ρ</em><sub>led</sub> ≈ 917 kg·m<sup>-3</sup>) a plave na vodě.</li><li><strong>Ekologický význam:</strong> Nejtěžší voda o teplotě 4 °C klesá ke dnu rybníků, zatímco na hladině vzniká ledová krusta působící jako izolant – život u dna tak přežije zimu.</li><li><strong>Technický význam:</strong> Mrznoucí voda zvětšuje objem asi o 9 % a dokáže roztrhnout nezaizolované potrubí či skály (mrazové zvětrávání).</li></ul>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců a klíčových hodnot kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Maximální hustota vody (při 3,98 °C):</strong> <em>ρ</em><sub>max</sub> = 1 000 kg·m<sup>-3</sup> &nbsp;|&nbsp; <strong>Hustota ledu (0 °C):</strong> <em>ρ</em><sub>led</sub> = 917 kg·m<sup>-3</sup></p>
+          <p><strong>Objem a hmotnost:</strong> <em>V</em> = <em>m</em> / <em>ρ</em> &nbsp;|&nbsp; <strong>Plování tělesa (ponořená část):</strong> <em>V</em><sub>pon</sub> / <em>V</em> = <em>ρ</em><sub>těl</sub> / <em>ρ</em><sub>kap</sub></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Zvětšení objemu vody při zmrznutí (prasknutí potrubí)</h3>
+    <span class="badge">Anomálie vody</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> V trubce zůstane 10 litrů (10 kg) vody o teplotě 4 °C (<em>ρ</em><sub>v</sub> = 1 000 kg·m<sup>-3</sup>). Jaký objem zaujme tato voda poté, co zmrzne v led o teplotě 0 °C (<em>ρ</em><sub>led</sub> = 917 kg·m<sup>-3</sup>)?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Počáteční objem vody:</strong> <em>V</em><sub>1</sub> = 10 l = 10 dm<sup>3</sup>.</p><p><strong>2. Objem vzniklého ledu (hmotnost <em>m</em> = 10 kg se nemění):</strong> <em>V</em><sub>2</sub> = <em>m</em> / <em>ρ</em><sub>led</sub> = 10 / 917 m<sup>3</sup> = 0,010905 m<sup>3</sup> = <strong>10,91 litru</strong>.</p><p><strong>3. Závěr:</strong> Objem vzrostl o téměř <strong>0,91 litru (+9,1 %)</strong>, což vyvine obrovský tlak na stěny potrubí.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Jaká část ledovce je ponořena pod hladinou moře?</h3>
+    <span class="badge">Plování ledu</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Ledová kra o hustotě <em>ρ</em><sub>led</sub> = 917 kg·m<sup>-3</sup> plave v mořské vodě o hustotě <em>ρ</em><sub>moře</sub> = 1 025 kg·m<sup>-3</sup>. Kolik procent objemu ledovce je skryto pod hladinou?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Podmínka plování (<em>F</em><sub>G</sub> = <em>F</em><sub>vz</sub>):</strong> <em>V</em> · <em>ρ</em><sub>led</sub> · <em>g</em> = <em>V</em><sub>pon</sub> · <em>ρ</em><sub>moře</sub> · <em>g</em>.</p><p><strong>2. Poměr ponořeného objemu:</strong> <em>V</em><sub>pon</sub> / <em>V</em> = 917 / 1 025 ≈ 0,895 = <strong>89,5 %</strong> (nad hladinou vyčnívá jen 10,5 %).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Teplo na ohřátí vody u dna jezera z 0 °C na 4 °C</h3>
+    <span class="badge">Tepelná bilance</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Kolik tepla je potřeba k ohřátí 1 m<sup>3</sup> vody (<em>m</em> = 1 000 kg) z 0 °C na teplotu její maximální hustoty 4 °C? (<em>c</em> = 4 180 J·kg<sup>-1</sup>·K<sup>-1</sup>.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>Q</em> = <em>m</em> · <em>c</em> · Δ<em>t</em></p><p><strong>2. Výpočet:</strong> <em>Q</em> = 1 000 · 4 180 · (4 − 0) = 16 720 000 J = <strong>16,72 MJ</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="03-tepelna-vymena-kalorimetrie.html" class="pager-btn">← 9. Tepelná výměna a kalorimetrie</a>
+            <a href="05-pevne-latky-kapaliny.html" class="pager-btn pager-next">11. Pevné látky a kapaliny →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

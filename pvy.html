@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVY — Programové vybavení | Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="fyzika/index.html" class="nav-pill">⚛️ Fyzika</a>
+                <a href="pvy.html" class="nav-pill active">💻 PVY</a>
+                <a href="tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <section class="hero-section">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Předmět PVY • Programové vybavení</span>
+            </div>
+            <h1 class="hero-title">
+                PVY — Programové vybavení.<br>
+                <span>Web, systémy a nástroje.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Tvorba moderních webových stránek (HTML5, CSS3, JavaScript), práce s operačním systémem Linux v příkazové řádce, kybernetická bezpečnost a vývojářské nástroje.
+            </p>
+        </section>
+
+        <section class="modules-overview">
+            <div class="section-intro">
+                <div class="section-tag">Témata předmětu PVY</div>
+                <h2 class="section-heading">Vyber si téma a podstránku</h2>
+            </div>
+
+            <div class="bento-container">
+
+                <div class="bento-card">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🟠</span>
+                        <div><span class="bento-badge badge-html">HTML5</span></div>
+                        <h3 class="bento-title">HTML &amp; Kostra webu</h3>
+                        <p class="bento-desc">Základní stavební kámen webových stránek. Od kostry dokumentu přes seznamy a tabulky až po sémantiku a formuláře.</p>
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podstránky s učivem:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="kostra-text.html" class="submodule-pill">1. Kostra &amp; Text</a>
+                                <a href="seznamy.html" class="submodule-pill">2. Seznamy</a>
+                                <a href="tabulky.html" class="submodule-pill">3. Tabulky</a>
+                                <a href="formulare.html" class="submodule-pill">4. Formuláře</a>
+                                <a href="semantika.html" class="submodule-pill">5. Sémantika</a>
+                                <a href="media.html" class="submodule-pill">6. Média</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="html-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít HTML rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🔷</span>
+                        <div><span class="bento-badge badge-css">CSS3</span></div>
+                        <h3 class="bento-title">CSS Styly &amp; Moderní Layout</h3>
+                        <p class="bento-desc">Vizuální styl, barvy, Box Model, Flexbox, CSS Grid a responzivní Media Queries pro mobilní zařízení.</p>
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podstránky s učivem:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="css-styly.html" class="submodule-pill">1. Box Model &amp; Styly</a>
+                                <a href="css-layout.html" class="submodule-pill">2. Flexbox &amp; Grid</a>
+                                <a href="responzivita.html" class="submodule-pill">3. Responzivita &amp; Animace</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="css-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít CSS rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">⚡</span>
+                        <div><span class="bento-badge badge-js">JavaScript &amp; DOM</span></div>
+                        <h3 class="bento-title">Klientské skriptování &amp; DOM</h3>
+                        <p class="bento-desc">Interaktivita webových stránek: manipulace s HTML elementy, události, živé projekty a ES6 základy.</p>
+                        <div class="bento-submodules-box">
+                            <div class="bento-submodules-title">Podstránky s učivem:</div>
+                            <div class="bento-submodules-grid">
+                                <a href="js-zaklady.html" class="submodule-pill">1. Základy &amp; ES6</a>
+                                <a href="javascript.html" class="submodule-pill">2. DOM manipulace &amp; Projekty</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="js-hub.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít JS rozcestník</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🐧</span>
+                        <div><span class="bento-badge badge-py">Operační systémy</span></div>
+                        <h3 class="bento-title">Linux &amp; Příkazová řádka (CLI)</h3>
+                        <p class="bento-desc">Práce v terminálu, správa souborů a oprávnění (chmod), procesy, přesměrování vstupu/výstupu a základy Bashe.</p>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="linux.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Linux &amp; CLI</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🛡️</span>
+                        <div><span class="bento-badge badge-sec">Bezpečnost</span></div>
+                        <h3 class="bento-title">Kybernetická bezpečnost</h3>
+                        <p class="bento-desc">Živý generátor SHA-256 hashů, měřič entropie hesel, šifrování AES/RSA a obrana proti SQL Injection.</p>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="bezpecnost.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Bezpečnost</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-card-top">
+                        <span class="bento-icon">🛠️</span>
+                        <div><span class="bento-badge badge-net">Generátory</span></div>
+                        <h3 class="bento-title">Produktivní nástroje</h3>
+                        <p class="bento-desc">Vizuální generátor HTML tabulek a CSS stínů (Box-Shadow) s okamžitým náhledem a kopírováním kódu.</p>
+                    </div>
+                    <div class="bento-card-action">
+                        <a href="nastroje.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <span>Otevřít Nástroje</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — PVY</strong> | <a href="index.html" style="color:inherit;">← Zpět na Uvítání</a></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

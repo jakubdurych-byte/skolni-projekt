@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Tuhé těleso a gravitační pole | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>1. ročník: Úvod a mechanika</span>
+                <span>/</span>
+                <span>Kapitola 5</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="21-tuhe-teleso-gravitace">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="17-fyzikalni-veliciny-jednotky.html" class="module-subnav-link " data-ch-nav="17-fyzikalni-veliciny-jednotky">1. Fyzikální veličiny, SI a vektory</a><a href="18-kinematika.html" class="module-subnav-link " data-ch-nav="18-kinematika">2. Kinematika (pohyb a vrhy)</a><a href="19-dynamika-sily.html" class="module-subnav-link " data-ch-nav="19-dynamika-sily">3. Dynamika a Newtonovy zákony</a><a href="20-prace-energie-vykon.html" class="module-subnav-link " data-ch-nav="20-prace-energie-vykon">4. Práce, výkon a energie</a><a href="21-tuhe-teleso-gravitace.html" class="module-subnav-link active" data-ch-nav="21-tuhe-teleso-gravitace">5. Tuhé těleso a gravitační pole</a><a href="22-mechanika-tekutin.html" class="module-subnav-link " data-ch-nav="22-mechanika-tekutin">6. Mechanika kapalin a plynů</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>5. Tuhé těleso a gravitační pole</h1>
+      <p class="chapter-lead">Moment síly, těžiště, rovnováha, moment setrvačnosti, Newtonův gravitační zákon, Keplerovy zákony a kosmické rychlosti.</p>
+      
+<p>Reálná tělesa nelze vždy nahradit hmotným bodem – mohou se otáčet. Druhá část kapitoly se věnuje gravitačnímu poli Země a vesmírných těles.</p>
+
+<h2>1. Mechanika tuhého tělesa</h2>
+<ul>
+  <li><strong>Moment síly vzhledem k ose otáčení:</strong> <em>M</em> = <em>F</em> · <em>d</em> [N·m], kde <em>d</em> je rameno síly (kolmá vzdálenost nositelky síly od osy).</li>
+  <li><strong>Podmínky rovnováhy tuhého tělesa:</strong> Výslednice všech sil je nulová (<strong>ΣF<sub>i</sub> = 0</strong>) a výsledný moment všech sil je nulový (<strong>ΣM<sub>i</sub> = 0</strong>).</li>
+  <li><strong>Těžiště:</strong> Působiště tíhové síly tělesa. Poloha těžiště určuje stálost rovnováhy (stálá, vratká, volná).</li>
+  <li><strong>Kinetická energie rotujícího tělesa:</strong> <em>E</em><sub>k,rot</sub> = ½ · <em>J</em> · <em>ω</em><sup>2</sup>, kde <em>J</em> = Σ<em>m<sub>i</sub>r<sub>i</sub></em><sup>2</sup> je moment setrvačnosti.</li>
+</ul>
+
+<h2>2. Newtonův gravitační zákon a gravitační pole</h2>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Gravitace a kosmické rychlosti</div>
+  <div class="callout-body">
+    <p><strong>Newtonův gravitační zákon:</strong> <em>F</em><sub>g</sub> = <em>κ</em> · (<em>m</em><sub>1</sub> · <em>m</em><sub>2</sub>) / <em>r</em><sup>2</sup>, kde <em>κ</em> = 6,67 · 10<sup>-11</sup> N·m<sup>2</sup>·kg<sup>-2</sup></p>
+    <p><strong>Intenzita gravitačního pole:</strong> <em>K</em> = <em>F</em><sub>g</sub> / <em>m</em> = <em>κ</em> · <em>M</em> / <em>r</em><sup>2</sup></p>
+    <p><strong>1. kosmická rychlost (kruhová):</strong> <em>v</em><sub>1</sub> = √(<em>κM</em> / <em>R</em>) ≈ 7,9 km/s (oběh kolem Země)</p>
+    <p><strong>2. kosmická rychlost (úniková):</strong> <em>v</em><sub>2</sub> = √(2<em>κM</em> / <em>R</em>) ≈ 11,2 km/s (únik ze Země)</p>
+  </div>
+</div>
+
+<h2>3. Keplerovy zákony pohybu planet</h2>
+<ul>
+  <li><strong>1. Keplerův zákon:</strong> Planety obíhají kolem Slunce po elipsách, v jejichž společném ohnisku je Slunce.</li>
+  <li><strong>2. Keplerův zákon:</strong> Plochy opsané průvodičem planety za stejný čas jsou stejné (planeta se pohybuje rychleji v přísluní než v odsluní).</li>
+  <li><strong>3. Keplerův zákon:</strong> Poměr druhých mocnin oběžných dob dvou planet je roven poměru třetích mocnin jejich velkých poloos: <em>T</em><sub>1</sub><sup>2</sup> / <em>T</em><sub>2</sub><sup>2</sup> = <em>a</em><sub>1</sub><sup>3</sup> / <em>a</em><sub>2</sub><sup>3</sup>.</li>
+</ul>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Moment síly:</strong> <em>M</em> = <em>F</em> · <em>d</em> &nbsp;|&nbsp; <strong>Rovnováha na páce:</strong> <em>F</em><sub>1</sub> · <em>d</em><sub>1</sub> = <em>F</em><sub>2</sub> · <em>d</em><sub>2</sub></p>
+          <p><strong>Newtonův gravitační zákon:</strong> <em>F</em><sub>g</sub> = <em>κ</em> · (<em>m</em><sub>1</sub><em>m</em><sub>2</sub>) / <em>r</em><sup>2</sup> &nbsp;|&nbsp; <em>κ</em> = 6,67 · 10<sup>-11</sup> N·m<sup>2</sup>·kg<sup>-2</sup></p>
+          <p><strong>1. kosmická rychlost:</strong> <em>v</em><sub>1</sub> = √(<em>κM</em> / <em>r</em>) &nbsp;|&nbsp; <strong>3. Keplerův zákon:</strong> <em>T</em><sub>1</sub><sup>2</sup> / <em>T</em><sub>2</sub><sup>2</sup> = <em>a</em><sub>1</sub><sup>3</sup> / <em>a</em><sub>2</sub><sup>3</sup></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Rovnováha momentů sil na páce</h3>
+    <span class="badge">Tuhé těleso</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Na jednom rameni houpačky ve vzdálenosti <em>d</em><sub>1</sub> = 2,4 m od osy sedí dítě o hmotnosti <em>m</em><sub>1</sub> = 30 kg. Jak daleko od osy musí sedět dospělý o hmotnosti <em>m</em><sub>2</sub> = 72 kg, aby byla houpačka v rovnováze?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Podmínka rovnováhy momentů sil:</strong> <em>M</em><sub>1</sub> = <em>M</em><sub>2</sub>  ⟹  <em>m</em><sub>1</sub><em>g</em> · <em>d</em><sub>1</sub> = <em>m</em><sub>2</sub><em>g</em> · <em>d</em><sub>2</sub>.</p><p><strong>2. Výpočet:</strong> 30 · 2,4 = 72 · <em>d</em><sub>2</sub>  ⟹  72 = 72 · <em>d</em><sub>2</sub>  ⟹  <em>d</em><sub>2</sub> = <strong>1,0 m</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Gravitační síla mezi Zemí a družicí</h3>
+    <span class="badge">Gravitace</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Vypočítejte gravitační sílu působící na družici o hmotnosti <em>m</em> = 500 kg ve výšce <em>h</em> = 3 600 km nad povrchem Země. (<em>M</em><sub>Z</sub> = 6 · 10<sup>24</sup> kg, <em>R</em><sub>Z</sub> = 6 400 km, <em>κ</em> = 6,67 · 10<sup>-11</sup> N·m<sup>2</sup>·kg<sup>-2</sup>.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzdálenost od středu Země:</strong> <em>r</em> = <em>R</em><sub>Z</sub> + <em>h</em> = 6 400 + 3 600 = 10 000 km = 10<sup>7</sup> m.</p><p><strong>2. Newtonův gravitační zákon:</strong> <em>F</em><sub>g</sub> = <em>κ</em> · (<em>M</em><sub>Z</sub> · <em>m</em>) / <em>r</em><sup>2</sup> = 6,67 · 10<sup>-11</sup> · (6 · 10<sup>24</sup> · 500) / (10<sup>7</sup>)<sup>2</sup></p><p><strong>3. Výslečet:</strong> <em>F</em><sub>g</sub> = (200,1 · 10<sup>15</sup>) / 10<sup>14</sup> ≈ <strong>2 001 N ≈ 2,0 kN</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: 3. Keplerův zákon pro oběžnou dobu planety</h3>
+    <span class="badge">Keplerovy zákony</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Planeta Mars obíhá kolem Slunce ve střední vzdálenosti <em>a</em><sub>M</sub> = 1,52 AU (Země má <em>a</em><sub>Z</sub> = 1 AU, <em>T</em><sub>Z</sub> = 1 rok). Určete oběžnou dobu Marsu v pozemských letech.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. 3. Keplerův zákon:</strong> (<em>T</em><sub>M</sub> / <em>T</em><sub>Z</sub>)<sup>2</sup> = (<em>a</em><sub>M</sub> / <em>a</em><sub>Z</sub>)<sup>3</sup></p><p><strong>2. Výpočet:</strong> <em>T</em><sub>M</sub> = √(1,52<sup>3</sup>) = √(3,5118) ≈ <strong>1,87 roku</strong> (cca 684 dní).</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="20-prace-energie-vykon.html" class="pager-btn">← 4. Práce, výkon a energie</a>
+            <a href="22-mechanika-tekutin.html" class="pager-btn pager-next">6. Mechanika kapalin a plynů →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17. Elektrostatika a pole | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2.–3. ročník: Elektřina a magnetismus</span>
+                <span>/</span>
+                <span>Kapitola 17</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="11-elektrostatika">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="11-elektrostatika.html" class="module-subnav-link active" data-ch-nav="11-elektrostatika">17. Elektrostatika a pole</a><a href="12-elektricky-proud-kovy.html" class="module-subnav-link " data-ch-nav="12-elektricky-proud-kovy">18. Elektrický proud a obvody</a><a href="13-proud-kapaliny-polovodice.html" class="module-subnav-link " data-ch-nav="13-proud-kapaliny-polovodice">19. Kapaliny, plyny a polovodiče</a><a href="14-magneticke-pole-indukce.html" class="module-subnav-link " data-ch-nav="14-magneticke-pole-indukce">20. Magnetismus a indukce</a><a href="23-stridavy-proud-elmag.html" class="module-subnav-link " data-ch-nav="23-stridavy-proud-elmag">21. Střídavý proud a elmag. vlny</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>11. Elektrostatika a elektrické pole</h1>
+      <p class="chapter-lead">Elektrický náboj, Coulombův zákon, intenzita el. pole, elektrický potenciál, napětí, práce a kondenzátory.</p>
+      
+      <h2>11.1 Elektrický náboj a Coulombův zákon</h2>
+<p>Elektrický náboj (<em>Q</em> nebo <em>q</em>) je základní vlastnost částic hmoty; jednotkou je Coulomb [C]. Elementární náboj elektronu/protonu je <em>e</em> = 1,602 · 10<sup>-19</sup> C. V izolované soustavě platí <strong>zákon zachování elektrického náboje</strong>.</p>
+<div class="callout callout-formula"><div class="callout-title">Coulombův zákon (síla mezi dvěma bodovými náboji)</div><div class="callout-body"><p><strong>F<sub>e</sub> = (1 / (4π · ε<sub>0</sub> · ε<sub>r</sub>)) · (|Q<sub>1</sub> · Q<sub>2</sub>| / r<sup>2</sup>) = k · (|Q<sub>1</sub> · Q<sub>2</sub>| / r<sup>2</sup>)</strong></p><p>• <em>k</em> = 1 / (4π<em>ε</em><sub>0</sub>) ≈ <strong>8,988 · 10<sup>9</sup> N·m<sup>2</sup>·C<sup>-2</sup></strong> (ve vakuu, <em>ε</em><sub>r</sub> = 1)</p><p>• <em>ε</em><sub>0</sub> = 8,854 · 10<sup>-12</sup> F·m<sup>-1</sup> (permitivita vakua), <em>ε</em><sub>r</sub> = relativní permitivita prostředí</p></div></div>
+<h2>11.2 Intenzita elektrického pole, potenciál a napětí</h2>
+<div class="callout callout-formula"><div class="callout-title">Veličiny popisující elektrické pole</div><div class="callout-body"><p><strong>Intenzita elektrického pole (E):</strong>  <strong>E = F<sub>e</sub> / q</strong> [N·C<sup>-1</sup> nebo V·m<sup>-1</sup>]</p><p>• Pro bodový náboj <em>Q</em>:  <strong>E = k · |Q| / r<sup>2</sup></strong>   |   Pro homogenní pole mezi deskami:  <strong>E = U / d</strong></p><p><strong>Elektrický potenciál (φ):</strong>  <strong>φ = E<sub>p</sub> / q</strong> [V]   |   <strong>Elektrické napětí (U):</strong>  <strong>U = φ<sub>1</sub> − φ<sub>2</sub> = W / q</strong> [V]</p><p><strong>Práce v elektrickém poli:</strong>  <strong>W = q · U = q · E · d</strong></p></div></div>
+<h2>11.3 Elektrická kapacita a kondenzátor</h2>
+<p>Kondenzátor je součástka tvořená dvěma vodivými deskami oddělenými dielektrikem, která slouží k uchování elektrického náboje a energie.</p>
+<div class="callout callout-formula"><div class="callout-title">Kapacita, energie a zapojení kondenzátorů</div><div class="callout-body"><p><strong>Kapacita (C):</strong>  <strong>C = Q / U</strong> [F – Farad]   |   <strong>Deskový kondenzátor:</strong>  <strong>C = ε<sub>0</sub> · ε<sub>r</sub> · (S / d)</strong></p><p><strong>Energie nabitého kondenzátoru:</strong>  <strong>E<sub>p</sub> = (1/2) · C · U<sup>2</sup> = (1/2) · Q · U</strong></p><p><strong>Paralelní zapojení:</strong>  <strong>C = C<sub>1</sub> + C<sub>2</sub> + ...</strong>   |   <strong>Sériové zapojení:</strong>  <strong>1/C = 1/C<sub>1</sub> + 1/C<sub>2</sub> + ...</strong></p></div></div>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Coulombův zákon:</strong> <em>F</em><sub>e</sub> = <em>k</em> · |<em>Q</em><sub>1</sub><em>Q</em><sub>2</sub>| / (<em>ε</em><sub>r</sub><em>r</em><sup>2</sup>), kde <em>k</em> ≈ 9 · 10<sup>9</sup> N·m<sup>2</sup>·C<sup>-2</sup></p>
+          <p><strong>Intenzita el. pole:</strong> <em>E</em> = <em>F</em><sub>e</sub> / <em>q</em> = <em>U</em> / <em>d</em> &nbsp;|&nbsp; <strong>Práce v poli:</strong> <em>W</em> = <em>q</em> · <em>U</em></p>
+          <p><strong>Kondenzátor:</strong> <em>C</em> = <em>Q</em> / <em>U</em> = <em>ε</em><sub>0</sub><em>ε</em><sub>r</sub><em>S</em> / <em>d</em> &nbsp;|&nbsp; <strong>Energie kondenzátoru:</strong> <em>E</em><sub>p</sub> = ½ <em>C</em> <em>U</em><sup>2</sup></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Elektrická síla mezi dvěma náboji (Coulombův zákon)</h3>
+    <span class="badge">Elektrostatika</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Dva bodové náboje <em>Q</em><sub>1</sub> = 2 μC a <em>Q</em><sub>2</sub> = 3 μC jsou ve vakuu vzdáleny <em>r</em> = 30 cm = 0,3 m. Jak velkou silou se odpuzují? (<em>k</em> = 9 · 10<sup>9</sup> N·m<sup>2</sup>·C<sup>-2</sup>.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Převod jednotek:</strong> <em>Q</em><sub>1</sub> = 2 · 10<sup>-6</sup> C, <em>Q</em><sub>2</sub> = 3 · 10<sup>-6</sup> C, <em>r</em> = 0,3 m.</p><p><strong>2. Coulombův zákon:</strong> <em>F</em><sub>e</sub> = <em>k</em> · (<em>Q</em><sub>1</sub> · <em>Q</em><sub>2</sub>) / <em>r</em><sup>2</sup> = 9 · 10<sup>9</sup> · (2 · 10<sup>-6</sup> · 3 · 10<sup>-6</sup>) / 0,09</p><p><strong>3. Výpočet:</strong> <em>F</em><sub>e</sub> = (54 · 10<sup>-3</sup>) / 0,09 = <strong>0,6 N</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Intenzita pole mezi deskami a síla na elektron</h3>
+    <span class="badge">Homogenní pole</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Mezi rovnoběžnými deskami vzdálenými <em>d</em> = 2 cm = 0,02 m je napětí <em>U</em> = 500 V. Jaká je intenzita pole <em>E</em> a jaká síla působí na elektron (<em>e</em> = 1,6 · 10<sup>-19</sup> C) mezi deskami?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Intenzita pole:</strong> <em>E</em> = <em>U</em> / <em>d</em> = 500 / 0,02 = <strong>25 000 V/m = 25 kV/m</strong>.</p><p><strong>2. Elektrická síla na elektron:</strong> <em>F</em><sub>e</sub> = <em>e</em> · <em>E</em> = 1,6 · 10<sup>-19</sup> · 25 000 = <strong>4 · 10<sup>-15</sup> N</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Náboj a energie nabitého kondenzátoru</h3>
+    <span class="badge">Kondenzátory</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Kondenzátor o kapacitě <em>C</em> = 100 μF = 10<sup>-4</sup> F připojíme ke zdroji o napětí <em>U</em> = 200 V. Jaký náboj pojme a jakou energii uchová?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Náboj:</strong> <em>Q</em> = <em>C</em> · <em>U</em> = 10<sup>-4</sup> · 200 = <strong>0,02 C = 20 mC</strong>.</p><p><strong>2. Energie elektrického pole:</strong> <em>E</em><sub>p</sub> = ½ · <em>C</em> · <em>U</em><sup>2</sup> = 0,5 · 10<sup>-4</sup> · 200<sup>2</sup> = 0,5 · 10<sup>-4</sup> · 40 000 = <strong>2,0 J</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="10-vlneni-akustika.html" class="pager-btn">← 16. Vlnění a akustika</a>
+            <a href="12-elektricky-proud-kovy.html" class="pager-btn pager-next">18. Elektrický proud a obvody →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23. Vlnová optika | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>3. ročník: Optika</span>
+                <span>/</span>
+                <span>Kapitola 23</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="25-vlnova-optika">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="24-geometricka-optika.html" class="module-subnav-link " data-ch-nav="24-geometricka-optika">22. Geometrická optika a přístroje</a><a href="25-vlnova-optika.html" class="module-subnav-link active" data-ch-nav="25-vlnova-optika">23. Vlnová optika</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>23. Vlnová optika</h1>
+      <p class="chapter-lead">Interference světla, ohyb (difrakce) na štěrbině a mřížce, polarizace a disperze světla.</p>
+      
+<p>Vlnová optika zkoumá jevy, které nelze vysvětlit paprskovým modelem – dokazuje, že světlo má charakter příčného elektromagnetického vlnění.</p>
+
+<h2>1. Interference světla</h2>
+<p>Skládání dvou koherentních světelných vln (stejná frekvence a stálý fázový rozdíl). Podle dráhového rozdílu Δ<em>l</em> vzniká:</p>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Podmínky interference</div>
+  <div class="callout-body">
+    <p><strong>Interferenční maximum (zesílení):</strong> Δ<em>l</em> = <em>k</em> · <em>λ</em> &nbsp; (<em>k</em> = 0, 1, 2, ...)</p>
+    <p><strong>Interferenční minimum (zeslabení):</strong> Δ<em>l</em> = (2<em>k</em> + 1) · <em>λ</em> / 2</p>
+  </div>
+</div>
+<p>V praxi pozorujeme interferenci na tenkých vrstvách (olejová skvrna na vodě, mýdlová bublina, antireflexní vrstvy na brýlích).</p>
+
+<h2>2. Ohyb (difrakce) světla</h2>
+<p>Světlo se při průchodu úzkou štěrbinou nebo kolem překážky odchyluje od přímočarého směru. Na <strong>optické mřížce</strong> s mřížkovou konstantou <em>b</em> vznikají maxima pro úhly <em>α</em><sub>k</sub> splňující podmínku:</p>
+<p><strong><em>b</em> · sin <em>α</em><sub>k</sub> = <em>k</em> · <em>λ</em></strong></p>
+
+<h2>3. Polarizace a disperze světla</h2>
+<ul>
+  <li><strong>Polarizace:</strong> Přirozené světlo kmitá ve všech rovinách kolmých na směr šíření. Průchodem přes polarizátor (nebo odrazem pod Brewsterovým úhlem) vzniká lineárně polarizované světlo (využití: LCD displeje, polarizační brýle, 3D kino).</li>
+  <li><strong>Disperze světla:</strong> Závislost indexu lomu na vlnové délce (barvě) světla. Fialové světlo (kratší <em>λ</em>) se láme více než červené (delší <em>λ</em>) → rozklad bílého světla hranolem na spektrum, vznik duhy.</li>
+</ul>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Interference (maximum / minimum):</strong> Δ<em>l</em> = <em>k</em> · <em>λ</em> &nbsp;|&nbsp; Δ<em>l</em> = (2<em>k</em> + 1) · <em>λ</em> / 2</p>
+          <p><strong>Optická mřížka (difrakční maxima):</strong> <em>b</em> · sin α<sub>k</sub> = <em>k</em> · <em>λ</em></p>
+          <p><strong>Brewsterův úhel polarizace:</strong> tan α<sub>B</sub> = <em>n</em><sub>2</sub> / <em>n</em><sub>1</sub></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Výpočet vlnové délky světla pomocí optické mřížky</h3>
+    <span class="badge">Difrakce</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Na optickou mřížku s mřížkovou konstantou <em>b</em> = 2 μm = 2 · 10<sup>-6</sup> m dopadá kolmo monochromatické světlo. První maximum (<em>k</em> = 1) pozorujeme pod úhlem α<sub>1</sub> = 18°. Jaká je vlnová délka světla?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Podmínka maxima na mřížce:</strong> <em>b</em> · sin α<sub>k</sub> = <em>k</em> · <em>λ</em>  ⟹  <em>λ</em> = (<em>b</em> · sin α<sub>1</sub>) / 1.</p><p><strong>2. Výpočet:</strong> <em>λ</em> = 2 · 10<sup>-6</sup> · sin 18° ≈ 2 · 10<sup>-6</sup> · 0,309 = 6,18 · 10<sup>-7</sup> m = <strong>618 nm</strong> (oranžovo-červené světlo).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Interference dvou vln (maximum vs. minimum)</h3>
+    <span class="badge">Interference</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Dvě koherentní světelné vlny o vlnové délce <em>λ</em> = 500 nm se setkají s dráhovým rozdílem Δ<em>l</em> = 1 250 nm. Nastane v daném bodě zesílení (maximum) nebo zeslabení (minimum)?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Poměr dráhového rozdílu a vlnové délky:</strong> Δ<em>l</em> / <em>λ</em> = 1 250 / 500 = 2,5 = 5/2.</p><p><strong>2. Vyhodnocení:</strong> Dráhový rozdíl je lichým násobkem půlvlny (5 · <em>λ</em>/2, tj. <em>k</em> = 2 ve vzorci (2<em>k</em>+1)<em>λ</em>/2)  ⟹  nastane <strong>interferenční minimum (úplné zeslabení / tma)</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Brewsterův úhel při odrazu od vodní hladiny</h3>
+    <span class="badge">Polarizace</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Pod jakým úhlem dopadu α<sub>B</sub> na hladinu vody (<em>n</em> = 1,33) je odražené světlo zcela lineárně polarizováno?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Brewsterův zákon:</strong> tan α<sub>B</sub> = <em>n</em><sub>voda</sub> / <em>n</em><sub>vzduch</sub> = 1,33 / 1 = 1,33.</p><p><strong>2. Výpočet:</strong> α<sub>B</sub> = arctan(1,33) ≈ <strong>53,1°</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="24-geometricka-optika.html" class="pager-btn">← 22. Geometrická optika a přístroje</a>
+            <a href="26-teorie-relativity.html" class="pager-btn pager-next">24. Speciální a obecná teorie relativity →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21. Střídavý proud a elmag. vlny | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2.–3. ročník: Elektřina a magnetismus</span>
+                <span>/</span>
+                <span>Kapitola 21</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="23-stridavy-proud-elmag">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="11-elektrostatika.html" class="module-subnav-link " data-ch-nav="11-elektrostatika">17. Elektrostatika a pole</a><a href="12-elektricky-proud-kovy.html" class="module-subnav-link " data-ch-nav="12-elektricky-proud-kovy">18. Elektrický proud a obvody</a><a href="13-proud-kapaliny-polovodice.html" class="module-subnav-link " data-ch-nav="13-proud-kapaliny-polovodice">19. Kapaliny, plyny a polovodiče</a><a href="14-magneticke-pole-indukce.html" class="module-subnav-link " data-ch-nav="14-magneticke-pole-indukce">20. Magnetismus a indukce</a><a href="23-stridavy-proud-elmag.html" class="module-subnav-link active" data-ch-nav="23-stridavy-proud-elmag">21. Střídavý proud a elmag. vlny</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>21. Střídavý proud a elmag. vlny</h1>
+      <p class="chapter-lead">Efektivní hodnoty, R, L a C v obvodu AC, impedance, rezonance, výkon, transformátor a elektromagnetické záření.</p>
+      
+<p>Střídavý proud (AC) periodicky mění svou velikost i směr. V rozvodné síti v ČR má frekvenci <strong>50 Hz</strong> a efektivní napětí <strong>230 V</strong> (fázové) / <strong>400 V</strong> (sdružené).</p>
+
+<h2>1. Charakteristiky střídavého proudu</h2>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Okamžité a efektivní hodnoty</div>
+  <div class="callout-body">
+    <p><strong>Okamžité napětí a proud:</strong> <em>u</em> = <em>U</em><sub>m</sub> · sin(<em>ωt</em>), &nbsp; <em>i</em> = <em>I</em><sub>m</sub> · sin(<em>ωt</em> + <em>φ</em>)</p>
+    <p><strong>Efektivní hodnoty:</strong> <em>U</em> = <em>U</em><sub>m</sub> / √2, &nbsp; <em>I</em> = <em>I</em><sub>m</sub> / √2</p>
+  </div>
+</div>
+
+<h2>2. Prvky R, L, C v obvodu střídavého proudu</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Prvek</th><th>Odpor / Reaktance</th><th>Fázový posun napětí a proudu</th></tr></thead>
+<tbody>
+<tr><td>Rezistor (<em>R</em>)</td><td><em>R</em></td><td>Ve fázi (<em>φ</em> = 0°)</td></tr>
+<tr><td>Cívka (<em>L</em>)</td><td>Induktance <em>X</em><sub>L</sub> = <em>ωL</em> = 2π<em>fL</em></td><td>Proud se opožďuje za napětím o 90° (π/2)</td></tr>
+<tr><td>Kondenzátor (<em>C</em>)</td><td>Kapacitance <em>X</em><sub>C</sub> = 1 / (<em>ωC</em>) = 1 / (2π<em>fC</em>)</td><td>Proud předbíhá napětí o 90° (π/2)</td></tr>
+</tbody></table></div>
+
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Impedance, rezonance, výkon a transformátor</div>
+  <div class="callout-body">
+    <p><strong>Impedance sériového RLC obvodu:</strong> <em>Z</em> = √(<em>R</em><sup>2</sup> + (<em>X</em><sub>L</sub> − <em>X</em><sub>C</sub>)<sup>2</sup>) &nbsp;|&nbsp; <em>I</em> = <em>U</em> / <em>Z</em></p>
+    <p><strong>Thomsonův vzorec (rezonance <em>X</em><sub>L</sub> = <em>X</em><sub>C</sub>):</strong> <em>f</em><sub>0</sub> = 1 / (2π √(<em>LC</em>))</p>
+    <p><strong>Činný výkon:</strong> <em>P</em> = <em>U</em> · <em>I</em> · cos <em>φ</em> [W] (cos <em>φ</em> je účiník)</p>
+    <p><strong>Transformátor (poměr závitů):</strong> <em>U</em><sub>2</sub> / <em>U</em><sub>1</sub> = <em>N</em><sub>2</sub> / <em>N</em><sub>1</sub> = <em>I</em><sub>1</sub> / <em>I</em><sub>2</sub></p>
+  </div>
+</div>
+
+<h2>3. Elektromagnetické záření</h2>
+<p>Zrychleně se pohybující elektrické náboje vyzařují elektromagnetické vlny (příčné vlny šířící se ve vakuu rychlostí světla <em>c</em> ≈ 3 · 10<sup>8</sup> m/s). Podle vlnové délky rozlišujeme: rádiové vlny, mikrovlny, infračervené záření, viditelné světlo (380–760 nm), ultrafialové záření, rentgenové záření a záření gama.</p>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Efektivní hodnoty:</strong> <em>U</em> = <em>U</em><sub>m</sub> / √2, &nbsp; <em>I</em> = <em>I</em><sub>m</sub> / √2</p>
+          <p><strong>Reaktance a impedance:</strong> <em>X</em><sub>L</sub> = 2π<em>fL</em>, &nbsp; <em>X</em><sub>C</sub> = 1 / (2π<em>fC</em>), &nbsp; <em>Z</em> = √(<em>R</em><sup>2</sup> + (<em>X</em><sub>L</sub> − <em>X</em><sub>C</sub>)<sup>2</sup>)</p>
+          <p><strong>Thomsonův vzorec:</strong> <em>f</em><sub>0</sub> = 1 / (2π √(<em>LC</em>)) &nbsp;|&nbsp; <strong>Transformátor:</strong> <em>U</em><sub>2</sub> / <em>U</em><sub>1</sub> = <em>N</em><sub>2</sub> / <em>N</em><sub>1</sub></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Amplituda napětí v domácí zásuvce</h3>
+    <span class="badge">Střídavý proud</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> V běžné zásuvce je efektivní napětí <em>U</em> = 230 V. Jaká je maximální (špičková) hodnota napětí <em>U</em><sub>m</sub>?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>U</em><sub>m</sub> = <em>U</em> · √2</p><p><strong>2. Výpočet:</strong> <em>U</em><sub>m</sub> = 230 · 1,4142 ≈ <strong>325,3 V</strong> (izolace vodičů musí vydržet minimálně toto napětí).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Impedance a proud v sériovém RL obvodu</h3>
+    <span class="badge">Obvody AC</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> K síti 230 V / 50 Hz je připojen rezistor <em>R</em> = 30 Ω v sérii s cívkou o indukčnosti <em>L</em> = 0,127 H. Určete induktanci <em>X</em><sub>L</sub>, impedanci <em>Z</em> a efektivní proud <em>I</em>.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Induktance cívky:</strong> <em>X</em><sub>L</sub> = 2π · <em>f</em> · <em>L</em> = 2π · 50 · 0,127 ≈ <strong>40 Ω</strong>.</p><p><strong>2. Impedance:</strong> <em>Z</em> = √(<em>R</em><sup>2</sup> + <em>X</em><sub>L</sub><sup>2</sup>) = √(30<sup>2</sup> + 40<sup>2</sup>) = √2 500 = <strong>50 Ω</strong>.</p><p><strong>3. Proud obvodem:</strong> <em>I</em> = <em>U</em> / <em>Z</em> = 230 / 50 = <strong>4,6 A</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Převod transformátoru (nabíječka)</h3>
+    <span class="badge">Transformátor</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Ideální transformátor snižuje síťové napětí <em>U</em><sub>1</sub> = 230 V na <em>U</em><sub>2</sub> = 11,5 V. Primární cívka má <em>N</em><sub>1</sub> = 1 000 závitů. Kolik závitů má sekundární cívka?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Transformační poměr:</strong> <em>U</em><sub>2</sub> / <em>U</em><sub>1</sub> = <em>N</em><sub>2</sub> / <em>N</em><sub>1</sub>  ⟹  <em>N</em><sub>2</sub> = <em>N</em><sub>1</sub> · (<em>U</em><sub>2</sub> / <em>U</em><sub>1</sub>).</p><p><strong>2. Výpočet:</strong> <em>N</em><sub>2</sub> = 1 000 · (11,5 / 230) = 1 000 · 0,05 = <strong>50 závitů</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="14-magneticke-pole-indukce.html" class="pager-btn">← 20. Magnetismus a indukce</a>
+            <a href="24-geometricka-optika.html" class="pager-btn pager-next">22. Geometrická optika a přístroje →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

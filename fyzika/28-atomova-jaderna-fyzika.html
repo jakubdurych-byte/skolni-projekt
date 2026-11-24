@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26. Atomová a jaderná fyzika | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>4. ročník: Moderní fyzika a astrofyzika</span>
+                <span>/</span>
+                <span>Kapitola 26</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="28-atomova-jaderna-fyzika">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="26-teorie-relativity.html" class="module-subnav-link " data-ch-nav="26-teorie-relativity">24. Speciální a obecná teorie relativity</a><a href="27-kvantova-fyzika.html" class="module-subnav-link " data-ch-nav="27-kvantova-fyzika">25. Kvantová fyzika</a><a href="28-atomova-jaderna-fyzika.html" class="module-subnav-link active" data-ch-nav="28-atomova-jaderna-fyzika">26. Atomová a jaderná fyzika</a><a href="29-astrofyzika-kosmologie.html" class="module-subnav-link " data-ch-nav="29-astrofyzika-kosmologie">27. Astrofyzika a kosmologie</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>26. Atomová a jaderná fyzika</h1>
+      <p class="chapter-lead">Bohrův model atomu, spektra, složení jádra, vazebná energie, radioaktivita α, β, γ, poločas rozpadu, štěpení a fúze.</p>
+      
+<p>Atomová a jaderná fyzika popisuje stavbu atomového obalu, vlastnosti atomového jádra a jaderné přeměny.</p>
+
+<h2>1. Stavba atomu a Bohrův model</h2>
+<p>Atom se skládá z kladně nabitého jádra (protony <em>Z</em> a neutrony <em>N</em>, nukleonové číslo <em>A</em> = <em>Z</em> + <em>N</em>) a elektronového obalu. Podle Bohrových postulátů se elektrony pohybují pouze po dovolených stacionárních drahách a při přechodu mezi hladinami vyzáří nebo pohltí foton o energii <em>hf</em> = |<em>E</em><sub>2</sub> − <em>E</em><sub>1</sub>| (vznik čárových spekter).</p>
+
+<h2>2. Radioaktivita a jaderné přeměny</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Druh záření</th><th>Podstata záření</th><th>Posun v PTP</th><th>Pronikavost</th></tr></thead>
+<tbody>
+<tr><td>Alfa (α)</td><td>Jádra helia <sup>4</sup><sub>2</sub>He</td><td><em>A</em> − 4, <em>Z</em> − 2</td><td>Malá (zastaví list papíru)</td></tr>
+<tr><td>Beta minus (β<sup>-</sup>)</td><td>Elektrony (rozpad neutronu na proton)</td><td><em>A</em> beze změny, <em>Z</em> + 1</td><td>Střední (zastaví hliníkový plech)</td></tr>
+<tr><td>Gama (γ)</td><td>Vysokoenergetické elmag. fotony</td><td><em>A</em> i <em>Z</em> beze změny</td><td>Velká (zeslabí silná vrstva olova/betonu)</td></tr>
+</tbody></table></div>
+
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Zákon radioaktivního rozpadu a jaderná energie</div>
+  <div class="callout-body">
+    <p><strong>Zákon radioaktivní přeměny:</strong> <em>N</em>(<em>t</em>) = <em>N</em><sub>0</sub> · (½)<sup><em>t</em> / <em>T</em></sup>, kde <em>T</em> je poločas rozpadu</p>
+    <p><strong>Hmotnostní úbytek jádra:</strong> Δ<em>m</em> = <em>Z</em> · <em>m</em><sub>p</sub> + (<em>A</em> − <em>Z</em>) · <em>m</em><sub>n</sub> − <em>m</em><sub>jádra</sub></p>
+    <p><strong>Vazebná energie jádra:</strong> <em>E</em><sub>j</sub> = Δ<em>m</em> · <em>c</em><sup>2</sup></p>
+  </div>
+</div>
+
+<h2>3. Štěpení jader a termojaderná fúze</h2>
+<ul>
+  <li><strong>Jaderné štěpení:</strong> Těžké jádro (např. <sup>235</sup>U) se po záchytu pomalého neutronu rozštěpí na dvě lehčí jádra a uvolní 2–3 neutrony (řetězová reakce v jaderném reaktoru) a obrovskou energii.</li>
+  <li><strong>Jaderná fúze (slučování):</strong> Lehká jádra (deuterium + tritium) se za extrémní teploty a tlaku sloučí v jádro helia. Zdroj energie Slunce a hvězd.</li>
+</ul>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Spektrální přechod (Bohrův postulát):</strong> <em>h</em> · <em>f</em> = |<em>E</em><sub>2</sub> − <em>E</em><sub>1</sub>|</p>
+          <p><strong>Radioaktivní rozpad:</strong> <em>N</em>(<em>t</em>) = <em>N</em><sub>0</sub> · (½)<sup><em>t</em> / <em>T</em></sup>, &nbsp; <em>m</em>(<em>t</em>) = <em>m</em><sub>0</sub> · (½)<sup><em>t</em> / <em>T</em></sup></p>
+          <p><strong>Vazebná energie jádra:</strong> Δ<em>E</em> = Δ<em>m</em> · <em>c</em><sup>2</sup> &nbsp; (1 u · <em>c</em><sup>2</sup> ≈ 931,5 MeV)</p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Zákon radioaktivní přeměny (uhlíková metoda C-14)</h3>
+    <span class="badge">Radioaktivita</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Radioaktivní izotop má poločas rozpadu <em>T</em> = 8 dní. Počáteční hmotnost vzorku je <em>m</em><sub>0</sub> = 80 g. Kolik gramů nerozpadnutého izotopu zůstane po uplynutí <em>t</em> = 24 dní?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Počet poločasů rozpadu:</strong> <em>t</em> / <em>T</em> = 24 / 8 = 3.</p><p><strong>2. Výpočet:</strong> <em>m</em> = <em>m</em><sub>0</sub> · (½)<sup>3</sup> = 80 · (1/8) = <strong>10 g</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Zápis jaderné reakce (rozpad α a β⁻)</h3>
+    <span class="badge">Jaderné přeměny</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Určete výsledné jádro vzniklé rozpadem alfa jádra radia <sup>226</sup><sub>88</sub>Ra a následným rozpadem beta minus jádra uhlíku <sup>14</sup><sub>6</sub>C.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Rozpad α (emise <sup>4</sup><sub>2</sub>He):</strong> Nukleonové číslo klesne o 4, protonové o 2:<br><sup>226</sup><sub>88</sub>Ra → <strong><sup>222</sup><sub>86</sub>Rn</strong> (radon) + <sup>4</sup><sub>2</sub>He.</p><p><strong>2. Rozpad β<sup>−</sup> (emise elektronu <sup>0</sup><sub>−1</sub>e):</strong> Nukleonové číslo se nemění, protonové vzroste o 1:<br><sup>14</sup><sub>6</sub>C → <strong><sup>14</sup><sub>7</sub>N</strong> (dusík) + <sup>0</sup><sub>−1</sub>e + ν̄<sub>e</sub>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Vazebná energie jádra deuteria</h3>
+    <span class="badge">Jaderná energie</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Hmotnostní úbytek jádra deuteria (<sup>2</sup><sub>1</sub>H) je Δ<em>m</em> = 0,002 39 u. Vypočítejte vazebnou energii tohoto jádra v MeV, víte-li, že 1 u odpovídá energii 931,5 MeV.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>E</em><sub>j</sub> = Δ<em>m</em> · 931,5 MeV/u</p><p><strong>2. Výpočet:</strong> <em>E</em><sub>j</sub> = 0,002 39 · 931,5 ≈ <strong>2,23 MeV</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="27-kvantova-fyzika.html" class="pager-btn">← 25. Kvantová fyzika</a>
+            <a href="29-astrofyzika-kosmologie.html" class="pager-btn pager-next">27. Astrofyzika a kosmologie →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

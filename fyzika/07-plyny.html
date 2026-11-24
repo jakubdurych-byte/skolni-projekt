@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13. Plyny a děje v plynech | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2. ročník: Molekulová fyzika a termika</span>
+                <span>/</span>
+                <span>Kapitola 13</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="07-plyny">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="01-kineticka-teorie.html" class="module-subnav-link " data-ch-nav="01-kineticka-teorie">7. Kinetická teorie látek</a><a href="02-vnitrni-energie-teplota.html" class="module-subnav-link " data-ch-nav="02-vnitrni-energie-teplota">8. Vnitřní energie a teplota</a><a href="03-tepelna-vymena-kalorimetrie.html" class="module-subnav-link " data-ch-nav="03-tepelna-vymena-kalorimetrie">9. Tepelná výměna a kalorimetrie</a><a href="04-anomalie-vody.html" class="module-subnav-link " data-ch-nav="04-anomalie-vody">10. Anomálie vody</a><a href="05-pevne-latky-kapaliny.html" class="module-subnav-link " data-ch-nav="05-pevne-latky-kapaliny">11. Pevné látky a kapaliny</a><a href="06-zmeny-skupenstvi.html" class="module-subnav-link " data-ch-nav="06-zmeny-skupenstvi">12. Změny skupenství látek</a><a href="07-plyny.html" class="module-subnav-link active" data-ch-nav="07-plyny">13. Plyny a děje v plynech</a><a href="08-termodynamika-stroje.html" class="module-subnav-link " data-ch-nav="08-termodynamika-stroje">14. Termodynamika a tepelné stroje</a>
+        </div>
+
+        <article class="chapter-article">
+<h1>13. Plyny – kinetická teorie, ideální a reálné plyny, děje v plynech</h1>
+      <p class="chapter-lead">Kompletní maturitní výklad o plynech: mikroskopický model ideálního plynu, Maxwellovo rozdělení rychlostí, barometrická formule, stavová rovnice, Daltonův zákon, stupně volnosti, Mayerův vztah, podrobný rozbor všech termodynamických dějů, reálné plyny (van der Waals) a 5 řešených příkladů.</p>
+
+      <p>Plynné skupenství se vyznačuje velkými středními vzdálenostmi mezi molekulami (řádově 10× většími než rozměry samotných molekul) a zanedbatelnými přitažlivými silami (<em>E</em><sub>k</sub> ≫ <em>E</em><sub>p</sub>). Molekuly se pohybují volným, přímočarým a zcela chaotickým tepelným pohybem a mění směr pouze při vzájemných srážkách nebo při nárazech na stěny nádoby. Plyny proto nemají stálý tvar ani objem, jsou snadno stlačitelné a neomezeně rozpínavé.</p>
+
+      <h2>13.1 Model ideálního plynu a kinetická teorie plynů</h2>
+      <p>Pro matematický popis plynů zavádíme zjednodušený fyzikální model — <strong>ideální plyn</strong>, který splňuje tři základní předpoklady:</p>
+      <ul>
+        <li>Molekuly považujeme za hmotné body (jejich vlastní objem je zanedbatelný vzhledem k objemu nádoby).</li>
+        <li>Molekuly na sebe nepůsobí přitažlivými ani odpudivými silami na dálku (mají nulovou potenciální energii vazby, <em>E</em><sub>p</sub> = 0).</li>
+        <li>Vzájemné srážky molekul i srážky se stěnami nádoby jsou <strong>dokonale pružné</strong> (zachovává se celková kinetická energie i hybnost).</li>
+      </ul>
+      <p>Za běžných teplot a nepříliš vysokých tlaků (např. vzduch v místnosti) se reálné plyny chovají s velmi dobrou přesností jako ideální plyn.</p>
+
+      <div class="callout callout-formula">
+        <div class="callout-title">📐 Základní rovnice kinetické teorie plynů a teplota</div>
+        <div class="callout-body">
+          <p><strong>Tlak plynu (mikroskopicky):</strong> <em>p</em> = (1/3) · <em>N</em><sub>V</sub> · <em>m</em><sub>0</sub> · <em>v</em><sub>k</sub><sup>2</sup> = (2/3) · <em>N</em><sub>V</sub> · <em>E</em><sub>k</sub> = (1/3) · <em>ρ</em> · <em>v</em><sub>k</sub><sup>2</sup></p>
+          <p><strong>Koncentrace molekul:</strong> <em>N</em><sub>V</sub> = <em>N</em> / <em>V</em> [m<sup>-3</sup>] &nbsp;|&nbsp; <strong>Hmotnost 1 molekuly:</strong> <em>m</em><sub>0</sub> = <em>M</em><sub>m</sub> / <em>N</em><sub>A</sub> [kg]</p>
+          <p><strong>Střední kinetická energie posuvného pohybu 1 molekuly:</strong> <em>E</em><sub>k</sub> = (3/2) · <em>k</em> · <em>T</em></p>
+          <p><strong>Střední kvadratická rychlost molekul:</strong> <em>v</em><sub>k</sub> = √(3 · <em>k</em> · <em>T</em> / <em>m</em><sub>0</sub>) = √(3 · <em>R</em> · <em>T</em> / <em>M</em><sub>m</sub>)</p>
+          <p><em>kde k = 1,38 · 10<sup>-23</sup> J·K<sup>-1</sup> je Boltzmannova konstanta a R = 8,314 J·mol<sup>-1</sup>·K<sup>-1</sup> je molární plynová konstanta.</em></p>
+        </div>
+      </div>
+
+      <ul>
+        <li><strong>Maxwellovo rozdělení rychlostí:</strong> Molekuly v plynu nemají všechny stejnou rychlost. Jejich rychlosti jsou rozděleny statisticky: nejpravděpodobnější rychlost <em>v</em><sub>p</sub> = √(2<em>RT</em>/<em>M</em><sub>m</sub>), střední aritmetická <em>v</em><sub>stř</sub> = √(8<em>RT</em>/(π<em>M</em><sub>m</sub>)) a kvadratická <em>v</em><sub>k</sub> = √(3<em>RT</em>/<em>M</em><sub>m</sub>), přičemž platí <strong><em>v</em><sub>p</sub> &lt; <em>v</em><sub>stř</sub> &lt; <em>v</em><sub>k</sub></strong>. S rostoucí teplotou se křivka rozdělení posouvá k vyšším rychlostem a zplošťuje se.</li>
+        <li><strong>Atmosférický tlak a barometrická formule:</strong> Normální atmosférický tlak u hladiny moře je <strong><em>p</em><sub>a</sub> = 101 325 Pa</strong> (odpovídá 760 mm rtuťového sloupce v Torricelliho pokusu). S rostoucí nadmořskou výškou <em>h</em> tlak i hustota vzduchu klesají přibližně exponenciálně podle <em>barometrické formule</em>: <em>p</em>(<em>h</em>) = <em>p</em><sub>0</sub> · e<sup>−(<em>M</em><sub>m</sub>·<em>g</em>·<em>h</em>)/(<em>R</em>·<em>T</em>)</sup>.</li>
+      </ul>
+
+      <h2>13.2 Stavová rovnice ideálního plynu, Avogadrův zákon a Daltonův zákon</h2>
+      <p>Stav ideálního plynu o daném látkovém množství <em>n</em> popisují tři základní stavové veličiny: tlak <em>p</em> [Pa], objem <em>V</em> [m<sup>3</sup>] a termodynamická teplota <em>T</em> [K] (<em>T</em> = <em>t</em> + 273,15). Tyto veličiny spojuje <strong>stavová rovnice ideálního plynu</strong> (Clapeyronova rovnice).</p>
+
+      <div class="callout callout-formula">
+        <div class="callout-title">📐 Stavová rovnice, látkové množství a směsi plynů</div>
+        <div class="callout-body">
+          <p><strong>Látkové množství:</strong> <em>n</em> = <em>m</em> / <em>M</em><sub>m</sub> = <em>N</em> / <em>N</em><sub>A</sub> [mol], &nbsp; <em>N</em><sub>A</sub> = 6,022 · 10<sup>23</sup> mol<sup>-1</sup></p>
+          <p><strong>Stavová rovnice ideálního plynu:</strong> <em>p</em> · <em>V</em> = <em>n</em> · <em>R</em> · <em>T</em> = (<em>m</em> / <em>M</em><sub>m</sub>) · <em>R</em> · <em>T</em> = <em>N</em> · <em>k</em> · <em>T</em></p>
+          <p><strong>Hustota plynu:</strong> <em>ρ</em> = <em>m</em> / <em>V</em> = (<em>p</em> · <em>M</em><sub>m</sub>) / (<em>R</em> · <em>T</em>)</p>
+          <p><strong>Spojený plynový zákon (pro stálou hmotnost plynu, <em>n</em> = konst.):</strong> (<em>p</em><sub>1</sub> · <em>V</em><sub>1</sub>) / <em>T</em><sub>1</sub> = (<em>p</em><sub>2</sub> · <em>V</em><sub>2</sub>) / <em>T</em><sub>2</sub></p>
+          <p><strong>Daltonův zákon pro směs nereagujících plynů:</strong> <em>p</em> = <em>p</em><sub>1</sub> + <em>p</em><sub>2</sub> + ... + <em>p</em><sub>k</sub>, kde parciální tlak <em>i</em>-té složky je <em>p</em><sub>i</sub> = (<em>n</em><sub>i</sub> / <em>n</em><sub>celk</sub>) · <em>p</em></p>
+        </div>
+      </div>
+
+      <div class="callout callout-note">
+        <div class="callout-title">💡 Avogadrův zákon a normální podmínky</div>
+        <div class="callout-body">
+          <p><strong>Avogadrův zákon:</strong> Stejné objemy různých ideálních plynů obsahují při stejném tlaku a stejné teplotě stejný počet molekul (<em>N</em>).</p>
+          <p>Při <strong>normálních podmínkách</strong> (<em>t</em><sub>0</sub> = 0 °C = 273,15 K a <em>p</em><sub>0</sub> = 101 325 Pa) zaujímá 1 mol jakéhokoliv ideálního plynu tzv. <strong>normální molární objem <em>V</em><sub>m</sub> = 22,41 dm<sup>3</sup>·mol<sup>-1</sup></strong> (22,41 litru).</p>
+        </div>
+      </div>
+
+      <h2>13.3 Vnitřní energie plynu, stupně volnosti a Mayerův vztah</h2>
+      <p>Protože u ideálního plynu zanedbáváme vzájemné přitažlivé síly mezi molekulami, je jeho vnitřní energie <em>U</em> tvořena výhradně součtem kinetických energií všech molekul. Podle <strong>ekvipartičního teorému</strong> připadá na každý <em>stupeň volnosti</em> molekuly (možný nezávislý způsob pohybu: posuvný, rotační) v průměru energie (1/2)<em>kT</em>:</p>
+
+      <div class="callout callout-formula">
+        <div class="callout-title">📐 Vnitřní energie, tepelné kapacity a Mayerův vztah</div>
+        <div class="callout-body">
+          <p><strong>Vnitřní energie ideálního plynu:</strong> <em>U</em> = (<em>f</em> / 2) · <em>n</em> · <em>R</em> · <em>T</em> = (<em>f</em> / 2) · <em>p</em> · <em>V</em> &nbsp; (Δ<em>U</em> = <em>n</em> · <em>C</em><sub>V</sub> · Δ<em>T</em>)</p>
+          <p><strong>Molární tepelné kapacity:</strong> <em>C</em><sub>V</sub> = (<em>f</em> / 2) · <em>R</em> (při stálém objemu) &nbsp;|&nbsp; <em>C</em><sub>p</sub> = ((<em>f</em> + 2) / 2) · <em>R</em> (při stálém tlaku)</p>
+          <p><strong>Mayerův vztah:</strong> <em>C</em><sub>p</sub> − <em>C</em><sub>V</sub> = <em>R</em> &nbsp;|&nbsp; pro měrné tepelné kapacity: <em>c</em><sub>p</sub> − <em>c</em><sub>V</sub> = <em>R</em> / <em>M</em><sub>m</sub></p>
+          <p><strong>Poissonova konstanta (adiabatický exponent):</strong> <em>κ</em> = <em>C</em><sub>p</sub> / <em>C</em><sub>V</sub> = <em>c</em><sub>p</sub> / <em>c</em><sub>V</sub> = (<em>f</em> + 2) / <em>f</em> &gt; 1</p>
+        </div>
+      </div>
+
+      <div class="table-wrap"><table>
+        <thead><tr><th>Typ molekuly plynu</th><th>Stupně volnosti <em>f</em></th><th><em>C</em><sub>V</sub></th><th><em>C</em><sub>p</sub></th><th>Poissonova konst. <em>κ</em></th><th>Příklady plynů</th></tr></thead>
+        <tbody>
+          <tr><td>Jednoatomový plyn</td><td><em>f</em> = 3 (jen posuvný pohyb)</td><td>(3/2)<em>R</em> ≈ 12,47 J·mol<sup>-1</sup>·K<sup>-1</sup></td><td>(5/2)<em>R</em> ≈ 20,79 J·mol<sup>-1</sup>·K<sup>-1</sup></td><td>5/3 ≈ 1,67</td><td>He, Ne, Ar, Kr</td></tr>
+          <tr><td>Dvouatomový plyn</td><td><em>f</em> = 5 (3 posuvné + 2 rotační)</td><td>(5/2)<em>R</em> ≈ 20,79 J·mol<sup>-1</sup>·K<sup>-1</sup></td><td>(7/2)<em>R</em> ≈ 29,10 J·mol<sup>-1</sup>·K<sup>-1</sup></td><td>7/5 = 1,40</td><td>N<sub>2</sub>, O<sub>2</sub>, H<sub>2</sub>, vzduch</td></tr>
+          <tr><td>Víceatomový plyn</td><td><em>f</em> = 6 (3 posuvné + 3 rotační)</td><td>3<em>R</em> ≈ 24,94 J·mol<sup>-1</sup>·K<sup>-1</sup></td><td>4<em>R</em> ≈ 33,26 J·mol<sup>-1</sup>·K<sup>-1</sup></td><td>4/3 ≈ 1,33</td><td>CO<sub>2</sub>, H<sub>2</sub>O (pára), CH<sub>4</sub></td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>Proč je vždy <em>C</em><sub>p</sub> &gt; <em>C</em><sub>V</sub>?</strong> Zahříváme-li plyn za stálého objemu, veškeré dodané teplo zvýší pouze jeho vnitřní energii (teplotu). Zahříváme-li jej však za stálého tlaku, plyn se rozpíná a koná vnější objemovou práci <em>W</em>' — musíme mu proto dodat o tuto práci více tepla (přesně o <em>R</em> na 1 mol při ohřátí o 1 K).</p>
+
+      <h2>13.4 Podrobný rozbor dějů s ideálním plynem</h2>
+      <p>Při dějích se stálou hmotností plynu (<em>n</em> = konst.) obvykle udržujeme jednu ze stavových veličin konstantní (nebo nulovou tepelnou výměnu). Vždy sledujeme platnost 1. termodynamického zákona: <strong>Δ<em>U</em> = <em>Q</em> − <em>W</em>'</strong> (resp. <em>Q</em> = Δ<em>U</em> + <em>W</em>', kde <em>W</em>' je práce vykonaná plynem).</p>
+
+      <ul>
+        <li><strong>1. Izotermický děj (<em>T</em> = konst., Δ<em>T</em> = 0):</strong>
+          Platí <strong>Boyleův-Mariottův zákon</strong>: <em>p</em><sub>1</sub> · <em>V</em><sub>1</sub> = <em>p</em><sub>2</sub> · <em>V</em><sub>2</sub> (tlak a objem jsou nepřímo úměrné; grafem v <em>p-V</em> diagramu je hyperbola zvaná <em>izoterma</em>). Protože se teplota nemění, je změna vnitřní energie nulová (<strong>Δ<em>U</em> = 0</strong>). Veškeré dodané teplo plyn přemění v práci: <strong><em>Q</em> = <em>W</em>' = <em>nRT</em> · ln(<em>V</em><sub>2</sub> / <em>V</em><sub>1</sub>)</strong>.</li>
+        <li><strong>2. Izochorický děj (<em>V</em> = konst., Δ<em>V</em> = 0):</strong>
+          Platí <strong>Charlesův zákon</strong>: <em>p</em><sub>1</sub> / <em>T</em><sub>1</sub> = <em>p</em><sub>2</sub> / <em>T</em><sub>2</sub> (tlak je přímo úměrný termodynamické teplotě; v <em>p-V</em> diagramu svislá úsečka zvaná <em>izochora</em>). Objem se nemění, proto plyn nekoná žádnou práci (<strong><em>W</em>' = 0</strong>). Veškeré teplo mění vnitřní energii: <strong><em>Q</em><sub>V</sub> = Δ<em>U</em> = <em>n</em> · <em>C</em><sub>V</sub> · Δ<em>T</em> = <em>m</em> · <em>c</em><sub>V</sub> · Δ<em>T</em></strong>.</li>
+        <li><strong>3. Izobarický děj (<em>p</em> = konst., Δ<em>p</em> = 0):</strong>
+          Platí <strong>Gay-Lussacův zákon</strong>: <em>V</em><sub>1</sub> / <em>T</em><sub>1</sub> = <em>V</em><sub>2</sub> / <em>T</em><sub>2</sub> (objem je přímo úměrný termodynamické teplotě; v <em>p-V</em> diagramu vodorovná úsečka zvaná <em>izobara</em>). Plyn koná objemovou práci <strong><em>W</em>' = <em>p</em> · (<em>V</em><sub>2</sub> − <em>V</em><sub>1</sub>) = <em>n</em> · <em>R</em> · Δ<em>T</em></strong>, změna vnitřní energie je <strong>Δ<em>U</em> = <em>n</em> · <em>C</em><sub>V</sub> · Δ<em>T</em></strong> a dodané teplo je <strong><em>Q</em><sub>p</sub> = <em>n</em> · <em>C</em><sub>p</sub> · Δ<em>T</em> = Δ<em>U</em> + <em>W</em>'</strong>.</li>
+        <li><strong>4. Adiabatický děj (<em>Q</em> = 0, tepelně izolovaná soustava nebo velmi rychlý děj):</strong>
+          Nedočká se výměny tepla s okolím (<strong><em>Q</em> = 0</strong>). Platí <strong>Poissonovy rovnice</strong>: <strong><em>p</em><sub>1</sub> · <em>V</em><sub>1</sub><sup><em>κ</em></sup> = <em>p</em><sub>2</sub> · <em>V</em><sub>2</sub><sup><em>κ</em></sup></strong> a <strong><em>T</em><sub>1</sub> · <em>V</em><sub>1</sub><sup><em>κ</em>−1</sup> = <em>T</em><sub>2</sub> · <em>V</em><sub>2</sub><sup><em>κ</em>−1</sup></strong>. Práce plynu jde přímo na úkor vnitřní energie: <strong><em>W</em>' = −Δ<em>U</em> = −<em>n</em> · <em>C</em><sub>V</sub> · (<em>T</em><sub>2</sub> − <em>T</em><sub>1</sub>) = (<em>p</em><sub>1</sub><em>V</em><sub>1</sub> − <em>p</em><sub>2</sub><em>V</em><sub>2</sub>) / (<em>κ</em> − 1)</strong>. Při adiabatické expanzi se plyn prudce ochlazuje (princip sněžného děla), při adiabatické kompresi se silně zahřívá (princip vznětového/dieselového motoru, huštění pumpičkou).</li>
+      </ul>
+
+      <div class="table-wrap"><table><thead><tr><th>Děj</th><th>Stálá veličina</th><th>Platný zákon a vztah</th><th>Křivka v p-V</th><th>Práce W&#x27;, ΔU a teplo Q</th></tr></thead><tbody><tr><td><strong>Izotermický</strong></td><td><em>T</em> = konst.</td><td><strong>Boyleův-Mariottův:</strong> <em>p</em><sub>1</sub><em>V</em><sub>1</sub> = <em>p</em><sub>2</sub><em>V</em><sub>2</sub></td><td>Izoterma (hyperbola)</td><td>Δ<em>U</em> = 0, <em>Q</em> = <em>W&#x27;</em> = <em>nRT</em> ln(<em>V</em><sub>2</sub>/<em>V</em><sub>1</sub>)</td></tr><tr><td><strong>Izochorický</strong></td><td><em>V</em> = konst.</td><td><strong>Charlesův:</strong> <em>p</em><sub>1</sub>/<em>T</em><sub>1</sub> = <em>p</em><sub>2</sub>/<em>T</em><sub>2</sub></td><td>Izochora (svislá)</td><td><em>W&#x27;</em> = 0, Δ<em>U</em> = <em>Q</em><sub>V</sub> = <em>nC</em><sub>V</sub>Δ<em>T</em></td></tr><tr><td><strong>Izobarický</strong></td><td><em>p</em> = konst.</td><td><strong>Gay-Lussacův:</strong> <em>V</em><sub>1</sub>/<em>T</em><sub>1</sub> = <em>V</em><sub>2</sub>/<em>T</em><sub>2</sub></td><td>Izobara (vodorovná)</td><td><em>W&#x27;</em> = <em>p</em>Δ<em>V</em> = <em>nR</em>Δ<em>T</em>, <em>Q</em><sub>p</sub> = <em>nC</em><sub>p</sub>Δ<em>T</em></td></tr><tr><td><strong>Adiabatický</strong></td><td><em>Q</em> = 0</td><td><strong>Poissonův:</strong> <em>pV</em><sup>κ</sup> = konst., <em>TV</em><sup>κ-1</sup> = konst.</td><td>Adiabata (strmější)</td><td><em>Q</em> = 0, <em>W&#x27;</em> = −Δ<em>U</em> = (<em>p</em><sub>1</sub><em>V</em><sub>1</sub> − <em>p</em><sub>2</sub><em>V</em><sub>2</sub>)/(<em>κ</em>−1)</td></tr></tbody></table></div>
+
+<div class="diagram-card">
+  <div class="diagram-title">Porovnání dějů s ideálním plynem v p-V diagramu</div>
+  <svg viewBox="0 0 560 320" class="pv-svg" role="img" aria-label="p-V diagram dějů s ideálním plynem">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="currentColor"/>
+      </marker>
+    </defs>
+    <line x1="60" y1="270" x2="520" y2="270" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="60" y1="270" x2="60" y2="25" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="530" y="275" class="axis-label">V</text>
+    <text x="48" y="22" class="axis-label">p</text>
+    <line x1="160" y1="120" x2="430" y2="120" stroke="#2563eb" stroke-width="3"/>
+    <text x="355" y="110" fill="#2563eb" font-weight="700" font-size="13">Izobara (p = konst.)</text>
+    <line x1="160" y1="230" x2="160" y2="45" stroke="#16a34a" stroke-width="3"/>
+    <text x="168" y="58" fill="#16a34a" font-weight="700" font-size="13">Izochora (V = konst.)</text>
+    <path d="M 105 45 Q 130 95 160 120 T 430 218" fill="none" stroke="#d97706" stroke-width="3"/>
+    <text x="345" y="196" fill="#d97706" font-weight="700" font-size="13">Izoterma (T = konst.)</text>
+    <path d="M 122 45 Q 142 95 160 120 Q 220 195 360 250" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="7,4"/>
+    <text x="275" y="255" fill="#dc2626" font-weight="700" font-size="13">Adiabata (Q = 0)</text>
+    <circle cx="160" cy="120" r="6" fill="var(--accent)" stroke="#ffffff" stroke-width="2"/>
+    <text x="108" y="138" class="point-label" font-size="12">[p₁, V₁]</text>
+  </svg>
+  <p class="diagram-caption">Adiabata klesá při expanzi strměji než izoterma, protože plyn při konání práce bez přísunu tepla navíc ztrácí vnitřní energii a ochlazuje se.</p>
+</div>
+
+      <h2>13.5 Reálné plyny, van der Waalsova rovnice a zkapalňování</h2>
+      <p>Při <strong>velmi vysokých tlacích a nízkých teplotách</strong> přestává model ideálního plynu platit: projevuje se vlastní konečný objem molekul i vzájemné přitažlivé síly mezi nimi.</p>
+      <div class="callout callout-formula">
+        <div class="callout-title">📐 Van der Waalsova stavová rovnice reálného plynu</div>
+        <div class="callout-body">
+          <p><strong>(<em>p</em> + <em>n</em><sup>2</sup><em>a</em> / <em>V</em><sup>2</sup>) · (<em>V</em> − <em>n</em><em>b</em>) = <em>n</em> · <em>R</em> · <em>T</em></strong></p>
+          <p><em>Korekční člen <em>n</em><sup>2</sup><em>a</em>/<em>V</em><sup>2</sup> (kohézní tlak) zohledňuje přitažlivé síly mezi molekulami, korekce <em>nb</em> (kovolum) zohledňuje vlastní objem molekul, který není pro pohyb volný.</em></p>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Kritická teplota (<em>T</em><sub>k</sub>):</strong> Maximální teplota, při které lze plyn ještě zkapalnit pouhým zvýšením tlaku. Nad <em>T</em><sub>k</sub> kapalná fáze vůbec nemůže existovat (nadkritická tekutina).</li>
+        <li><strong>Pára vs. plyn:</strong> Plyn pod svou kritickou teplotou označujeme jako <strong>páru</strong> (např. vodní pára při 20 °C, CO<sub>2</sub> pod 31 °C).</li>
+        <li><strong>Sytá a přehřátá pára:</strong> <em>Sytá pára</em> je v dynamické rovnováze se svou kapalinou (její tlak závisí jen na teplotě a při stlačování se nemění — část páry zkondenzuje). <em>Přehřátá (nesytá) pára</em> má při dané teplotě nižší tlak než sytá a chová se přibližně jako ideální plyn.</li>
+        <li><strong>Zkapalňování plynů (Lindeův proces):</strong> Technicky se plyny (vzduch, dusík, helium) zkapalňují kombinací vysokého stlačení, ochlazení a následného prudkého rozpínání přes škrticí ventil (<em>Joule-Thomsonův jev</em>).</li>
+      </ul>
+
+      <h2>13.6 Řešené příklady krok za krokem</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Hmotnost plynu v tlakové láhvi (Stavová rovnice)</h3>
+    <span class="badge">Stavová rovnice</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Ocelová tlaková láhev o objemu <em>V</em> = 40 litrů je naplněna kyslíkem (O<sub>2</sub>, molární hmotnost <em>M</em><sub>m</sub> = 32 g·mol<sup>-1</sup> = 0,032 kg·mol<sup>-1</sup>) při teplotě <em>t</em> = 27 °C a tlaku <em>p</em> = 15 MPa. Vypočítejte hmotnost kyslíku v láhvi.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Převod veličin na základní jednotky SI:</strong><br>
+    <em>V</em> = 40 l = 40 dm<sup>3</sup> = 0,04 m<sup>3</sup><br>
+    <em>T</em> = <em>t</em> + 273,15 = 27 + 273,15 = 300,15 K (zaokrouhleně 300 K)<br>
+    <em>p</em> = 15 MPa = 15 · 10<sup>6</sup> Pa</p>
+    <p><strong>2. Vzorec:</strong> Ze stavové rovnice <em>p</em> · <em>V</em> = (<em>m</em> / <em>M</em><sub>m</sub>) · <em>R</em> · <em>T</em> vyjádříme hledanou hmotnost <em>m</em>:<br>
+    <strong><em>m</em> = (<em>p</em> · <em>V</em> · <em>M</em><sub>m</sub>) / (<em>R</em> · <em>T</em>)</strong></p>
+    <p><strong>3. Dosazení a výpočet:</strong><br>
+    <em>m</em> = (15 · 10<sup>6</sup> · 0,04 · 0,032) / (8,314 · 300) = 19 200 / 2 494,2 ≈ <strong>7,70 kg</strong>.</p>
+    <p><strong>Odpověď:</strong> V tlakové láhvi je přibližně <strong>7,7 kg kyslíku</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Kvadratická rychlost a kinetická energie molekul</h3>
+    <span class="badge">Kinetická teorie</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Jakou střední kvadratickou rychlost <em>v</em><sub>k</sub> a střední kinetickou energii <em>E</em><sub>k</sub> mají molekuly dusíku (N<sub>2</sub>, <em>M</em><sub>m</sub> = 0,028 kg·mol<sup>-1</sup>) při teplotě <em>t</em> = 20 °C?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Převod teploty na Kelviny:</strong> <em>T</em> = 20 + 273,15 = 293,15 K.</p>
+    <p><strong>2. Výpočet střední kinetické energie 1 molekuly:</strong><br>
+    <em>E</em><sub>k</sub> = (3/2) · <em>k</em> · <em>T</em> = 1,5 · 1,38 · 10<sup>-23</sup> · 293,15 ≈ <strong>6,07 · 10<sup>-21</sup> J</strong>.</p>
+    <p><strong>3. Výpočet střední kvadratické rychlosti:</strong><br>
+    <em>v</em><sub>k</sub> = √(3 · <em>R</em> · <em>T</em> / <em>M</em><sub>m</sub>) = √(3 · 8,314 · 293,15 / 0,028) = √(261 132) ≈ <strong>511 m/s</strong>.</p>
+    <p><strong>Odpověď:</strong> Molekuly dusíku mají při pokojové teplotě střední kinetickou energii <strong>6,07 · 10<sup>-21</sup> J</strong> a pohybují se rychlostí přes <strong>511 m/s</strong> (rychleji než zvuk!).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Vzduchová bublina stoupající ze dna jezera (Spojený plynový zákon)</h3>
+    <span class="badge">Spojený zákon</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Na dně jezera v hloubce <em>h</em> = 20 m, kde je teplota vody <em>t</em><sub>1</sub> = 7 °C, má vzduchová bublina objem <em>V</em><sub>1</sub> = 1,0 cm<sup>3</sup>. Jaký objem <em>V</em><sub>2</sub> bude mít bublina těsně pod hladinou, kde je teplota <em>t</em><sub>2</sub> = 27 °C a atmosférický tlak <em>p</em><sub>a</sub> = 100 kPa? (Hustota vody <em>ρ</em> = 1 000 kg·m<sup>-3</sup>, <em>g</em> = 10 m·s<sup>-2</sup>.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Určení tlaku a teploty v obou stavech:</strong><br>
+    Na dně působí atmosférický + hydrostatický tlak: <em>p</em><sub>1</sub> = <em>p</em><sub>a</sub> + <em>h</em> · <em>ρ</em> · <em>g</em> = 100 000 + 20 · 1 000 · 10 = 300 000 Pa.<br>
+    Pod hladinou: <em>p</em><sub>2</sub> = <em>p</em><sub>a</sub> = 100 000 Pa.<br>
+    Teploty v Kelvinech: <em>T</em><sub>1</sub> = 7 + 273 = 280 K, &nbsp; <em>T</em><sub>2</sub> = 27 + 273 = 300 K.</p>
+    <p><strong>2. Spojený plynový zákon:</strong> (<em>p</em><sub>1</sub> · <em>V</em><sub>1</sub>) / <em>T</em><sub>1</sub> = (<em>p</em><sub>2</sub> · <em>V</em><sub>2</sub>) / <em>T</em><sub>2</sub>  ⟹  <strong><em>V</em><sub>2</sub> = <em>V</em><sub>1</sub> · (<em>p</em><sub>1</sub> / <em>p</em><sub>2</sub>) · (<em>T</em><sub>2</sub> / <em>T</em><sub>1</sub>)</strong></p>
+    <p><strong>3. Výpočet:</strong> <em>V</em><sub>2</sub> = 1,0 · (300 000 / 100 000) · (300 / 280) = 1,0 · 3 · 1,071 ≈ <strong>3,21 cm<sup>3</sup></strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 4: Izobarické rozpínání dvouatomového plynu (Práce, ΔU a teplo)</h3>
+    <span class="badge">Izobarický děj</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Dva moly dvouatomového plynu (<em>n</em> = 2 mol, <em>f</em> = 5) zahřejeme za stálého tlaku o Δ<em>T</em> = 50 K. Vypočítejte práci vykonanou plynem <em>W</em>', změnu vnitřní energie Δ<em>U</em> a dodané teplo <em>Q</em><sub>p</sub>.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Výpočet práce plynu:</strong><br>
+    Při izobarickém ději platí <em>W</em>' = <em>p</em> · Δ<em>V</em> = <em>n</em> · <em>R</em> · Δ<em>T</em>.<br>
+    <em>W</em>' = 2 · 8,314 · 50 = <strong>831,4 J</strong>.</p>
+    <p><strong>2. Změna vnitřní energie:</strong><br>
+    Pro dvouatomový plyn je <em>C</em><sub>V</sub> = (5/2)<em>R</em> = 2,5 · 8,314 = 20,785 J·mol<sup>-1</sup>·K<sup>-1</sup>.<br>
+    Δ<em>U</em> = <em>n</em> · <em>C</em><sub>V</sub> · Δ<em>T</em> = 2 · 20,785 · 50 = <strong>2 078,5 J</strong>.</p>
+    <p><strong>3. Dodané teplo (z 1. termodynamického zákona i přes <em>C</em><sub>p</sub>):</strong><br>
+    Podle Mayerova vztahu <em>C</em><sub>p</sub> = <em>C</em><sub>V</sub> + <em>R</em> = (7/2)<em>R</em>.<br>
+    <em>Q</em><sub>p</sub> = Δ<em>U</em> + <em>W</em>' = 2 078,5 + 831,4 = <strong>2 909,9 J ≈ 2,91 kJ</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 5: Adiabatické stlačení vzduchu ve válci vznětového motoru</h3>
+    <span class="badge">Adiabatický děj</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Vzduch (<em>κ</em> = 1,4) o počáteční teplotě <em>t</em><sub>1</sub> = 27 °C a tlaku <em>p</em><sub>1</sub> = 100 kPa je ve válci dieselového motoru rychle (adiabaticky) stlačen na 1/16 původního objemu (<em>V</em><sub>1</sub> / <em>V</em><sub>2</sub> = 16). Vypočítejte konečný tlak <em>p</em><sub>2</sub> a teplotu <em>t</em><sub>2</sub>.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Výpočet konečného tlaku (Poissonův zákon):</strong><br>
+    <em>p</em><sub>1</sub> · <em>V</em><sub>1</sub><sup><em>κ</em></sup> = <em>p</em><sub>2</sub> · <em>V</em><sub>2</sub><sup><em>κ</em></sup>  ⟹  <em>p</em><sub>2</sub> = <em>p</em><sub>1</sub> · (<em>V</em><sub>1</sub> / <em>V</em><sub>2</sub>)<sup><em>κ</em></sup><br>
+    <em>p</em><sub>2</sub> = 100 · 16<sup>1,4</sup> = 100 · 48,50 = <strong>4 850 kPa = 4,85 MPa</strong>.</p>
+    <p><strong>2. Výpočet konečné teploty:</strong><br>
+    <em>T</em><sub>1</sub> = 27 + 273,15 = 300,15 K.<br>
+    <em>T</em><sub>1</sub> · <em>V</em><sub>1</sub><sup><em>κ</em>−1</sup> = <em>T</em><sub>2</sub> · <em>V</em><sub>2</sub><sup><em>κ</em>−1</sup>  ⟹  <em>T</em><sub>2</sub> = <em>T</em><sub>1</sub> · (<em>V</em><sub>1</sub> / <em>V</em><sub>2</sub>)<sup><em>κ</em>−1</sup><br>
+    <em>T</em><sub>2</sub> = 300,15 · 16<sup>0,4</sup> = 300,15 · 3,031 ≈ <strong>910 K</strong>, což je <em>t</em><sub>2</sub> = 910 − 273 ≈ <strong>637 °C</strong>.</p>
+    <p><strong>Poznámka:</strong> Tato vysoká teplota stačí k samovznícení vstříknuté nafty bez zapalovací svíčky!</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="06-zmeny-skupenstvi.html" class="pager-btn">← 12. Změny skupenství látek</a>
+            <a href="08-termodynamika-stroje.html" class="pager-btn pager-next">14. Termodynamika a tepelné stroje →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

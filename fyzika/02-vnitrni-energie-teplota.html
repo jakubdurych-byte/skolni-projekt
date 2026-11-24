@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Vnitřní energie a teplota | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2. ročník: Molekulová fyzika a termika</span>
+                <span>/</span>
+                <span>Kapitola 8</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="02-vnitrni-energie-teplota">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="01-kineticka-teorie.html" class="module-subnav-link " data-ch-nav="01-kineticka-teorie">7. Kinetická teorie látek</a><a href="02-vnitrni-energie-teplota.html" class="module-subnav-link active" data-ch-nav="02-vnitrni-energie-teplota">8. Vnitřní energie a teplota</a><a href="03-tepelna-vymena-kalorimetrie.html" class="module-subnav-link " data-ch-nav="03-tepelna-vymena-kalorimetrie">9. Tepelná výměna a kalorimetrie</a><a href="04-anomalie-vody.html" class="module-subnav-link " data-ch-nav="04-anomalie-vody">10. Anomálie vody</a><a href="05-pevne-latky-kapaliny.html" class="module-subnav-link " data-ch-nav="05-pevne-latky-kapaliny">11. Pevné látky a kapaliny</a><a href="06-zmeny-skupenstvi.html" class="module-subnav-link " data-ch-nav="06-zmeny-skupenstvi">12. Změny skupenství látek</a><a href="07-plyny.html" class="module-subnav-link " data-ch-nav="07-plyny">13. Plyny a děje v plynech</a><a href="08-termodynamika-stroje.html" class="module-subnav-link " data-ch-nav="08-termodynamika-stroje">14. Termodynamika a tepelné stroje</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>2. Vnitřní energie, teplota a mikroskopický popis</h1>
+      <p class="chapter-lead">Vnitřní energie tělesa, způsoby její změny, Celsiova a Kelvinova stupnice, základní mikroskopické vztahy.</p>
+      
+      <h2>2.1 Vnitřní energie tělesa (U)</h2>
+<p>Vnitřní energie soustavy (<em>U</em>) je celková energie všech částic, ze kterých se těleso skládá. Zahrnuje:</p>
+<ul><li>Celkovou kinetickou energii neuspořádaného tepelného pohybu všech částic (translační, rotační a vibrační pohyb).</li><li>Celkovou potenciální energii vzájemných poloh částic danou mezimolekulovými silami.</li><li>Vnitřní energii elektronových obalů atomů a energii atomových jader (tyto složky se při běžných tepelných dějích nemění).</li></ul>
+<p>Vnitřní energie není stálá veličina. Změnu vnitřní energie Δ<em>U</em> lze způsobit dvěma způsoby:</p>
+<ul><li><strong>1. Konáním mechanické práce (W):</strong> Dochází k němu působením vnějších makroskopických sil (např. stlačování plynu v pístu, tření dvou těles o sebe, ohýbání či drcení materiálu).</li><li><strong>2. Tepelnou výměnou (Q):</strong> Děj, při němž si dvě tělesa o různé teplotě vyměňují energii přímými mikroskopickými srážkami částic na rozhraní, aniž by docházelo k makroskopickému posunutí těles jako celku.</li></ul>
+<h2>2.2 Teplota a teplotní stupnice</h2>
+<p>Teplota je makroskopická stavová veličina, která charakterizuje rovnovážný stav soustavy a je objektivní mírou průměrné kinetické energie posuvného pohybu částic.</p>
+<ul><li><strong>Celsiova teplota (t):</strong> Jednotka stupeň Celsia [°C]. Je historicky definována dvěma pevnými body za normálního atmosférického tlaku (101 325 Pa): bod tání ledu (0 °C) a bod varu čisté vody (100 °C).</li><li><strong>Termodynamická teplota (T):</strong> Základní fyzikální veličina soustavy SI, jednotka Kelvin [K]. Vychází z existence absolutní nuly (0 K = -273,15 °C), což je teoretický stav, v němž by ustal veškerý tepelný translační pohyb částic. Termodynamická teplota nemůže nabývat záporných hodnot.</li></ul>
+<div class="callout callout-formula"><div class="callout-title">Převodní vztahy mezi teplotními stupnicemi</div><div class="callout-body"><p><strong>T = t + 273,15</strong>   (např. 20 °C odpovídá 293,15 K)</p><p><strong>t = T − 273,15</strong>   (např. 300 K odpovídá 26,85 °C)</p><p><em>Poznámka ke změně teploty:</em> Teplotní rozdíl v Kelvinech a stupních Celsia je shodný: <strong>ΔT = Δt</strong>.</p></div></div>
+<h2>2.3 Mikroskopické veličiny a základní vztahy pro jednoatomový plyn</h2>
+<p>V ideálním jednoatomovém plynu je veškerá vnitřní energie tvořena pouze kinetickou energií posuvného pohybu atomů. Platí základní fundamentální vztahy:</p>
+<ul><li><strong>Střední kinetická energie jedné molekuly:</strong> <strong>E<sub>k</sub> = (3/2) · k · T</strong>, kde <em>k</em> = 1,380 6 · 10<sup>-23</sup> J·K<sup>-1</sup> je Boltzmannova konstanta.</li><li><strong>Střední kvadratická rychlost částic (v<sub>k</sub>):</strong> <strong>v<sub>k</sub> = √(3 · k · T / m<sub>0</sub>) = √(3 · R · T / M<sub>m</sub>)</strong>, kde <em>M</em><sub>m</sub> je molární hmotnost plynu a <em>R</em> je univerzální plynová konstanta.</li><li><strong>Základní rovnice pro tlak plynu:</strong> <strong>p = (1/3) · N<sub>V</sub> · m<sub>0</sub> · v<sub>k</sub><sup>2</sup> = (2/3) · N<sub>V</sub> · E<sub>k</sub></strong>, kde <em>N</em><sub>V</sub> = <em>N</em> / <em>V</em> je hustota počtu částic.</li><li><strong>Látkové množství a konstanty:</strong> <em>n</em> = <em>N</em> / <em>N</em><sub>A</sub> = <em>m</em> / <em>M</em><sub>m</sub>. <em>N</em><sub>A</sub> = 6,022 · 10<sup>23</sup> mol<sup>-1</sup>, <em>R</em> = <em>k</em> · <em>N</em><sub>A</sub> = 8,314 J·mol<sup>-1</sup>·K<sup>-1</sup>.</li></ul>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Převod teplot:</strong> <em>T</em> [K] = <em>t</em> [°C] + 273,15 &nbsp;|&nbsp; Δ<em>T</em> = Δ<em>t</em></p>
+          <p><strong>Převod na Fahrenheity:</strong> <em>t</em><sub>F</sub> = 1,8 · <em>t</em><sub>C</sub> + 32</p>
+          <p><strong>Změna vnitřní energie (1. termodynamický zákon):</strong> Δ<em>U</em> = <em>Q</em> + <em>W</em></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Převod teplot mezi stupnicemi</h3>
+    <span class="badge">Teplota</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Převeďte teplotu lidského těla <em>t</em> = 36,8 °C do Kelvinovy a Fahrenheitovy stupnice. O kolik Kelvinů se změní teplota, stoupne-li ze 20 °C na 35 °C?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Kelvinova stupnice:</strong> <em>T</em> = 36,8 + 273,15 = <strong>309,95 K</strong>.</p><p><strong>2. Fahrenheitova stupnice:</strong> <em>t</em><sub>F</sub> = 1,8 · 36,8 + 32 = 66,24 + 32 = <strong>98,24 °F</strong>.</p><p><strong>3. Teplotní rozdíl:</strong> Δ<em>T</em> = Δ<em>t</em> = 35 − 20 = <strong>15 K</strong> (velikost 1 K a 1 °C je totožná).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Změna vnitřní energie konáním práce i teplem</h3>
+    <span class="badge">Vnitřní energie</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Plyn v uzavřeném válci přijal z okolí teplo <em>Q</em> = 500 J a píst jej zároveň stlačil, čímž na něm vykonal práci <em>W</em> = 300 J. O kolik vzrostla vnitřní energie plynu?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Znaménková konvence:</strong> Plyn teplo přijal (+500 J) a práce byla vykonána <em>na</em> plynu (+300 J).</p><p><strong>2. Výpočet:</strong> Δ<em>U</em> = <em>Q</em> + <em>W</em> = 500 + 300 = <strong>800 J</strong> (vnitřní energie vzrostla o 800 J).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Zahřátí olověné střely při dopadu na terč</h3>
+    <span class="badge">Přeměna energie</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Olověná kulka (<em>c</em> = 130 J·kg<sup>-1</sup>·K<sup>-1</sup>) narazí rychlostí <em>v</em> = 260 m/s do pevné překážky a zastaví se. Předpokládejte, že 50 % její kinetické energie se přemění ve vnitřní energii kulky. O kolik °C se kulka zahřeje?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Energetická bilance:</strong> Δ<em>U</em> = 0,5 · (½<em>mv</em><sup>2</sup>) = <em>m</em> · <em>c</em> · Δ<em>t</em> (hmotnost <em>m</em> se zkrátí).</p><p><strong>2. Výpočet Δ<em>t</em>:</strong> Δ<em>t</em> = (0,25 · <em>v</em><sup>2</sup>) / <em>c</em> = (0,25 · 260<sup>2</sup>) / 130 = 16 900 / 130 = <strong>130 °C</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="01-kineticka-teorie.html" class="pager-btn">← 7. Kinetická teorie látek</a>
+            <a href="03-tepelna-vymena-kalorimetrie.html" class="pager-btn pager-next">9. Tepelná výměna a kalorimetrie →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

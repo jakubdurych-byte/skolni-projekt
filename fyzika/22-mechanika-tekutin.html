@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Mechanika kapalin a plynů | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>1. ročník: Úvod a mechanika</span>
+                <span>/</span>
+                <span>Kapitola 6</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="22-mechanika-tekutin">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="17-fyzikalni-veliciny-jednotky.html" class="module-subnav-link " data-ch-nav="17-fyzikalni-veliciny-jednotky">1. Fyzikální veličiny, SI a vektory</a><a href="18-kinematika.html" class="module-subnav-link " data-ch-nav="18-kinematika">2. Kinematika (pohyb a vrhy)</a><a href="19-dynamika-sily.html" class="module-subnav-link " data-ch-nav="19-dynamika-sily">3. Dynamika a Newtonovy zákony</a><a href="20-prace-energie-vykon.html" class="module-subnav-link " data-ch-nav="20-prace-energie-vykon">4. Práce, výkon a energie</a><a href="21-tuhe-teleso-gravitace.html" class="module-subnav-link " data-ch-nav="21-tuhe-teleso-gravitace">5. Tuhé těleso a gravitační pole</a><a href="22-mechanika-tekutin.html" class="module-subnav-link active" data-ch-nav="22-mechanika-tekutin">6. Mechanika kapalin a plynů</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>6. Mechanika kapalin a plynů</h1>
+      <p class="chapter-lead">Hustota, hydrostatický a atmosférický tlak, Pascalův a Archimédův zákon, rovnice kontinuity a Bernoulliho rovnice.</p>
+      
+<p>Tekutiny (kapaliny a plyny) nemají stálý tvar a snadno mění své uspořádání působením vnějších sil. Kapaliny jsou téměř nestlačitelné, plyny jsou snadno stlačitelné.</p>
+
+<h2>1. Tlak v klidných tekutinách (Hydrostatika)</h2>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Tlak, Pascalův a Archimédův zákon</div>
+  <div class="callout-body">
+    <p><strong>Tlak:</strong> <em>p</em> = <em>F</em> / <em>S</em> [Pa = N/m<sup>2</sup>]</p>
+    <p><strong>Hydrostatický tlak:</strong> <em>p</em><sub>h</sub> = <em>h</em> · <em>ρ</em> · <em>g</em> (nezávisí na tvaru nádoby – hydrostatický paradox!)</p>
+    <p><strong>Pascalův zákon (hydraulický lis):</strong> <em>F</em><sub>1</sub> / <em>S</em><sub>1</sub> = <em>F</em><sub>2</sub> / <em>S</em><sub>2</sub></p>
+    <p><strong>Archimédův zákon (vztlaková síla):</strong> <em>F</em><sub>vz</sub> = <em>V</em><sub>pon</sub> · <em>ρ</em><sub>kap</sub> · <em>g</em></p>
+  </div>
+</div>
+
+<h2>2. Chování tělesa v kapalině</h2>
+<ul>
+  <li><em>ρ</em><sub>tělesa</sub> &gt; <em>ρ</em><sub>kapaliny</sub> (<em>F</em><sub>G</sub> &gt; <em>F</em><sub>vz</sub>) → těleso klesá ke dnu.</li>
+  <li><em>ρ</em><sub>tělesa</sub> = <em>ρ</em><sub>kapaliny</sub> (<em>F</em><sub>G</sub> = <em>F</em><sub>vz</sub>) → těleso se vznáší v kapalině.</li>
+  <li><em>ρ</em><sub>tělesa</sub> &lt; <em>ρ</em><sub>kapaliny</sub> → těleso stoupá k hladině a částečně vynořené plave.</li>
+</ul>
+
+<h2>3. Proudění tekutin (Hydrodynamika)</h2>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Rovnice kontinuity a Bernoulliho rovnice</div>
+  <div class="callout-body">
+    <p><strong>Rovnice kontinuity (objemový průtok):</strong> <em>Q</em><sub>V</sub> = <em>S</em><sub>1</sub> · <em>v</em><sub>1</sub> = <em>S</em><sub>2</sub> · <em>v</em><sub>2</sub> = konst.</p>
+    <p><em>(V užším místě trubice proudí kapalina rychleji!)</em></p>
+    <p><strong>Bernoulliho rovnice (pro vodorovnou trubici):</strong> <em>p</em> + ½ · <em>ρ</em> · <em>v</em><sup>2</sup> = konst.</p>
+    <p><em>(Kde je větší rychlost proudění, tam je menší statický tlak – princip vztlaku křídla letadla i rozprašovače.)</em></p>
+  </div>
+</div>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Hydrostatický tlak:</strong> <em>p</em><sub>h</sub> = <em>h</em> · <em>ρ</em> · <em>g</em> &nbsp;|&nbsp; <strong>Pascalův zákon:</strong> <em>F</em><sub>1</sub> / <em>S</em><sub>1</sub> = <em>F</em><sub>2</sub> / <em>S</em><sub>2</sub></p>
+          <p><strong>Archimédův zákon:</strong> <em>F</em><sub>vz</sub> = <em>V</em><sub>pon</sub> · <em>ρ</em><sub>kap</sub> · <em>g</em> &nbsp;|&nbsp; <strong>Rovnice kontinuity:</strong> <em>S</em><sub>1</sub><em>v</em><sub>1</sub> = <em>S</em><sub>2</sub><em>v</em><sub>2</sub></p>
+          <p><strong>Bernoulliho rovnice:</strong> <em>p</em><sub>1</sub> + ½<em>ρv</em><sub>1</sub><sup>2</sup> = <em>p</em><sub>2</sub> + ½<em>ρv</em><sub>2</sub><sup>2</sup></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Hydraulický lis (Pascalův zákon)</h3>
+    <span class="badge">Hydrostatika</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Menší píst hydraulického zvedáku má obsah <em>S</em><sub>1</sub> = 20 cm<sup>2</sup>, větší píst má <em>S</em><sub>2</sub> = 800 cm<sup>2</sup>. Jakou silou <em>F</em><sub>1</sub> musíme působit na menší píst, abychom zvedli auto o tíze <em>F</em><sub>2</sub> = 16 000 N?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Pascalův zákon:</strong> <em>F</em><sub>1</sub> / <em>S</em><sub>1</sub> = <em>F</em><sub>2</sub> / <em>S</em><sub>2</sub>  ⟹  <em>F</em><sub>1</sub> = <em>F</em><sub>2</sub> · (<em>S</em><sub>1</sub> / <em>S</em><sub>2</sub>)</p><p><strong>2. Výpočet:</strong> <em>F</em><sub>1</sub> = 16 000 · (20 / 800) = 16 000 / 40 = <strong>400 N</strong> (zvedák násobí sílu 40×).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Archimédův zákon (zdánlivá hmotnost tělesa ve vodě)</h3>
+    <span class="badge">Vztlaková síla</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Železný kvádr o objemu <em>V</em> = 0,002 m<sup>3</sup> (2 dm<sup>3</sup>) a hustotě <em>ρ</em><sub>Fe</sub> = 7 800 kg·m<sup>-3</sup> zcela ponoříme do vody (<em>ρ</em><sub>v</sub> = 1 000 kg·m<sup>-3</sup>, <em>g</em> = 10 m·s<sup>-2</sup>). Jakou silou jej musíme ve vodě nadnášet?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Tíhová síla kvádru:</strong> <em>F</em><sub>G</sub> = <em>V</em> · <em>ρ</em><sub>Fe</sub> · <em>g</em> = 0,002 · 7 800 · 10 = 156 N.</p><p><strong>2. Vztlaková síla vody:</strong> <em>F</em><sub>vz</sub> = <em>V</em> · <em>ρ</em><sub>v</sub> · <em>g</em> = 0,002 · 1 000 · 10 = 20 N.</p><p><strong>3. Výsledná síla k udržení kvádru:</strong> <em>F</em> = <em>F</em><sub>G</sub> − <em>F</em><sub>vz</sub> = 156 − 20 = <strong>136 N</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Rovnice kontinuity a Bernoulliho rovnice v potrubí</h3>
+    <span class="badge">Hydrodynamika</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> V široké části vodorovného potrubí o průřezu <em>S</em><sub>1</sub> = 10 cm<sup>2</sup> proudí voda rychlostí <em>v</em><sub>1</sub> = 2 m/s pod tlakem <em>p</em><sub>1</sub> = 150 kPa. Potrubí se zúží na průřez <em>S</em><sub>2</sub> = 5 cm<sup>2</sup>. Vypočítejte rychlost <em>v</em><sub>2</sub> a tlak <em>p</em><sub>2</sub> v zúžení (<em>ρ</em> = 1 000 kg·m<sup>-3</sup>).</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Rychlost v zúžení (rovnice kontinuity):</strong> <em>v</em><sub>2</sub> = <em>v</em><sub>1</sub> · (<em>S</em><sub>1</sub> / <em>S</em><sub>2</sub>) = 2 · (10 / 5) = <strong>4 m/s</strong>.</p><p><strong>2. Tlak v zúžení (Bernoulliho rovnice):</strong> <em>p</em><sub>2</sub> = <em>p</em><sub>1</sub> + ½<em>ρ</em>(<em>v</em><sub>1</sub><sup>2</sup> − <em>v</em><sub>2</sub><sup>2</sup>)</p><p><strong>3. Výpočet:</strong> <em>p</em><sub>2</sub> = 150 000 + 0,5 · 1 000 · (4 − 16) = 150 000 − 6 000 = <strong>144 000 Pa = 144 kPa</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="21-tuhe-teleso-gravitace.html" class="pager-btn">← 5. Tuhé těleso a gravitační pole</a>
+            <a href="01-kineticka-teorie.html" class="pager-btn pager-next">7. Kinetická teorie látek →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

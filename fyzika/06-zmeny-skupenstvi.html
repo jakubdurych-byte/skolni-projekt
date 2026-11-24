@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12. Změny skupenství látek | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2. ročník: Molekulová fyzika a termika</span>
+                <span>/</span>
+                <span>Kapitola 12</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="06-zmeny-skupenstvi">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="01-kineticka-teorie.html" class="module-subnav-link " data-ch-nav="01-kineticka-teorie">7. Kinetická teorie látek</a><a href="02-vnitrni-energie-teplota.html" class="module-subnav-link " data-ch-nav="02-vnitrni-energie-teplota">8. Vnitřní energie a teplota</a><a href="03-tepelna-vymena-kalorimetrie.html" class="module-subnav-link " data-ch-nav="03-tepelna-vymena-kalorimetrie">9. Tepelná výměna a kalorimetrie</a><a href="04-anomalie-vody.html" class="module-subnav-link " data-ch-nav="04-anomalie-vody">10. Anomálie vody</a><a href="05-pevne-latky-kapaliny.html" class="module-subnav-link " data-ch-nav="05-pevne-latky-kapaliny">11. Pevné látky a kapaliny</a><a href="06-zmeny-skupenstvi.html" class="module-subnav-link active" data-ch-nav="06-zmeny-skupenstvi">12. Změny skupenství látek</a><a href="07-plyny.html" class="module-subnav-link " data-ch-nav="07-plyny">13. Plyny a děje v plynech</a><a href="08-termodynamika-stroje.html" class="module-subnav-link " data-ch-nav="08-termodynamika-stroje">14. Termodynamika a tepelné stroje</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>6. Změny skupenství látek (Fázové přechody)</h1>
+      <p class="chapter-lead">Tání, tuhnutí, vypařování, var, sublimace, fázový (p-T) diagram, trojný a kritický bod, vlhkost vzduchu.</p>
+      
+      <h2>6.1 Přehled fázových přechodů a skupenská tepla</h2>
+<ul><li><strong>Tání a tuhnutí:</strong> <em>Q</em><sub>t</sub> = <em>m</em> · <em>l</em><sub>t</sub> (pro led <em>l</em><sub>t</sub> ≈ 334 kJ·kg<sup>-1</sup>). Během fázového přechodu čisté látky za stálého tlaku zůstává teplota konstantní.</li><li><strong>Vypařování, var a kondenzace:</strong> Vypařování probíhá z povrchu za každé teploty; var v celém objemu za teploty varu <em>t</em><sub>v</sub> (<em>Q</em><sub>v</sub> = <em>m</em> · <em>l</em><sub>v</sub>, pro vodu <em>l</em><sub>v</sub> ≈ 2 260 kJ·kg<sup>-1</sup>). Teplota varu roste s tlakem (Papinův hrnec) a klesá ve výškách.</li><li><strong>Sublimace a desublimace:</strong> Přímý přechod mezi pevnou a plynnou fází (suchý led, jód, jinovatka).</li></ul>
+<h2>6.2 Fázový diagram (p-T) a vlhkost vzduchu</h2>
+<ul><li><strong>Trojný bod (T<sub>r</sub>):</strong> Stav, kdy koexistují všechna tři skupenství současně (pro vodu 0,01 °C a 611,65 Pa).</li><li><strong>Kritický bod (K):</strong> Nad kritickou teplotou <em>T</em><sub>k</sub> nelze plyn žádným tlakem zkapalnit.</li><li><strong>Vlhkost vzduchu:</strong> Absolutní <em>Φ</em> = <em>m</em> / <em>V</em> [g·m<sup>-3</sup>]; relativní <em>φ</em> = (<em>Φ</em> / <em>Φ</em><sub>max</sub>) · 100 % (optimální 40–60 %). <strong>Rosný bod</strong> je teplota, při níž <em>φ</em> dosáhne 100 % a pára začne kondenzovat.</li></ul>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Skupenské teplo tání/tuhnutí:</strong> <em>L</em><sub>t</sub> = <em>m</em> · <em>l</em><sub>t</sub> &nbsp;|&nbsp; <strong>Měrné skup. teplo tání ledu:</strong> <em>l</em><sub>t</sub> = 334 kJ·kg<sup>-1</sup></p>
+          <p><strong>Skupenské teplo varu/kondenzace:</strong> <em>L</em><sub>v</sub> = <em>m</em> · <em>l</em><sub>v</sub> &nbsp;|&nbsp; <strong>Měrné skup. teplo varu vody:</strong> <em>l</em><sub>v</sub> = 2 260 kJ·kg<sup>-1</sup></p>
+          <p><strong>Relativní vlhkost vzduchu:</strong> <em>φ</em> = (<em>Φ</em> / <em>Φ</em><sub>m</sub>) · 100 % ≈ (<em>p</em><sub>p</sub> / <em>p</em><sub>pm</sub>) · 100 %</p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Roztavení ledu a ohřátí vzniklé vody na bod varu</h3>
+    <span class="badge">Změny skupenství</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Kolik tepla je potřeba k přeměně 0,5 kg ledu o teplotě −10 °C na vodu o teplotě 100 °C? (<em>c</em><sub>led</sub> = 2 100, <em>c</em><sub>v</sub> = 4 180 J·kg<sup>-1</sup>·K<sup>-1</sup>, <em>l</em><sub>t</sub> = 334 kJ·kg<sup>-1</sup>.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Ohřátí ledu z −10 °C na 0 °C:</strong> <em>Q</em><sub>1</sub> = 0,5 · 2 100 · 10 = 10 500 J = 10,5 kJ.</p><p><strong>2. Roztavení ledu při 0 °C:</strong> <em>Q</em><sub>2</sub> = <em>m</em> · <em>l</em><sub>t</sub> = 0,5 · 334 = 167 kJ.</p><p><strong>3. Ohřátí vody z 0 °C na 100 °C:</strong> <em>Q</em><sub>3</sub> = 0,5 · 4 180 · 100 = 209 kJ.</p><p><strong>Celkové teplo:</strong> <em>Q</em> = 10,5 + 167 + 209 = <strong>386,5 kJ</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Kondenzace vodní páry na vodu</h3>
+    <span class="badge">Výparné teplo</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Kolik tepla se uvolní, zkondenzuje-li 200 g (0,2 kg) vodní páry o teplotě 100 °C na vodu o teplotě 100 °C? (<em>l</em><sub>v</sub> = 2 260 kJ·kg<sup>-1</sup>.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>L</em><sub>v</sub> = <em>m</em> · <em>l</em><sub>v</sub></p><p><strong>2. Výpočet:</strong> <em>L</em><sub>v</sub> = 0,2 · 2 260 = <strong>452 kJ</strong> (to je více než teplo potřebné k ohřátí celého litru vody z 0 °C na 100 °C!).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Výpočet relativní vlhkosti vzduchu v místnosti</h3>
+    <span class="badge">Vlhkost vzduchu</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Při teplotě 20 °C obsahuje 1 m<sup>3</sup> vzduchu v místnosti 10,4 g vodní páry (absolutní vlhkost <em>Φ</em> = 10,4 g·m<sup>-3</sup>). Maximální možná vlhkost (sytá pára) při 20 °C je <em>Φ</em><sub>m</sub> = 17,3 g·m<sup>-3</sup>. Jaká je relativní vlhkost?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>φ</em> = (<em>Φ</em> / <em>Φ</em><sub>m</sub>) · 100 %</p><p><strong>2. Výpočet:</strong> <em>φ</em> = (10,4 / 17,3) · 100 % ≈ <strong>60,1 %</strong> (ideální bytová vlhkost).</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="05-pevne-latky-kapaliny.html" class="pager-btn">← 11. Pevné látky a kapaliny</a>
+            <a href="07-plyny.html" class="pager-btn pager-next">13. Plyny a děje v plynech →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

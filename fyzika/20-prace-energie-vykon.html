@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Práce, výkon a energie | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>1. ročník: Úvod a mechanika</span>
+                <span>/</span>
+                <span>Kapitola 4</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="20-prace-energie-vykon">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="17-fyzikalni-veliciny-jednotky.html" class="module-subnav-link " data-ch-nav="17-fyzikalni-veliciny-jednotky">1. Fyzikální veličiny, SI a vektory</a><a href="18-kinematika.html" class="module-subnav-link " data-ch-nav="18-kinematika">2. Kinematika (pohyb a vrhy)</a><a href="19-dynamika-sily.html" class="module-subnav-link " data-ch-nav="19-dynamika-sily">3. Dynamika a Newtonovy zákony</a><a href="20-prace-energie-vykon.html" class="module-subnav-link active" data-ch-nav="20-prace-energie-vykon">4. Práce, výkon a energie</a><a href="21-tuhe-teleso-gravitace.html" class="module-subnav-link " data-ch-nav="21-tuhe-teleso-gravitace">5. Tuhé těleso a gravitační pole</a><a href="22-mechanika-tekutin.html" class="module-subnav-link " data-ch-nav="22-mechanika-tekutin">6. Mechanika kapalin a plynů</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>4. Práce, výkon a energie</h1>
+      <p class="chapter-lead">Mechanická práce, výkon, účinnost, kinetická a potenciální energie, zákon zachování mechanické energie.</p>
+      
+<p>Pojmy práce a energie propojují mechaniku s ostatními oblastmi fyziky (termikou, elektřinou i kvantovou fyzikou).</p>
+
+<h2>1. Mechanická práce a výkon</h2>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Práce, výkon a účinnost</div>
+  <div class="callout-body">
+    <p><strong>Mechanická práce:</strong> <em>W</em> = <em>F</em> · <em>s</em> · cos α [J = N·m]</p>
+    <p><strong>Výkon:</strong> <em>P</em> = <em>W</em> / <em>t</em> = <em>F</em> · <em>v</em> [W = J/s]</p>
+    <p><strong>Účinnost:</strong> <em>η</em> = <em>P</em> / <em>P</em><sub>0</sub> = <em>W</em> / <em>W</em><sub>0</sub> (vždy 0 &lt; <em>η</em> &lt; 1, resp. v %)</p>
+  </div>
+</div>
+<p>Je-li síla kolmá na směr pohybu (α = 90°, např. dostředivá síla), práce je <strong>nulová</strong>.</p>
+
+<h2>2. Mechanická energie</h2>
+<ul>
+  <li><strong>Kinetická (pohybová) energie:</strong> Energie tělesa o hmotnosti <em>m</em> pohybujícího se rychlostí <em>v</em>:<br><strong><em>E</em><sub>k</sub> = ½ · <em>m</em> · <em>v</em><sup>2</sup></strong></li>
+  <li><strong>Potenciální (polohová) energie tíhová:</strong> Energie tělesa ve výšce <em>h</em> nad zvolenou nulovou hladinou:<br><strong><em>E</em><sub>p</sub> = <em>m</em> · <em>g</em> · <em>h</em></strong></li>
+  <li><strong>Potenciální energie pružnosti:</strong> Energie stlačené nebo natažené pružiny o tuhosti <em>k</em> o délku <em>y</em>:<br><strong><em>E</em><sub>p,pr</sub> = ½ · <em>k</em> · <em>y</em><sup>2</sup></strong></li>
+</ul>
+
+<h2>3. Zákon zachování mechanické energie (ZZME)</h2>
+<div class="callout callout-note">
+  <div class="callout-title">💡 Zákon zachování mechanické energie</div>
+  <div class="callout-body">
+    <p>V izolované soustavě, kde nepůsobí třecí ani odporové síly, je součet kinetické a potenciální energie v každém okamžiku konstantní: <strong><em>E</em><sub>k</sub> + <em>E</em><sub>p</sub> = konst.</strong></p>
+    <p>Příklad: Při volném pádu z výšky <em>h</em> se potenciální energie <em>mgh</em> mění v kinetickou ½<em>mv</em><sup>2</sup>, odkud ihned plyne dopadová rychlost <em>v</em> = √(2<em>gh</em>).</p>
+  </div>
+</div>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Práce:</strong> <em>W</em> = <em>F</em> · <em>s</em> · cos α &nbsp;|&nbsp; <strong>Výkon:</strong> <em>P</em> = <em>W</em> / <em>t</em> = <em>F</em> · <em>v</em> &nbsp;|&nbsp; <strong>Účinnost:</strong> <em>η</em> = <em>P</em> / <em>P</em><sub>0</sub></p>
+          <p><strong>Kinetická energie:</strong> <em>E</em><sub>k</sub> = ½ <em>m</em> <em>v</em><sup>2</sup> &nbsp;|&nbsp; <strong>Tíhová potenciální:</strong> <em>E</em><sub>p</sub> = <em>m</em> <em>g</em> <em>h</em></p>
+          <p><strong>Energie pružiny:</strong> <em>E</em><sub>p,pr</sub> = ½ <em>k</em> <em>y</em><sup>2</sup> &nbsp;|&nbsp; <strong>ZZME:</strong> <em>E</em><sub>k1</sub> + <em>E</em><sub>p1</sub> = <em>E</em><sub>k2</sub> + <em>E</em><sub>p2</sub></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Výkon a účinnost jeřábu</h3>
+    <span class="badge">Práce a výkon</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Jeřáb zvedne náklad o hmotnosti <em>m</em> = 800 kg do výšky <em>h</em> = 15 m za čas <em>t</em> = 20 s (<em>g</em> = 10 m·s<sup>-2</sup>). Určete užitečný výkon jeřábu a jeho příkon, pokud je účinnost motoru <em>η</em> = 80 %.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vykonaná práce:</strong> <em>W</em> = <em>F</em><sub>G</sub> · <em>h</em> = <em>m</em> · <em>g</em> · <em>h</em> = 800 · 10 · 15 = 120 000 J = 120 kJ.</p><p><strong>2. Užitečný výkon:</strong> <em>P</em> = <em>W</em> / <em>t</em> = 120 000 / 20 = <strong>6 000 W = 6 kW</strong>.</p><p><strong>3. Příkon motoru:</strong> <em>P</em><sub>0</sub> = <em>P</em> / <em>η</em> = 6 000 / 0,80 = <strong>7 500 W = 7,5 kW</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Zákon zachování mechanické energie (horská dráha)</h3>
+    <span class="badge">Mechanická energie</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Vozík horské dráhy sjíždí z klidu z výšky <em>h</em> = 45 m. Zanedbáme-li tření, jakou rychlost bude mít na dně dráhy ve výšce 0 m? (<em>g</em> = 10 m·s<sup>-2</sup>.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Rovnice ZZME:</strong> Nahoře má jen <em>E</em><sub>p</sub> = <em>mgh</em>, dole jen <em>E</em><sub>k</sub> = ½<em>mv</em><sup>2</sup>.</p><p><strong>2. Výpočet:</strong> <em>mgh</em> = ½<em>mv</em><sup>2</sup> (hmotnost <em>m</em> se zkrátí!) ⟹ <em>v</em> = √(2<em>gh</em>) = √(2 · 10 · 45) = √900 = <strong>30 m/s = 108 km/h</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Potenciální energie stlačené pružiny</h3>
+    <span class="badge">Energie pružnosti</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Pružina o tuhosti <em>k</em> = 400 N·m<sup>-1</sup> je stlačena o <em>y</em> = 10 cm = 0,1 m. Jakou rychlostí vystřelí kuličku o hmotnosti <em>m</em> = 50 g = 0,05 kg?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Energie stlačené pružiny:</strong> <em>E</em><sub>p,pr</sub> = ½ · <em>k</em> · <em>y</em><sup>2</sup> = 0,5 · 400 · 0,1<sup>2</sup> = <strong>2,0 J</strong>.</p><p><strong>2. Přeměna na kinetickou energii kuličky:</strong> ½<em>mv</em><sup>2</sup> = 2,0  ⟹  <em>v</em> = √(2 · 2,0 / 0,05) = √80 ≈ <strong>8,94 m/s</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="19-dynamika-sily.html" class="pager-btn">← 3. Dynamika a Newtonovy zákony</a>
+            <a href="21-tuhe-teleso-gravitace.html" class="pager-btn pager-next">5. Tuhé těleso a gravitační pole →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

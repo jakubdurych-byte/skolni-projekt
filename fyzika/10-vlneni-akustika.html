@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16. Vlnění a akustika | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2.–3. ročník: Kmitání, vlnění a akustika</span>
+                <span>/</span>
+                <span>Kapitola 16</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="10-vlneni-akustika">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="09-kmitani.html" class="module-subnav-link " data-ch-nav="09-kmitani">15. Mechanické kmitání</a><a href="10-vlneni-akustika.html" class="module-subnav-link active" data-ch-nav="10-vlneni-akustika">16. Vlnění a akustika</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>10. Mechanické vlnění a akustika</h1>
+      <p class="chapter-lead">Příčné a podélné vlnění, vlnová délka, interference, stojaté vlnění, zvuk, hladina intenzity (dB) a Dopplerův jev.</p>
+      
+      <p>Mechanické vlnění vzniká přenosem kmitavého pohybu v pružném prostředí. Vlnění nepřenáší hmotu prostředí, ale <strong>energii</strong>.</p>
+<h2>10.1 Druhy vlnění a základní veličiny</h2>
+<ul><li><strong>Příčné vlnění:</strong> Částice kmitají kolmo ke směru šíření vlny (vlnění na struně, na hladině vody; pouze v pevných látkách).</li><li><strong>Podélné vlnění:</strong> Částice kmitají ve směru šíření vlny – vzniká zhušťování a zřeďování prostředí (zvuk ve vzduchu, v kapalinách i pevných látkách).</li></ul>
+<div class="callout callout-formula"><div class="callout-title">Vlnová délka, rychlost šíření a rovnice postupné vlny</div><div class="callout-body"><p><strong>Vlnová délka (λ):</strong> Vzdálenost, do níž vlna dospěje za jednu periodu <em>T</em>:  <strong>λ = v · T = v / f</strong></p><p><strong>Rovnice postupné vlny:</strong>  <strong>y = y<sub>m</sub> · sin[2π · (t / T − x / λ)]</strong></p></div></div>
+<h2>10.2 Interference, odraz a stojaté vlnění</h2>
+<ul><li><strong>Interference (skládání vln):</strong> V místě, kde se vlny setkávají ve fázi (dráhový rozdíl Δ<em>d</em> = <em>k</em> · <em>λ</em>), dochází k <strong>zesílení</strong> (konstruktivní interference). Při opačné fázi (Δ<em>d</em> = (2<em>k</em> + 1) · <em>λ</em>/2) dochází ke <strong>zeslabení</strong> (destruktivní interference).</li><li><strong>Stojaté vlnění:</strong> Vzniká složením přímé a odražené vlny na struně nebo v píšťale. Vytvářejí se <strong>uzly</strong> (nulová výchylka) a <strong>kmitny</strong> (maximální výchylka).</li></ul>
+<h2>10.3 Akustika (Zvuk) a Dopplerův jev</h2>
+<ul><li><strong>Slyšitelný zvuk:</strong> Podélné mechanické vlnění o frekvenci <strong>16 Hz až 20 000 Hz</strong> (pod 16 Hz infrazvuk, nad 20 kHz ultrazvuk). Rychlost zvuku ve vzduchu při 20 °C je cca <strong>340 m·s<sup>-1</sup></strong>.</li><li><strong>Vlastnosti tónu:</strong> Výška je dána frekvencí <em>f</em>, barva tónu příměsí vyšších harmonických frekvencí, hlasitost amplitudou a intenzitou.</li><li><strong>Hladina intenzity zvuku (L):</strong> Vyjadřuje se v decibelech [dB]: <strong>L = 10 · log(I / I<sub>0</sub>)</strong>, kde práh slyšení <em>I</em><sub>0</sub> = 10<sup>-12</sup> W·m<sup>-2</sup>.</li><li><strong>Dopplerův jev:</strong> Změna vnímané frekvence zvuku při vzájemném pohybu zdroje a pozorovatele (přibližující se siréna zní výše, vzdalující se níže).</li></ul>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Vlnová délka:</strong> <em>λ</em> = <em>v</em> · <em>T</em> = <em>v</em> / <em>f</em> &nbsp;|&nbsp; <strong>Rovnice postupné vlny:</strong> <em>y</em> = <em>y</em><sub>m</sub> sin[2π(<em>t</em>/<em>T</em> − <em>x</em>/<em>λ</em>)]</p>
+          <p><strong>Hladina intenzity zvuku:</strong> <em>L</em> = 10 · log(<em>I</em> / <em>I</em><sub>0</sub>) [dB], kde <em>I</em><sub>0</sub> = 10<sup>-12</sup> W·m<sup>-2</sup></p>
+          <p><strong>Dopplerův jev (přibližující se zdroj):</strong> <em>f</em>' = <em>f</em> · <em>v</em> / (<em>v</em> − <em>v</em><sub>z</sub>)</p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Vlnová délka komorního tónu A ve vzduchu a ve vodě</h3>
+    <span class="badge">Vlnění</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Komorní tón A má frekvenci <em>f</em> = 440 Hz. Určete jeho vlnovou délku ve vzduchu (<em>v</em><sub>1</sub> = 340 m/s) a ve vodě (<em>v</em><sub>2</sub> = 1 480 m/s).</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>λ</em> = <em>v</em> / <em>f</em></p><p><strong>2. Ve vzduchu:</strong> <em>λ</em><sub>1</sub> = 340 / 440 ≈ <strong>0,773 m = 77,3 cm</strong>.</p><p><strong>3. Ve vodě:</strong> <em>λ</em><sub>2</sub> = 1 480 / 440 ≈ <strong>3,36 m</strong> (frekvence se při přechodu nemění, mění se rychlost a vlnová délka).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Výpočet hladiny intenzity zvuku v decibelech</h3>
+    <span class="badge">Akustika</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Jakou hladinu intenzity zvuku <em>L</em> v decibelech má hluk ulice o intenzitě <em>I</em> = 10<sup>-5</sup> W·m<sup>-2</sup>? (Práh slyšení <em>I</em><sub>0</sub> = 10<sup>-12</sup> W·m<sup>-2</sup>.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>L</em> = 10 · log<sub>10</sub>(<em>I</em> / <em>I</em><sub>0</sub>)</p><p><strong>2. Výpočet:</strong> <em>L</em> = 10 · log<sub>10</sub>(10<sup>-5</sup> / 10<sup>-12</sup>) = 10 · log<sub>10</sub>(10<sup>7</sup>) = 10 · 7 = <strong>70 dB</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Dopplerův jev u projíždějící sanitky</h3>
+    <span class="badge">Dopplerův jev</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Siréna sanitky vydává tón o frekvenci <em>f</em> = 600 Hz a jede přímo k stojícímu pozorovateli rychlostí <em>v</em><sub>z</sub> = 30 m/s (108 km/h). Jakou frekvenci <em>f</em>' uslyší pozorovatel? (<em>v</em> = 340 m/s.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec pro přibližující se zdroj:</strong> <em>f</em>' = <em>f</em> · <em>v</em> / (<em>v</em> − <em>v</em><sub>z</sub>)</p><p><strong>2. Výpočet:</strong> <em>f</em>' = 600 · 340 / (340 − 30) = 204 000 / 310 ≈ <strong>658 Hz</strong> (tón zní výše).</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="09-kmitani.html" class="pager-btn">← 15. Mechanické kmitání</a>
+            <a href="11-elektrostatika.html" class="pager-btn pager-next">17. Elektrostatika a pole →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

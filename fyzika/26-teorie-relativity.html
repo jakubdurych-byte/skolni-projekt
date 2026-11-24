@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24. Speciální a obecná teorie relativity | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>4. ročník: Moderní fyzika a astrofyzika</span>
+                <span>/</span>
+                <span>Kapitola 24</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="26-teorie-relativity">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="26-teorie-relativity.html" class="module-subnav-link active" data-ch-nav="26-teorie-relativity">24. Speciální a obecná teorie relativity</a><a href="27-kvantova-fyzika.html" class="module-subnav-link " data-ch-nav="27-kvantova-fyzika">25. Kvantová fyzika</a><a href="28-atomova-jaderna-fyzika.html" class="module-subnav-link " data-ch-nav="28-atomova-jaderna-fyzika">26. Atomová a jaderná fyzika</a><a href="29-astrofyzika-kosmologie.html" class="module-subnav-link " data-ch-nav="29-astrofyzika-kosmologie">27. Astrofyzika a kosmologie</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>24. Speciální a obecná teorie relativity</h1>
+      <p class="chapter-lead">Einsteinovy postuláty, relativita současnosti, dilatace času, kontrakce délek, relativistická hmotnost a E = mc².</p>
+      
+<p>Klasická Newtonova mechanika selhává při rychlostech blízkých rychlosti světla ve vakuu (<em>c</em> ≈ 3 · 10<sup>8</sup> m/s). Albert Einstein roku 1905 formuloval speciální teorii relativity (STR) a roku 1915 obecnou teorii relativity (OTR).</p>
+
+<h2>1. Postuláty speciální teorie relativity</h2>
+<ul>
+  <li><strong>1. Princip relativity:</strong> Všechny inerciální vztažné soustavy jsou pro popis fyzikálních zákonů rovnocenné.</li>
+  <li><strong>2. Stálost rychlosti světla:</strong> Rychlost světla ve vakuu <em>c</em> je ve všech inerciálních soustavách stejná a nezávisí na pohybu zdroje ani pozorovatele.</li>
+</ul>
+
+<h2>2. Důsledky STR (Lorentzův faktor γ)</h2>
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Relativistické vztahy</div>
+  <div class="callout-body">
+    <p><strong>Lorentzův faktor:</strong> <em>γ</em> = 1 / √(1 − <em>v</em><sup>2</sup> / <em>c</em><sup>2</sup>) ≥ 1</p>
+    <p><strong>Dilatace času (pohybující se hodiny jdou pomaleji):</strong> Δ<em>t</em> = <em>γ</em> · Δ<em>t</em><sub>0</sub></p>
+    <p><strong>Kontrakce délek (pohybující se těleso se ve směru pohybu zkracuje):</strong> <em>l</em> = <em>l</em><sub>0</sub> / <em>γ</em></p>
+    <p><strong>Relativistická hmotnost:</strong> <em>m</em> = <em>γ</em> · <em>m</em><sub>0</sub></p>
+    <p><strong>Ekvivalence hmotnosti a energie:</strong> <em>E</em> = <em>m</em> · <em>c</em><sup>2</sup> &nbsp; (klidová energie <em>E</em><sub>0</sub> = <em>m</em><sub>0</sub><em>c</em><sup>2</sup>)</p>
+  </div>
+</div>
+
+<h2>3. Obecná teorie relativity (OTR)</h2>
+<p>Gravitace není v OTR silou v Newtonově smyslu, ale projevem <strong>zakřivení čtyřrozměrného časoprostoru</strong> hmotou a energií. Důsledky: gravitační dilatace času (čas plyne pomaleji v silnějším gravitačním poli – nutná korekce pro GPS satelity!), ohyb světla kolem Slunce (gravitační čočky), černé díry a gravitační vlny.</p>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Lorentzův faktor:</strong> <em>γ</em> = 1 / √(1 − <em>v</em><sup>2</sup> / <em>c</em><sup>2</sup>)</p>
+          <p><strong>Dilatace času:</strong> Δ<em>t</em> = <em>γ</em> · Δ<em>t</em><sub>0</sub> &nbsp;|&nbsp; <strong>Kontrakce délek:</strong> <em>l</em> = <em>l</em><sub>0</sub> / <em>γ</em></p>
+          <p><strong>Relativistická hmotnost a energie:</strong> <em>m</em> = <em>γ</em> · <em>m</em><sub>0</sub>, &nbsp; <em>E</em> = <em>m</em> · <em>c</em><sup>2</sup> = <em>γ</em> · <em>m</em><sub>0</sub><em>c</em><sup>2</sup></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Dilatace času v kosmické lodi</h3>
+    <span class="badge">Dilatace času</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Kosmická loď letí rychlostí <em>v</em> = 0,8<em>c</em>. Na palubě lodi uběhne podle tamních hodin doba Δ<em>t</em><sub>0</sub> = 6 let. Jaká doba Δ<em>t</em> uplyne na Zemi?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Lorentzův faktor:</strong> <em>γ</em> = 1 / √(1 − 0,8<sup>2</sup>) = 1 / √(1 − 0,64) = 1 / √0,36 = 1 / 0,6 = 5/3 ≈ 1,667.</p><p><strong>2. Dilatace času:</strong> Δ<em>t</em> = <em>γ</em> · Δ<em>t</em><sub>0</sub> = (5/3) · 6 = <strong>10 let</strong> (posádka zestárne o 6 let, lidé na Zemi o 10 let).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Kontrakce délky rychlé rakety</h3>
+    <span class="badge">Kontrakce délek</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Raketě o klidové délce <em>l</em><sub>0</sub> = 100 m naměří pozorovací stanice za letu rychlostí <em>v</em> = 0,6<em>c</em> zkrácenou délku <em>l</em>. Jaká je tato délka?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Lorentzův faktor:</strong> <em>γ</em> = 1 / √(1 − 0,6<sup>2</sup>) = 1 / √0,64 = 1 / 0,8 = 1,25.</p><p><strong>2. Kontrakce délky:</strong> <em>l</em> = <em>l</em><sub>0</sub> / <em>γ</em> = 100 / 1,25 = <strong>80 m</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Energie uvolněná přeměnou hmotnosti (E = mc²)</h3>
+    <span class="badge">Ekvivalence m a E</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Jaké obrovské množství energie <em>E</em> odpovídá úplné přeměně hmotnosti <em>m</em> = 1 g = 10<sup>-3</sup> kg na energii? (<em>c</em> = 3 · 10<sup>8</sup> m/s.)</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Einsteinův vztah:</strong> <em>E</em> = <em>m</em> · <em>c</em><sup>2</sup></p><p><strong>2. Výpočet:</strong> <em>E</em> = 10<sup>-3</sup> · (3 · 10<sup>8</sup>)<sup>2</sup> = 10<sup>-3</sup> · 9 · 10<sup>16</sup> = <strong>9 · 10<sup>13</sup> J = 90 TJ</strong> (ekvivalent energie uvolněné při výbuchu zhruba 21,5 kilotun TNT).</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="25-vlnova-optika.html" class="pager-btn">← 23. Vlnová optika</a>
+            <a href="27-kvantova-fyzika.html" class="pager-btn pager-next">25. Kvantová fyzika →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18. Elektrický proud a obvody | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2.–3. ročník: Elektřina a magnetismus</span>
+                <span>/</span>
+                <span>Kapitola 18</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="12-elektricky-proud-kovy">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="11-elektrostatika.html" class="module-subnav-link " data-ch-nav="11-elektrostatika">17. Elektrostatika a pole</a><a href="12-elektricky-proud-kovy.html" class="module-subnav-link active" data-ch-nav="12-elektricky-proud-kovy">18. Elektrický proud a obvody</a><a href="13-proud-kapaliny-polovodice.html" class="module-subnav-link " data-ch-nav="13-proud-kapaliny-polovodice">19. Kapaliny, plyny a polovodiče</a><a href="14-magneticke-pole-indukce.html" class="module-subnav-link " data-ch-nav="14-magneticke-pole-indukce">20. Magnetismus a indukce</a><a href="23-stridavy-proud-elmag.html" class="module-subnav-link " data-ch-nav="23-stridavy-proud-elmag">21. Střídavý proud a elmag. vlny</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>12. Elektrický proud v kovech a obvody</h1>
+      <p class="chapter-lead">Ohmův zákon, elektrický odpor, rezistivita, sériové a paralelní zapojení, Kirchhoffovy zákony, práce, výkon a Jouleovo teplo.</p>
+      
+      <h2>12.1 Elektrický proud a Ohmův zákon</h2>
+<p>Elektrický proud (<em>I</em>) je uspořádaný pohyb nabitých částic (v kovech volných elektronů). Dohodnutý směr proudu je od kladného pólu zdroje k zápornému.</p>
+<div class="callout callout-formula"><div class="callout-title">Proud, Ohmův zákon a elektrický odpor</div><div class="callout-body"><p><strong>Elektrický proud:</strong>  <strong>I = Q / t</strong> [A – Ampér]</p><p><strong>Ohmův zákon pro část obvodu:</strong>  <strong>I = U / R</strong>   ⟹   <strong>U = R · I</strong></p><p><strong>Elektrický odpor vodiče:</strong>  <strong>R = ρ · (l / S)</strong> [Ω], kde <em>ρ</em> je měrný odpor (rezistivita) [Ω·m]</p><p><strong>Ohmův zákon pro celý (uzavřený) obvod:</strong>  <strong>I = U<sub>e</sub> / (R + R<sub>i</sub>)</strong>, kde <em>U</em><sub>e</sub> je elektromotorické napětí zdroje a <em>R</em><sub>i</sub> vnitřní odpor zdroje</p></div></div>
+<h2>12.2 Zapojení rezistorů a Kirchhoffovy zákony</h2>
+<div class="table-wrap"><table><thead><tr><th>Veličina</th><th>Sériové zapojení (za sebou)</th><th>Paralelní zapojení (vedle sebe)</th></tr></thead><tbody><tr><td>Proud <em>I</em></td><td>Všude stejný: <strong>I = I<sub>1</sub> = I<sub>2</sub></strong></td><td>Dělí se: <strong>I = I<sub>1</sub> + I<sub>2</sub></strong></td></tr><tr><td>Napětí <em>U</em></td><td>Dělí se: <strong>U = U<sub>1</sub> + U<sub>2</sub></strong></td><td>Všude stejné: <strong>U = U<sub>1</sub> = U<sub>2</sub></strong></td></tr><tr><td>Výsledný odpor <em>R</em></td><td><strong>R = R<sub>1</sub> + R<sub>2</sub> + ...</strong></td><td><strong>1/R = 1/R<sub>1</sub> + 1/R<sub>2</sub> + ...</strong></td></tr></tbody></table></div>
+<ul><li><strong>1. Kirchhoffův zákon (uzlový):</strong> Součet proudů vstupujících do uzlu se rovná součtu proudů z uzlu vystupujících: <strong>Σ I<sub>vst</sub> = Σ I<sub>výst</sub></strong>.</li><li><strong>2. Kirchhoffův zákon (smyčkový):</strong> V každé uzavřené smyčce se součet úbytků napětí na spotřebičích rovná součtu elektromotorických napětí zdrojů: <strong>Σ (R<sub>k</sub> · I<sub>k</sub>) = Σ U<sub>e,j</sub></strong>.</li></ul>
+<h2>12.3 Elektrická práce, výkon a Jouleovo teplo</h2>
+<div class="callout callout-formula"><div class="callout-title">Práce, výkon a teplo elektrického proudu</div><div class="callout-body"><p><strong>Elektrická práce:</strong>  <strong>W = U · I · t = R · I<sup>2</sup> · t = (U<sup>2</sup> / R) · t</strong> [J nebo kWh; 1 kWh = 3,6 MJ]</p><p><strong>Elektrický výkon:</strong>  <strong>P = U · I = R · I<sup>2</sup> = U<sup>2</sup> / R</strong> [W]</p><p><strong>Jouleův-Lenzův zákon (teplo ve vodiči):</strong>  <strong>Q = R · I<sup>2</sup> · t</strong></p></div></div>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Ohmův zákon:</strong> <em>I</em> = <em>U</em> / <em>R</em> &nbsp;|&nbsp; <strong>Uzavřený obvod:</strong> <em>I</em> = <em>U</em><sub>e</sub> / (<em>R</em> + <em>R</em><sub>i</sub>)</p>
+          <p><strong>Odpor vodiče:</strong> <em>R</em> = <em>ρ</em> · (<em>l</em> / <em>S</em>) &nbsp;|&nbsp; <strong>Sériově:</strong> <em>R</em> = <em>R</em><sub>1</sub> + <em>R</em><sub>2</sub> &nbsp;|&nbsp; <strong>Paralelně:</strong> 1/<em>R</em> = 1/<em>R</em><sub>1</sub> + 1/<em>R</em><sub>2</sub></p>
+          <p><strong>Výkon a práce/Jouleovo teplo:</strong> <em>P</em> = <em>U</em> · <em>I</em> = <em>R</em> · <em>I</em><sup>2</sup> = <em>U</em><sup>2</sup> / <em>R</em>, &nbsp; <em>W</em> = <em>P</em> · <em>t</em></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Odpor měděného drátu (rezistivita)</h3>
+    <span class="badge">Elektrický odpor</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Jaký elektrický odpor má měděný drát (<em>ρ</em> = 1,7 · 10<sup>-8</sup> Ω·m) o délce <em>l</em> = 100 m a průřezu <em>S</em> = 2 mm<sup>2</sup> = 2 · 10<sup>-6</sup> m<sup>2</sup>?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>R</em> = <em>ρ</em> · (<em>l</em> / <em>S</em>)</p><p><strong>2. Výpočet:</strong> <em>R</em> = 1,7 · 10<sup>-8</sup> · (100 / (2 · 10<sup>-6</sup>)) = 1,7 · 10<sup>-8</sup> · 5 · 10<sup>7</sup> = <strong>0,85 Ω</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Paralelní zapojení dvou rezistorů a Ohmův zákon</h3>
+    <span class="badge">Obvody DC</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Rezistory <em>R</em><sub>1</sub> = 30 Ω a <em>R</em><sub>2</sub> = 60 Ω jsou zapojeny paralelně ke zdroji napětí <em>U</em> = 12 V. Určete celkový odpor <em>R</em>, proudy větvemi a celkový proud.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Celkový odpor (paralelně):</strong> 1/<em>R</em> = 1/30 + 1/60 = 3/60 = 1/20  ⟹  <em>R</em> = <strong>20 Ω</strong>.</p><p><strong>2. Proudy větvemi:</strong> <em>I</em><sub>1</sub> = <em>U</em> / <em>R</em><sub>1</sub> = 12 / 30 = <strong>0,4 A</strong>, &nbsp; <em>I</em><sub>2</sub> = <em>U</em> / <em>R</em><sub>2</sub> = 12 / 60 = <strong>0,2 A</strong>.</p><p><strong>3. Celkový proud (1. Kirchhoffův zákon):</strong> <em>I</em> = <em>I</em><sub>1</sub> + <em>I</em><sub>2</sub> = 0,4 + 0,2 = <strong>0,6 A</strong> (kontrola: <em>U</em>/<em>R</em> = 12/20 = 0,6 A).</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Rychlovarná konvice – proud a spotřebovaná energie</h3>
+    <span class="badge">Výkon a práce</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Rychlovarná konvice o příkonu <em>P</em> = 2 300 W je připojena k síti <em>U</em> = 230 V po dobu 3 minut (180 s). Jaký proud jí prochází a kolik elektrické energie spotřebuje?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Proud konvicí:</strong> <em>I</em> = <em>P</em> / <em>U</em> = 2 300 / 230 = <strong>10 A</strong>.</p><p><strong>2. Spotřebovaná energie (práce):</strong> <em>W</em> = <em>P</em> · <em>t</em> = 2 300 · 180 = <strong>414 000 J = 414 kJ</strong> (= 0,115 kWh).</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="11-elektrostatika.html" class="pager-btn">← 17. Elektrostatika a pole</a>
+            <a href="13-proud-kapaliny-polovodice.html" class="pager-btn pager-next">19. Kapaliny, plyny a polovodiče →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

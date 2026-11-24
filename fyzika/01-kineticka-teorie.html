@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Kinetická teorie látek | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2. ročník: Molekulová fyzika a termika</span>
+                <span>/</span>
+                <span>Kapitola 7</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="01-kineticka-teorie">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="01-kineticka-teorie.html" class="module-subnav-link active" data-ch-nav="01-kineticka-teorie">7. Kinetická teorie látek</a><a href="02-vnitrni-energie-teplota.html" class="module-subnav-link " data-ch-nav="02-vnitrni-energie-teplota">8. Vnitřní energie a teplota</a><a href="03-tepelna-vymena-kalorimetrie.html" class="module-subnav-link " data-ch-nav="03-tepelna-vymena-kalorimetrie">9. Tepelná výměna a kalorimetrie</a><a href="04-anomalie-vody.html" class="module-subnav-link " data-ch-nav="04-anomalie-vody">10. Anomálie vody</a><a href="05-pevne-latky-kapaliny.html" class="module-subnav-link " data-ch-nav="05-pevne-latky-kapaliny">11. Pevné látky a kapaliny</a><a href="06-zmeny-skupenstvi.html" class="module-subnav-link " data-ch-nav="06-zmeny-skupenstvi">12. Změny skupenství látek</a><a href="07-plyny.html" class="module-subnav-link " data-ch-nav="07-plyny">13. Plyny a děje v plynech</a><a href="08-termodynamika-stroje.html" class="module-subnav-link " data-ch-nav="08-termodynamika-stroje">14. Termodynamika a tepelné stroje</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>1. Kinetická teorie látek</h1>
+      <p class="chapter-lead">Částicová stavba látek, tepelný pohyb, difúze, Brownův pohyb, osmóza a srovnání skupenství hmoty.</p>
+      
+      <p>Kinetická teorie látek vysvětluje makroskopické vlastnosti látek (jako je tlak, teplota, skupenství) na základě mikroskopické stavby a neustálého pohybu jejich částic.</p>
+<h2>1.1 Základní postuláty kinetické teorie</h2>
+<ul><li><strong>1. Diskrétní struktura látek:</strong> Látky jakéhokoliv skupenství se skládají z nepatrných částic (atomů, molekul nebo iontů). Částice nejsou v prostoru spojitě rozprostřeny, ale jsou od sebe odděleny mezerami (látka má přetržitou – diskrétní povahu).</li><li><strong>2. Neustálý neuspořádaný pohyb:</strong> Částice se v látkách neustále a chaoticky (neuspořádaně) pohybují. Tento pohyb nazýváme <em>tepelný pohyb</em>. Částice vykonávají pohyb posuvný (translační), rotační (otáčivý) a kmitavý (vibrační). Intenzita tohoto pohybu roste s termodynamickou teplotou látky.</li><li><strong>3. Vzájemné silové působení částic:</strong> Částice na sebe navzájem působí přitažlivými a odpudivými silami. Velikost a charakter těchto sil závisí na vzájemné vzdálenosti částic <em>r</em>. Při rovnovážné vzdálenosti <em>r</em><sub>0</sub> (řádově 10<sup>-10</sup> m) se síly vyrovnávají. Při <em>r</em> &gt; <em>r</em><sub>0</sub> převládají síly přitažlivé (van der Waalsovy síly), při <em>r</em> &lt; <em>r</em><sub>0</sub> prudce narůstají síly odpudivé způsobené překryvem elektronových obalů.</li></ul>
+<h2>1.2 Experimentální důkazy neuspořádaného pohybu a částicové struktury</h2>
+<ul><li><strong>Difúze:</strong> Samovolné pronikání a promíchávání částic jedné látky mezi částice látky druhé, způsobené jejich tepelným pohybem (např. šíření vůně v klidném vzduchu, rozpuštění kapky inkoustu ve vodě). Rychlost difúze roste s teplotou a je nejvyšší v plynech, pomalejší v kapalinách a nejpomalejší v pevných látkách.</li><li><strong>Brownův pohyb:</strong> Neustálý, zcela náhodný a trhavý pohyb mikroskopických částeček (např. pylových zrn či kouřových částic) suspendovaných v kapalině nebo plynu. Důvodem jsou neustálé asymetrické nárazy molekul okolního média na povrch částice (objevil botanik Robert Brown roku 1827, teoreticky vysvětlil Albert Einstein roku 1905).</li><li><strong>Tlak plynu:</strong> Makroskopický tlak plynu na stěny nádoby je přímým důsledkem obrovského množství mechanických pružných nárazů molekul plynu narážejících na jednotku plochy stěny za jednotku času.</li><li><strong>Osmóza:</strong> Samovolný jednosměrný průchod molekul rozpouštědla (např. vody) polopropustnou (semipermeabilní) membránou do roztoku s vyšší koncentrací rozpuštěné látky.</li></ul>
+<h2>1.3 Srovnání základních skupenství hmoty</h2>
+<p>Rozdílné fyzikální chování jednotlivých skupenství vyplývá z poměru mezi kinetickou energií tepelného pohybu částic <em>E</em><sub>k</sub> a potenciální energií jejich vzájemné vazby <em>E</em><sub>p</sub>:</p>
+<div class="table-wrap"><table><thead><tr><th>Vlastnost</th><th>Pevné látky</th><th>Kapaliny</th><th>Plyny</th><th>Plazma</th></tr></thead><tbody><tr><td>Uspořádání a vzdálenost</td><td>Pravidelná krystalová mřížka nebo amorfní struktura; vzdálenosti cca 10<sup>-10</sup> m.</td><td>Krátkodosahové uspořádání; vzdálenosti srovnatelné s pevnými látkami.</td><td>Zcela neuspořádané; vzdálenosti jsou velké ve srovnání s rozměry molekul.</td><td>Ionizovaný plyn složený z volných iontů, elektronů a neutrálních atomů.</td></tr><tr><td>Charakter pohybu</td><td>Částice pouze kmitají kolem svých stálých rovnovážných poloh.</td><td>Částice kmitají a po krátkém čase přeskočí do nové rovnovážné polohy.</td><td>Volný přímočarý translační pohyb molekul mezi vzájemnými srážkami.</td><td>Vysoce energetický chaotický pohyb nabitých částic ovlivněný elmag. poli.</td></tr><tr><td>Soudržné síly</td><td>Velmi silné vazby (<em>E</em><sub>p</sub> ≫ <em>E</em><sub>k</sub>).</td><td>Středně silné přitažlivé síly (<em>E</em><sub>p</sub> ≈ <em>E</em><sub>k</sub>).</td><td>Zanedbatelné mezimolekulové síly (<em>E</em><sub>k</sub> ≫ <em>E</em><sub>p</sub>).</td><td>Silné dalekodosahové Coulombické elektrostatické interakce.</td></tr><tr><td>Tvar a objem</td><td>Zachovávají stálý tvar i stálý objem.</td><td>Zachovávají stálý objem, ale přejímají tvar nádoby (tvoří volný povrch).</td><td>Nemají stálý tvar ani objem; zcela vyplní prostor nádoby.</td><td>Zcela nestálý tvar i objem; silná reakce na magnetická pole.</td></tr><tr><td>Stlačitelnost</td><td>Téměř nestlačitelné.</td><td>Velmi málo stlačitelné.</td><td>Snadno a výrazně stlačitelné.</td><td>Stlačitelné, výborně elektricky i tepelně vodivé.</td></tr></tbody></table></div>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Látkové množství:</strong> <em>n</em> = <em>N</em> / <em>N</em><sub>A</sub> = <em>m</em> / <em>M</em><sub>m</sub> &nbsp;|&nbsp; <em>N</em><sub>A</sub> = 6,022 · 10<sup>23</sup> mol<sup>-1</sup></p>
+          <p><strong>Hmotnost jedné molekuly:</strong> <em>m</em><sub>0</sub> = <em>M</em><sub>m</sub> / <em>N</em><sub>A</sub> &nbsp;|&nbsp; <strong>Koncentrace částic:</strong> <em>N</em><sub>V</sub> = <em>N</em> / <em>V</em></p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Počet molekul ve sklenici vody</h3>
+    <span class="badge">Kinetická teorie</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Kolik molekul vody (H<sub>2</sub>O, <em>M</em><sub>m</sub> = 18 g·mol<sup>-1</sup>) je obsaženo v 180 g vody?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Výpočet látkového množství:</strong> <em>n</em> = <em>m</em> / <em>M</em><sub>m</sub> = 180 / 18 = 10 mol.</p><p><strong>2. Počet molekul:</strong> <em>N</em> = <em>n</em> · <em>N</em><sub>A</sub> = 10 · 6,022 · 10<sup>23</sup> = <strong>6,022 · 10<sup>24</sup> molekul</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Hmotnost jedné molekuly kyslíku</h3>
+    <span class="badge">Částicová stavba</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Určete klidovou hmotnost <em>m</em><sub>0</sub> jedné molekuly kyslíku O<sub>2</sub>, je-li její molární hmotnost <em>M</em><sub>m</sub> = 32 · 10<sup>-3</sup> kg·mol<sup>-1</sup>.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>m</em><sub>0</sub> = <em>M</em><sub>m</sub> / <em>N</em><sub>A</sub></p><p><strong>2. Výpočet:</strong> <em>m</em><sub>0</sub> = 0,032 / (6,022 · 10<sup>23</sup>) ≈ <strong>5,31 · 10<sup>-26</sup> kg</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Koncentrace atomů v pevném hliníku</h3>
+    <span class="badge">Koncentrace částic</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Hliník má hustotu <em>ρ</em> = 2 700 kg·m<sup>-3</sup> a molární hmotnost <em>M</em><sub>m</sub> = 27 · 10<sup>-3</sup> kg·mol<sup>-1</sup>. Vypočítejte počet atomů v 1 m<sup>3</sup> hliníku (koncentraci <em>N</em><sub>V</sub>).</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> <em>N</em><sub>V</sub> = <em>N</em> / <em>V</em> = (<em>m</em> / <em>M</em><sub>m</sub>) · <em>N</em><sub>A</sub> / <em>V</em> = (<em>ρ</em> · <em>N</em><sub>A</sub>) / <em>M</em><sub>m</sub>.</p><p><strong>2. Výpočet:</strong> <em>N</em><sub>V</sub> = (2 700 · 6,022 · 10<sup>23</sup>) / 0,027 = 10<sup>5</sup> · 6,022 · 10<sup>23</sup> = <strong>6,022 · 10<sup>28</sup> m<sup>-3</sup></strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="22-mechanika-tekutin.html" class="pager-btn">← 6. Mechanika kapalin a plynů</a>
+            <a href="02-vnitrni-energie-teplota.html" class="pager-btn pager-next">8. Vnitřní energie a teplota →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

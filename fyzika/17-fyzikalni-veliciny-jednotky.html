@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Fyzikální veličiny, SI a vektory | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>1. ročník: Úvod a mechanika</span>
+                <span>/</span>
+                <span>Kapitola 1</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="17-fyzikalni-veliciny-jednotky">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="17-fyzikalni-veliciny-jednotky.html" class="module-subnav-link active" data-ch-nav="17-fyzikalni-veliciny-jednotky">1. Fyzikální veličiny, SI a vektory</a><a href="18-kinematika.html" class="module-subnav-link " data-ch-nav="18-kinematika">2. Kinematika (pohyb a vrhy)</a><a href="19-dynamika-sily.html" class="module-subnav-link " data-ch-nav="19-dynamika-sily">3. Dynamika a Newtonovy zákony</a><a href="20-prace-energie-vykon.html" class="module-subnav-link " data-ch-nav="20-prace-energie-vykon">4. Práce, výkon a energie</a><a href="21-tuhe-teleso-gravitace.html" class="module-subnav-link " data-ch-nav="21-tuhe-teleso-gravitace">5. Tuhé těleso a gravitační pole</a><a href="22-mechanika-tekutin.html" class="module-subnav-link " data-ch-nav="22-mechanika-tekutin">6. Mechanika kapalin a plynů</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>1. Fyzikální veličiny, SI a vektory</h1>
+      <p class="chapter-lead">Soustava SI, základní a odvozené jednotky, předpony, chyby měření, skalární a vektorové veličiny.</p>
+      
+<p>Fyzika je exaktní přírodní věda, která zkoumá zákonitosti hmotného světa pomocí pozorování, experimentu a matematického popisu. Každá měřitelná vlastnost tělesa nebo děje se nazývá <strong>fyzikální veličina</strong>.</p>
+
+<h2>1. Mezinárodní soustava jednotek SI</h2>
+<p>Soustava SI definuje <strong>7 základních fyzikálních veličin</strong>, ze kterých jsou odvozeny všechny ostatní jednotky (odvozené veličiny jako Newton, Joule, Watt, Pascal, Volt).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Veličina</th><th>Značka veličiny</th><th>Základní jednotka</th><th>Značka jednotky</th></tr></thead>
+<tbody>
+<tr><td>Délka</td><td><em>l</em>, <em>s</em>, <em>r</em></td><td>metr</td><td>m</td></tr>
+<tr><td>Hmotnost</td><td><em>m</em></td><td>kilogram</td><td>kg</td></tr>
+<tr><td>Čas</td><td><em>t</em></td><td>sekunda</td><td>s</td></tr>
+<tr><td>Elektrický proud</td><td><em>I</em></td><td>ampér</td><td>A</td></tr>
+<tr><td>Termodynamická teplota</td><td><em>T</em></td><td>kelvin</td><td>K</td></tr>
+<tr><td>Látkové množství</td><td><em>n</em></td><td>mol</td><td>mol</td></tr>
+<tr><td>Svítivost</td><td><em>I</em><sub>v</sub></td><td>kandela</td><td>cd</td></tr>
+</tbody></table></div>
+
+<h2>2. Násobky a díly jednotek (předpony SI)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Předpona</th><th>Značka</th><th>Násobek</th><th>Předpona</th><th>Značka</th><th>Díl</th></tr></thead>
+<tbody>
+<tr><td>kilo</td><td>k</td><td>10<sup>3</sup></td><td>mili</td><td>m</td><td>10<sup>-3</sup></td></tr>
+<tr><td>mega</td><td>M</td><td>10<sup>6</sup></td><td>mikro</td><td>μ</td><td>10<sup>-6</sup></td></tr>
+<tr><td>giga</td><td>G</td><td>10<sup>9</sup></td><td>nano</td><td>n</td><td>10<sup>-9</sup></td></tr>
+<tr><td>tera</td><td>T</td><td>10<sup>12</sup></td><td>piko</td><td>p</td><td>10<sup>-12</sup></td></tr>
+</tbody></table></div>
+
+<h2>3. Skaláry a vektory</h2>
+<ul>
+  <li><strong>Skalární veličina (skalár):</strong> Je plně určena pouze svou číselnou hodnotou a jednotkou (např. hmotnost <em>m</em>, čas <em>t</em>, teplota <em>T</em>, energie <em>E</em>, objem <em>V</em>).</li>
+  <li><strong>Vektorová veličina (vektor):</strong> Má kromě velikosti i <strong>směr a orientaci</strong> (např. síla <strong>F</strong>, rychlost <strong>v</strong>, zrychlení <strong>a</strong>, hybnost <strong>p</strong>, intenzita pole <strong>E</strong>).</li>
+</ul>
+
+<div class="callout callout-formula">
+  <div class="callout-title">📐 Skládání dvou kolmých vektorů a chyby měření</div>
+  <div class="callout-body">
+    <p><strong>Výslednice kolmých vektorů:</strong> <em>F</em> = √(<em>F</em><sub>1</sub><sup>2</sup> + <em>F</em><sub>2</sub><sup>2</sup>)</p>
+    <p><strong>Aritmetický průměr měření:</strong> <em>x̄</em> = (<em>x</em><sub>1</sub> + <em>x</em><sub>2</sub> + ... + <em>x</em><sub>n</sub>) / <em>n</em></p>
+    <p><strong>Relativní odchylka:</strong> <em>δ</em> = (Δ<em>x</em> / <em>x̄</em>) · 100 %</p>
+  </div>
+</div>
+
+<div class="callout callout-note">
+  <div class="callout-title">💡 Chyby měření</div>
+  <div class="callout-body">
+    <p><strong>Soustavná (systematická) chyba</strong> vzniká např. špatnou kalibrací přístroje. <strong>Náhodná chyba</strong> vzniká kolísáním podmínek a omezuje se opakováním měření. <strong>Hrubá chyba</strong> vzniká nepozorností pozorovatele (hodnota se vyřadí).</p>
+  </div>
+</div>
+
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců a převodů kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Výslednice dvou kolmých vektorů:</strong> <em>F</em> = √(<em>F</em><sub>1</sub><sup>2</sup> + <em>F</em><sub>2</sub><sup>2</sup>) &nbsp;|&nbsp; <strong>Složky vektoru:</strong> <em>F</em><sub>x</sub> = <em>F</em> cos α, <em>F</em><sub>y</sub> = <em>F</em> sin α</p>
+          <p><strong>Aritmetický průměr:</strong> <em>x̄</em> = (<em>x</em><sub>1</sub> + ... + <em>x</em><sub>n</sub>) / <em>n</em> &nbsp;|&nbsp; <strong>Průměrná absolutní odchylka:</strong> Δ<em>x</em> = Σ|<em>x</em><sub>i</sub> − <em>x̄</em>| / <em>n</em></p>
+          <p><strong>Relativní odchylka:</strong> <em>δ</em> = (Δ<em>x</em> / <em>x̄</em>) · 100 %</p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Převod složených jednotek do soustavy SI</h3>
+    <span class="badge">Jednotky SI</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Převeďte rychlost <em>v</em> = 90 km·h<sup>-1</sup> na m·s<sup>-1</sup> a hustotu <em>ρ</em> = 2,7 g·cm<sup>-3</sup> na kg·m<sup>-3</sup>.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Rychlost:</strong> 1 km = 1 000 m, 1 h = 3 600 s ⟹ dělíme číslem 3,6:<br><em>v</em> = 90 / 3,6 = <strong>25 m·s<sup>-1</sup></strong>.</p><p><strong>2. Hustota:</strong> 1 g = 10<sup>-3</sup> kg, 1 cm<sup>3</sup> = 10<sup>-6</sup> m<sup>3</sup> ⟹ násobíme 10<sup>3</sup>:<br><em>ρ</em> = 2,7 · 10<sup>-3</sup> / 10<sup>-6</sup> = <strong>2 700 kg·m<sup>-3</sup></strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Skládání dvou kolmých sil</h3>
+    <span class="badge">Vektory</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Na těleso působí dvě navzájem kolmé síly <em>F</em><sub>1</sub> = 60 N a <em>F</em><sub>2</sub> = 80 N. Určete velikost výsledné síly <em>F</em>.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vzorec:</strong> Protože síly svírají úhel 90°, použijeme Pythagorovu větu: <em>F</em> = √(<em>F</em><sub>1</sub><sup>2</sup> + <em>F</em><sub>2</sub><sup>2</sup>).</p><p><strong>2. Výpočet:</strong> <em>F</em> = √(60<sup>2</sup> + 80<sup>2</sup>) = √(3 600 + 6 400) = √10 000 = <strong>100 N</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Zpracování měření a výpočet relativní odchylky</h3>
+    <span class="badge">Chyby měření</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Při měření délky stolu jsme naměřili hodnoty: 120,2 cm; 119,8 cm; 120,4 cm; 119,6 cm. Určete střední hodnotu, absolutní a relativní odchylku měření.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Aritmetický průměr:</strong> <em>l̄</em> = (120,2 + 119,8 + 120,4 + 119,6) / 4 = 480,0 / 4 = <strong>120,0 cm</strong>.</p><p><strong>2. Průměrná absolutní odchylka:</strong> Odchylky jsou |0,2|, |−0,2|, |0,4|, |−0,4| cm ⟹ Δ<em>l</em> = (0,2 + 0,2 + 0,4 + 0,4) / 4 = <strong>0,3 cm</strong>.</p><p><strong>3. Relativní odchylka:</strong> <em>δ</em> = (0,3 / 120,0) · 100 % = <strong>0,25 %</strong>. Výsledek zapíšeme jako <em>l</em> = (120,0 ± 0,3) cm.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="index.html" class="pager-btn">← Přehled Fyziky</a>
+            <a href="18-kinematika.html" class="pager-btn pager-next">2. Kinematika (pohyb a vrhy) →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

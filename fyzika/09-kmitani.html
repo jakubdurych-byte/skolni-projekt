@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15. Mechanické kmitání | Fyzika — Studijní portál</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function() {
+            try {
+                var match = window.location.search.match(/[?&]theme=([a-zA-Z0-9_-]+)/);
+                var t = match ? decodeURIComponent(match[1]) : (localStorage.getItem('apple_web_theme') || 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="read-progress" id="readProgress"></div>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Studijní portál</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="../index.html" class="nav-pill">🏠 Uvítání</a>
+                <a href="index.html" class="nav-pill active">⚛️ Fyzika</a>
+                <a href="../pvy.html" class="nav-pill">💻 PVY</a>
+                <a href="../tvy.html" class="nav-pill">🖥️ TVY</a>
+                <a href="../prg.html" class="nav-pill">👨‍💻 PRG</a>
+                <a href="../it-prehled.html" class="nav-pill">📚 Vše z IT</a>
+                <a href="../maturita.html" class="nav-pill maturita-pill">🎓 Maturita</a>
+            </div>
+
+            <div class="theme-menu-wrapper">
+                <button type="button" class="theme-trigger-btn" id="theme-trigger" aria-haspopup="true" aria-expanded="false" title="Změnit barevný motiv stránky">
+                    <span class="theme-active-dot"></span>
+                    <span>Motiv: <strong id="current-theme-label">Světlý</strong></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <div class="theme-popover" id="theme-popover" role="dialog" aria-label="Barevné motivy">
+                    <div class="theme-popover-header"><span>Výběr z 16 Apple & Dev motivů</span></div>
+                    <div class="theme-grid">
+                        <button type="button" class="theme-card-btn active" data-set-theme="light"><span class="swatch swatch-light"></span><span>Světlý (Silver)</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dark"><span class="swatch swatch-dark"></span><span>Space Black</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="midnight"><span class="swatch swatch-midnight"></span><span>Půlnoční modrá</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="purple"><span class="swatch swatch-purple"></span><span>Fialový titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="titanium"><span class="swatch swatch-titanium"></span><span>Přírodní titan</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="green"><span class="swatch swatch-green"></span><span>Alpská zeleň</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="paper"><span class="swatch swatch-paper"></span><span>Kniha & Papír</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="rose"><span class="swatch swatch-rose"></span><span>Růžové zlato</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="matrix"><span class="swatch swatch-matrix"></span><span>Terminál Matrix</span></button>
+                        <button type="button" class="theme-card-btn" data-set-theme="nord"><span class="swatch swatch-nord"></span> Nord Frost</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="sunset"><span class="swatch swatch-sunset"></span> Západ slunce</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="cyberpunk"><span class="swatch swatch-cyberpunk"></span> Cyberpunk</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="dracula"><span class="swatch swatch-dracula"></span> Dracula Pro</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="tokyo"><span class="swatch swatch-tokyo"></span> Tokyo Night</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="solarized-light"><span class="swatch swatch-solarized-light"></span> Solarized</button>
+                        <button type="button" class="theme-card-btn" data-set-theme="deep-ocean"><span class="swatch swatch-deep-ocean"></span> Hluboký oceán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" style="margin-top: 36px;">
+        <div class="chapter-header-bar">
+            <div class="subpage-breadcrumb" style="margin-bottom: 0;">
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Zpět na přehled Fyziky
+                </a>
+                <span>/</span>
+                <span>2.–3. ročník: Kmitání, vlnění a akustika</span>
+                <span>/</span>
+                <span>Kapitola 15</span>
+            </div>
+
+            <button type="button" class="done-toggle-btn" id="doneToggleBtn" data-ch-id="09-kmitani">
+                ○ Označit jako prostudované
+            </button>
+        </div>
+
+        <div class="module-subnav">
+            <span class="module-subnav-label">Kapitoly sekce:</span>
+            <a href="index.html" class="module-subnav-link">🏠 Přehled</a><a href="09-kmitani.html" class="module-subnav-link active" data-ch-nav="09-kmitani">15. Mechanické kmitání</a><a href="10-vlneni-akustika.html" class="module-subnav-link " data-ch-nav="10-vlneni-akustika">16. Vlnění a akustika</a>
+        </div>
+
+        <article class="chapter-article">
+
+      <h1>9. Mechanické kmitání a harmonický pohyb</h1>
+      <p class="chapter-lead">Perioda, frekvence, úhlová frekvence, rovnice harmonického pohybu, pružinové a matematické kyvadlo, energie a rezonance.</p>
+      
+      <p>Kmitavý pohyb je periodický děj, při němž se těleso (oscilátor) pohybuje sem a tam kolem stálé rovnovážné polohy.</p>
+<h2>9.1 Základní pojmy a kinematika harmonického pohybu</h2>
+<ul><li><strong>Okamžitá výchylka (y):</strong> Vzdálenost oscilátoru od rovnovážné polohy v čase <em>t</em> [m].</li><li><strong>Amplituda (y<sub>m</sub>):</strong> Maximální výchylka z rovnovážné polohy [m].</li><li><strong>Perioda (T):</strong> Doba jednoho celého kmitu [s]. <strong>Frekvence (f):</strong> Počet kmitů za 1 sekundu [Hz = s<sup>-1</sup>]; platí <strong>f = 1 / T</strong>.</li><li><strong>Úhlová frekvence (ω):</strong> <strong>ω = 2π · f = 2π / T</strong> [rad·s<sup>-1</sup>].</li></ul>
+<div class="callout callout-formula"><div class="callout-title">Časová rovnice harmonického kmitání, rychlost a zrychlení</div><div class="callout-body"><p><strong>Okamžitá výchylka:</strong>  <strong>y = y<sub>m</sub> · sin(ω · t + φ<sub>0</sub>)</strong></p><p><strong>Okamžitá rychlost:</strong>  <strong>v = ω · y<sub>m</sub> · cos(ω · t + φ<sub>0</sub>)</strong>   (max. v rovnovážné poloze: <strong>v<sub>max</sub> = ω · y<sub>m</sub></strong>)</p><p><strong>Okamžité zrychlení:</strong>  <strong>a = −ω<sup>2</sup> · y</strong>   (max. v krajních polohách: <strong>a<sub>max</sub> = ω<sup>2</sup> · y<sub>m</sub></strong>)</p></div></div>
+
+<div class="diagram-card">
+  <div class="diagram-title">Časový průběh harmonického kmitání y(t) = yₘ · sin(ωt)</div>
+  <svg viewBox="0 0 560 240" class="pv-svg" role="img" aria-label="Sinusoida harmonického kmitání">
+    <defs>
+      <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="currentColor"/>
+      </marker>
+    </defs>
+    <line x1="40" y1="120" x2="530" y2="120" stroke="currentColor" stroke-width="1.8" marker-end="url(#arrow2)"/>
+    <line x1="60" y1="215" x2="60" y2="20" stroke="currentColor" stroke-width="1.8" marker-end="url(#arrow2)"/>
+    <line x1="60" y1="50" x2="500" y2="50" stroke="currentColor" stroke-width="1" stroke-dasharray="4,4" opacity="0.4"/>
+    <line x1="60" y1="190" x2="500" y2="190" stroke="currentColor" stroke-width="1" stroke-dasharray="4,4" opacity="0.4"/>
+    <path d="M 60 120 Q 115 20 170 120 T 280 120 T 390 120 T 500 120" fill="none" stroke="var(--primary)" stroke-width="3.2"/>
+    <line x1="115" y1="120" x2="115" y2="50" stroke="#16a34a" stroke-width="2" stroke-dasharray="3,3"/>
+    <text x="120" y="88" fill="#16a34a" font-weight="700" font-size="13">yₘ (amplituda)</text>
+    <line x1="60" y1="205" x2="280" y2="205" stroke="#d97706" stroke-width="2"/>
+    <text x="138" y="222" fill="#d97706" font-weight="700" font-size="13">T (perioda)</text>
+    <text x="535" y="124" class="axis-label">t</text>
+    <text x="44" y="20" class="axis-label">y</text>
+  </svg>
+  <p class="diagram-caption">Perioda T je doba jednoho celého kmitu, amplituda yₘ je maximální výchylka z rovnovážné polohy.</p>
+</div>
+
+<h2>9.2 Kyvadla – pružinový oscilátor a matematické kyvadlo</h2>
+<div class="callout callout-formula"><div class="callout-title">Perioda vlastních kmitů</div><div class="callout-body"><p><strong>Pružinový oscilátor</strong> (závaží o hmotnosti <em>m</em> na pružině o tuhosti <em>k</em>):  <strong>T = 2π · √(m / k)</strong>   |   <strong>ω = √(k / m)</strong></p><p><strong>Matematické kyvadlo</strong> (hmotný bod na vlákně délky <em>l</em>):  <strong>T = 2π · √(l / g)</strong>   (nezávisí na hmotnosti!)</p></div></div>
+<h2>9.3 Energie kmitání, tlumené kmity a rezonance</h2>
+<ul><li><strong>Energie netlumeného oscilátoru:</strong> Celková mechanická energie je konstantní: <strong>E = E<sub>p</sub> + E<sub>k</sub> = (1/2) · k · y<sub>m</sub><sup>2</sup> = (1/2) · m · v<sub>max</sub><sup>2</sup></strong>. V krajní poloze je celá energie potenciální, v rovnovážné kinetická.</li><li><strong>Tlumené kmitání:</strong> Vlivem odporu prostředí amplituda postupně klesá.</li><li><strong>Nucené kmitání a rezonance:</strong> Působí-li vnější periodická síla o frekvenci <em>f</em>, nastává <strong>rezonance</strong>, když se <em>f</em> rovná vlastní frekvenci oscilátoru <em>f</em><sub>0</sub>. Amplituda prudce narůstá (využití: hudební nástroje, rádio; nebezpečí: rozkmitání mostů).</li></ul>
+    
+        
+      <!-- ENRICHED_FORMULAS_EXAMPLES -->
+      <h2>📐 Souhrn vzorců kapitoly</h2>
+<div class="callout callout-formula">
+        <div class="callout-title">📐 Souhrn vzorců kapitoly</div>
+        <div class="callout-body">
+          <p><strong>Perioda, frekvence, úhlová frekvence:</strong> <em>f</em> = 1 / <em>T</em>, &nbsp; <em>ω</em> = 2π<em>f</em> = 2π / <em>T</em></p>
+          <p><strong>Harmonické kmitání:</strong> <em>y</em> = <em>y</em><sub>m</sub> sin(<em>ωt</em> + <em>φ</em><sub>0</sub>), &nbsp; <em>v</em><sub>max</sub> = <em>ωy</em><sub>m</sub>, &nbsp; <em>a</em><sub>max</sub> = <em>ω</em><sup>2</sup><em>y</em><sub>m</sub></p>
+          <p><strong>Pružinový oscilátor:</strong> <em>T</em> = 2π √(<em>m</em> / <em>k</em>) &nbsp;|&nbsp; <strong>Matematické kyvadlo:</strong> <em>T</em> = 2π √(<em>l</em> / <em>g</em>)</p>
+        </div>
+      </div>
+      <h2>🧮 Řešené příklady krok za krokem (3 vzorové úlohy)</h2>
+<div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 1: Okamžitá výchylka a maximální rychlost oscilátoru</h3>
+    <span class="badge">Harmonické kmitání</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Hmotný bod koná harmonické kmitání s amplitudou <em>y</em><sub>m</sub> = 0,1 m a periodou <em>T</em> = 2 s (<em>φ</em><sub>0</sub> = 0). Určete jeho maximální rychlost a okamžitou výchylku v čase <em>t</em> = 0,25 s.</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Úhlová frekvence:</strong> <em>ω</em> = 2π / <em>T</em> = 2π / 2 = π rad·s<sup>-1</sup> ≈ 3,14 rad·s<sup>-1</sup>.</p><p><strong>2. Maximální rychlost:</strong> <em>v</em><sub>max</sub> = <em>ω</em> · <em>y</em><sub>m</sub> = π · 0,1 ≈ <strong>0,314 m/s</strong>.</p><p><strong>3. Okamžitá výchylka v <em>t</em> = 0,25 s:</strong> <em>y</em> = 0,1 · sin(π · 0,25) = 0,1 · sin(π/4) = 0,1 · 0,707 ≈ <strong>0,071 m = 7,1 cm</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 2: Perioda pružinového oscilátoru</h3>
+    <span class="badge">Pružinový oscilátor</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Na pružinu o tuhosti <em>k</em> = 100 N·m<sup>-1</sup> zavěsíme závaží o hmotnosti <em>m</em> = 0,25 kg. Jaká bude perioda a frekvence vlastního kmitání?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Perioda:</strong> <em>T</em> = 2π · √(<em>m</em> / <em>k</em>) = 2π · √(0,25 / 100) = 2π · √0,0025 = 2π · 0,05 = 0,1π ≈ <strong>0,314 s</strong>.</p><p><strong>2. Frekvence:</strong> <em>f</em> = 1 / <em>T</em> = 1 / 0,314 ≈ <strong>3,18 Hz</strong>.</p>
+  </div>
+</div><div class="example-card">
+  <div class="example-header">
+    <h3>Příklad 3: Délka sekundového matematického kyvadla</h3>
+    <span class="badge">Matematické kyvadlo</span>
+  </div>
+  <div class="example-task"><strong>Zadání:</strong> Jakou délku <em>l</em> musí mít matematické kyvadlo, aby jeden jeho kyv (půlperioda) trval přesně 1 sekundu (tj. celá perioda <em>T</em> = 2 s, <em>g</em> = 9,81 m·s<sup>-2</sup>)?</div>
+  <button type="button" class="toggle-solution-btn">Zobrazit řešení krok za krokem</button>
+  <div class="example-solution hidden">
+    <p><strong>1. Vyjádření délky ze vzorce <em>T</em> = 2π √(<em>l</em> / <em>g</em>):</strong> <em>l</em> = (<em>T</em><sup>2</sup> · <em>g</em>) / (4π<sup>2</sup>).</p><p><strong>2. Výpočet:</strong> <em>l</em> = (2<sup>2</sup> · 9,81) / (4 · 9,8696) = 39,24 / 39,478 ≈ <strong>0,994 m ≈ 1 m</strong>.</p>
+  </div>
+</div>
+        </article>
+
+        <div class="pager">
+            <a href="08-termodynamika-stroje.html" class="pager-btn">← 14. Termodynamika a tepelné stroje</a>
+            <a href="10-vlneni-akustika.html" class="pager-btn pager-next">16. Vlnění a akustika →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Studijní portál — Fyzika SŠ</strong> | <a href="index.html" style="color:inherit;">← Přehled všech 29 kapitol</a></p>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
